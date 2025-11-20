@@ -1,0 +1,135 @@
+.is-fixed-nav #fixedNav {
+    animation: haveBgNav .3s ease-in-out both
+}
+
+.top-banner[data-topbanner=true]+#mainNav:not(.is-fixed-nav) #fixedNav {
+    top: 50px
+}
+
+.not-fixed-nav #fixedNav {
+    animation: doNotHaveBgNav .3s ease-in-out both
+}
+
+.is-fixed-nav .hiddenAtNavFixed {
+    animation: hiddenWhenNavFixed .3s ease-in-out both
+}
+
+.is-fixed-nav #boxSearchContainer {
+    position: fixed;
+    z-index: 11;
+    bottom: auto;
+    animation: searchBoxChangeWidth .3s ease-in-out both
+}
+
+.not-fixed-nav .hiddenAtNavFixed {
+    animation: showWhenNavNotFixed .3s ease-in-out both
+}
+
+.not-fixed-nav #boxSearchContainer {
+    bottom: auto;
+    animation: searchBoxReset .4s ease-in-out both
+}
+
+.btn-login {
+    width: 164px;
+    border-width: 0;
+    padding: 0 .5rem;
+    font-size: .75rem;
+    line-height: 1rem
+}
+
+@media (min-width:768px) {
+    .btn-login {
+        display: inline-flex
+    }
+}
+
+@keyframes haveBgNav {
+    0% {
+        background-color: transparent
+    }
+    100.0% {
+        background-color: var(--background)
+    }
+}
+
+@keyframes doNotHaveBgNav {
+    0% {
+        background-color: var(--background)
+    }
+    100.0% {
+        background-color: transparent
+    }
+}
+
+@keyframes hiddenWhenNavFixed {
+    0% {
+        opacity: 1
+    }
+    100.0% {
+        opacity: 0
+    }
+}
+
+@keyframes showWhenNavNotFixed {
+    0% {
+        opacity: 0
+    }
+    100.0% {
+        opacity: 1
+    }
+}
+
+@keyframes searchBoxChangeWidth {
+    0% {
+        width: 100%;
+        top: 70px
+    }
+    100.0% {
+        top: 10px;
+        width: calc(100% - 126px)
+    }
+}
+
+@keyframes searchBoxReset {
+    0% {
+        position: absolute;
+        top: 10px;
+        width: calc(100% - 126px)
+    }
+    90% {
+        position: absolute
+    }
+    99% {
+        width: 100%;
+        top: 82%
+    }
+    to {
+        width: 100%;
+        top: auto;
+        bottom: -20px
+    }
+}
+
+.box-search-fixed-top #boxSearchContainer {
+    width: calc(100% - 126px);
+    position: fixed;
+    bottom: auto!important;
+    top: 10px
+}
+
+.fixed-top #fixedNav {
+    position: fixed
+}
+
+.box-search-fixed-top #fixedNav {
+    background-color: var(--background)
+}
+
+.box-search-fixed-top #hamburgerMenuSticked {
+    display: flex
+}
+
+.box-search-fixed-top #hamburgerMenu {
+    display: none
+}

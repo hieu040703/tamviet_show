@@ -1,0 +1,45 @@
+.pmc-services .swiper-slide {
+    max-width: 150px!important
+}
+
+.pmc-services .swiper-pagination {
+    bottom: 0;
+    --tw-translate-y: -0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.pmc-services .swiper-wrapper {
+    padding-bottom: 24px
+}
+
+.pmc-services .swiper-pagination .swiper-pagination-bullet {
+    padding: 0!important;
+    margin: 0!important;
+    border-radius: 0;
+    width: 16px;
+    height: 4px;
+    background: hsl(var(--neutral-400))
+}
+
+.pmc-services .swiper-pagination .swiper-pagination-bullet:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+.pmc-services .swiper-pagination .swiper-pagination-bullet:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px
+}
+
+.pmc-services .swiper-pagination-bullet-active {
+    background: hsl(var(--primary-500))!important
+}
+
+@media screen and (max-width:768px) {
+    .pmc-services .swiper-pagination .swiper-pagination-bullet {
+        width: 8px
+    }
+    .pmc-services .swiper-slide {
+        max-width: 96px!important
+    }
+}

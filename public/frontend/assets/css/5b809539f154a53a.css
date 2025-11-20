@@ -1,0 +1,46 @@
+.banner .swiper-pagination {
+    margin-bottom: -.5rem!important
+}
+
+@media (min-width:768px) {
+    .banner .swiper-pagination {
+        margin-bottom: 0!important
+    }
+}
+
+.banner .swiper-pagination .swiper-pagination-bullet {
+    opacity: 1;
+    height: 4px;
+    width: 4px;
+    margin: 2px!important;
+    background-color: hsl(var(--neutral-300)/.5)!important
+}
+
+.banner .swiper-pagination-bullet-active {
+    width: 36px!important;
+    height: 4px;
+    overflow: hidden
+}
+
+.banner .swiper-pagination-bullet-active,
+.banner .swiper-pagination-bullet-active:before {
+    border-radius: 4px;
+    --tw-bg-opacity: 1!important;
+    background-color: rgb(255 255 255/var(--tw-bg-opacity))!important
+}
+
+.banner .swiper-pagination-bullet-active:before {
+    content: "";
+    height: 100%;
+    display: block;
+    animation: loading 5s ease-in-out
+}
+
+@keyframes loading {
+    0% {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
