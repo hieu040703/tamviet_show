@@ -14,7 +14,18 @@ class MenuComposer
         $keyword = isset($data['menuKey']) ? $data['menuKey'] : 'main-menu';
         $cacheKey = 'menu_' . $keyword;
         $menu = Cache::remember($cacheKey, 600, function () use ($keyword) {
-            return Menu::with(['items.router', 'items.children.router'])
+            return Menu::with([
+                'items.router.category',
+                'items.router.brand',
+                'items.router.product',
+                'items.router.postCatalogue',
+                'items.router.post',
+                'items.children.router.category',
+                'items.children.router.brand',
+                'items.children.router.product',
+                'items.children.router.postCatalogue',
+                'items.children.router.post',
+            ])
                 ->where('keyword', $keyword)
                 ->where('status', 1)
                 ->first();

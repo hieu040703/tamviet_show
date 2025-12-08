@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="vn">
 <head>
+    @php
+        $defaults = [
+            'title'              => system_setting('seo_meta_title', 'Tên website của bạn'),
+            'description'        => system_setting('seo_meta_description', 'Mô tả website của bạn'),
+            'favicon' => system_setting('homepage_favicon', asset('frontend/images/favicon.png')),
+            'logo' => system_setting('homepage_logo', asset('frontend/images/favicon.png')),
+            'shortcut_icon'      => asset('frontend/images/favicon.png'),
+        ];
+        $seo = array_merge($defaults, $seo ?? []);
+    @endphp
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ data_get(@$system, 'homepage_favicon') }}" type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{ data_get(@$system, 'homepage_favicon') }}" type="image/png" sizes="30x30">
+    <link rel="icon" href="{{  asset('storage/' . $seo['favicon']) }}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{  asset('storage/' . $seo['favicon']) }}" type="image/png" sizes="30x30">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title><?= isset($page_title) ? $page_title . ' | ' . 'VietLink CMS' : \Str::title(__(request()->segment(2))) . ' | VietLink CMS' ?></title>
+    <title>{{$seo['title']}}</title>
     <link href="{{URL::asset('backend/assets/css/family.css')}}" rel="stylesheet"
           type="text/css">
     <link href="{{ URL::asset('backend/global_assets/css/icons/icomoon/styles.css') }}" rel="stylesheet"

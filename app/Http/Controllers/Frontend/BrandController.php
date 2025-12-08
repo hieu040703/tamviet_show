@@ -15,6 +15,9 @@ class BrandController extends Controller
 
     public function show(int $id, Request $request)
     {
+        $hidden = "hidden md:grid";
+        $hiddenHeader = "hidden md:grid";
+        $shadowYPlus = "shadow-yPlus";
         $brand = $this->findBrand($id);
         $query = $this->buildFilteredProductsQuery($brand, $request);
         [$products, $totalCount, $hasMore] = $this->paginateProducts($query, 0, $this->perPage);
@@ -22,6 +25,14 @@ class BrandController extends Controller
         $breadcrumb = build_breadcrumb([
             ['title' => $brand->name, 'url' => null],
         ]);
+        $defaultCanonical = url(($brand->canonical ?? '') . '.html');
+        $seo = [
+            'title' => system_setting('homepage_title', $brand->seo_title ?? $brand->name),
+            'description' => system_setting('homepage_description', $brand->seo_description ?? $brand->description),
+            'keywords' => system_setting('seo_meta_keyword', $brand->seo_keyword ?? $brand->name),
+            'canonical' => system_setting('seo_meta_canonical', $defaultCanonical),
+            'favicon' => system_setting('seo_meta_favicon', $brand->icon ?? $brand->image),
+        ];
         return view('frontend.brand.show', [
             'brand' => $brand,
             'products' => $products,
@@ -29,6 +40,10 @@ class BrandController extends Controller
             'breadcrumb' => $breadcrumb,
             'hasMore' => $hasMore,
             'perPage' => $this->perPage,
+            'hiddenHeader' => $hiddenHeader,
+            'hidden' => $hidden,
+            'shadowYPlus' => $shadowYPlus,
+            'seo' => $seo,
         ]);
     }
 

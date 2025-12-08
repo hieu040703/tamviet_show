@@ -9,10 +9,12 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "bumbummen99/shoppingcart": "^4.2",
         "ckeditor/ckeditor": "^4.25",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "simplesoftwareio/simple-qrcode": "^4.2",
@@ -51,7 +53,8 @@
         "files": [
             "app/Helpers/MyHelper.php",
             "app/Helpers/widget.php",
-            "app/Helpers/router.php"
+            "app/Helpers/router.php",
+            "app/Helpers/system.php"
         ]
     },
     "minimum-stability": "dev",

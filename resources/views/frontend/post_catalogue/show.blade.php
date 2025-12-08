@@ -27,7 +27,7 @@
                 </div>
                 <div class="bg-neutral-100 h-2 md:hidden"></div>
                 <div class="md:mt-4 md:w-[288px]">
-                    <div class=" mb-2 bg-white p-4 pt-4 md:rounded-md md:p-6 md:pt-4">
+                    <div class=" mb-2 bg-white p-4 pt-4 md:rounded-md md:p-6 md:pt-4 mb-mobile">
                         <div class="flex items-center p-4 px-0 pt-0">
                             <h4 class="font-semibold flex-1 text-base md:text-[20px]">Chuyên mục nổi bật</h4>
                         </div>

@@ -14,6 +14,8 @@ class PostCatalogueController extends Controller
 
     public function show(int $id, Request $request)
     {
+        $hidden = "hidden md:grid";
+        $hiddenHeader = "hidden md:grid";
         $catalogue = $this->getCatalogue($id);
         $posts = $this->getPosts($catalogue, $request);
         $breadcrumb = post_catalogue_breadcrumb($catalogue);
@@ -23,11 +25,22 @@ class PostCatalogueController extends Controller
         if ($request->ajax()) {
             return $this->ajaxResponse($posts);
         }
+        $defaultCanonical = url(($catalogue->canonical ?? '') . '.html');
+        $seo = [
+            'title' => system_setting('homepage_title', $catalogue->seo_title ?? $catalogue->name),
+            'description' => system_setting('homepage_description', $catalogue->seo_description ?? $catalogue->description),
+            'keywords' => system_setting('seo_meta_keyword', $catalogue->seo_keyword ?? $catalogue->name),
+            'canonical' => system_setting('seo_meta_canonical', $defaultCanonical),
+            'favicon' => system_setting('seo_meta_favicon', $catalogue->icon ?? $catalogue->image),
+        ];
         return view('frontend.post_catalogue.show', [
             'catalogue' => $catalogue,
             'breadcrumb' => $breadcrumb,
             'posts' => $posts,
             'postCatalogues' => $postCatalogues,
+            'hiddenHeader' => $hiddenHeader,
+            'hidden' => $hidden,
+            'seo' => $seo,
         ]);
     }
 

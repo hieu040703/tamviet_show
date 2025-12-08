@@ -1,3 +1,6 @@
+@php
+    $image = $product->image ? asset('storage/'.$product->image): asset('backend/img/not-found.jpg');
+@endphp
 <div id="addToCartModal"
      class="fixed inset-0 z-50 hidden md:hidden">
     <div class="absolute inset-0 bg-black/40" data-modal-close></div>
@@ -14,7 +17,7 @@
                 <div class="aspect-square">
                     <img
                         class="h-[68px] w-[68px] rounded-sm border border-neutral-100"
-                        src="{{ $product->image_url ?? '' }}"
+                        src="{{ $image }}"
                         alt="{{ $product->name ?? '' }}"
                         loading="lazy"
                         width="500"
@@ -25,29 +28,10 @@
                     <h3 class="-mt-1 mb-1 line-clamp-3 text-sm font-semibold">
                         {{ $product->name ?? '' }}
                     </h3>
-                    <p class="font-bold">
-                        {{ number_format($product->price ?? 0, 0, ',', '.') }}&nbsp;₫
-                    </p>
                 </div>
             </div>
 
             <div class="bg-divider h-[1px] my-4"></div>
-            <div class="mb-3">
-                <div class="space-y-3">
-                    <label class="w-fit text-sm font-semibold text-neutral-900">
-                        Phân loại sản phẩm
-                    </label>
-                    <div class="flex flex-wrap gap-2">
-                        <button
-                            type="button"
-                            data-size="sm"
-                            class="relative flex justify-center items-center rounded-lg outline-none font-semibold bg-white border border-solid border-primary-500 text-primary-500 disabled:border-neutral-200 disabled:text-neutral-600 disabled:!bg-white text-sm px-4 py-2 h-8 min-w-[82px] !bg-primary-50 hover:border-primary-500 hover:text-primary-500">
-                            <span>Hộp</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <div class="grid gap-3">
                 <p class="text-sm font-semibold text-neutral-900">Số lượng</p>
                 <div class="space-y-2" data-qty="wrapper">

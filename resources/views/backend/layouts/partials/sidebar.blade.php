@@ -98,6 +98,14 @@
                             </a>
                         </li>
                     @endif
+                    @if($admin && $admin->hasPermission('view_contact'))
+                        <li class="{{ (isset($sidebar) && $sidebar == 'Contact') ? 'active' : '' }}">
+                            <a href="{{ route('admin.contacts.index') }}">
+                                <i class="icon-cart2"></i>
+                                <span>Liên hệ</span>
+                            </a>
+                        </li>
+                    @endif
                     @if($admin && $admin->hasPermission('view_user'))
                         <li class="{{ isset($sidebar) && $sidebar == 'User' ? 'active' : '' }}">
                             <a href="{{ route('admin.users.index') }}">

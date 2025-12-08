@@ -38,17 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'customers',
         ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-
-        'customer' => [
-            'driver' => 'session',
-            'provider' => 'customers',
-        ],
+        ]
     ],
 
     /*
@@ -80,7 +75,7 @@ return [
         // ],
         'customers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Customer::class,
         ],
     ],
 

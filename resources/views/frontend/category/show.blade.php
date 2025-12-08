@@ -1,7 +1,6 @@
 @extends('frontend.layout')
-
 @section('content')
-    <div class="z-20 mx-auto bg-neutral-100">
+    <div id="mainContent" class="z-20 mx-auto bg-neutral-100">
         <div class="bg-white pt-11 md:pb-0 md:pt-4">
             @include('frontend.components.breadcrumb', ['items' => $breadcrumb ?? []])
             @include('frontend.category.partials.category-menu', ['category' => $category])
@@ -145,13 +144,13 @@
                 </div>
                 <a class="fixed right-0 z-[50] m-5 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-primary-500 md:h-14 md:w-14 !h-0 !w-0 bottom-16"
                    style="transition: 0.3s;">
-            <span
-                class="p-icon align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6 mb-1 text-white hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                          d="M11.286 7.292l-8.99 8.994a1.013 1.013 0 000 1.43 1.008 1.008 0 001.426 0l8.277-8.28 8.278 8.279a1.009 1.009 0 001.428 0 1.013 1.013 0 000-1.43l-8.991-8.994a1.019 1.019 0 00-1.428.001z"></path>
-                </svg>
-            </span>
+                    <span
+                        class="p-icon align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6 mb-1 text-white hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                  d="M11.286 7.292l-8.99 8.994a1.013 1.013 0 000 1.43 1.008 1.008 0 001.426 0l8.277-8.28 8.278 8.279a1.009 1.009 0 001.428 0 1.013 1.013 0 000-1.43l-8.991-8.994a1.019 1.019 0 00-1.428.001z"></path>
+                        </svg>
+                    </span>
                 </a>
             </div>
         </div>

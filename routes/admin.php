@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BannerItemController;
 use App\Http\Controllers\Admin\WidgetController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SystemController;
 
 Route::get('control', function () {
@@ -143,6 +144,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('/{menu}', [MenuController::class, 'delete'])->name('menus.delete')->middleware(['auth:admin', 'permission:delete_menu']);
         Route::get('/{menu}/items', [MenuController::class, 'items'])->name('menus.items')->middleware(['auth:admin', 'permission:view_menu_item']);
         Route::post('/{menu}/items/save', [MenuController::class, 'saveItems'])->name('menus.items.save')->middleware(['auth:admin', 'permission:save_menu_item']);
+    });
+    /* Contact */
+    Route::group(['prefix' => 'contacts'], function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contacts.index')->middleware(['auth:admin', 'permission:view_contact']);
+        Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('contacts.edit')->middleware(['auth:admin', 'permission:edit_contact']);
+        Route::put('/update/{id}', [ContactController::class, 'update'])->name('contacts.update')->middleware(['auth:admin', 'permission:edit_contact']);
+        Route::delete('/{id}', [ContactController::class, 'delete'])->name('contacts.delete')->middleware(['auth:admin', 'permission:delete_contact']);
     });
     /* SystemLibrary */
     Route::group(['prefix' => '/system'], function () {

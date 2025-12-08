@@ -26,11 +26,14 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('*', SystemComposer::class);
+        View::composer('frontend.*', SystemComposer::class);
         View::composer(
             [
                 'frontend.layouts.partials.menu',
-                'frontend.layouts.partials.footer-menu-follow'],
+                'frontend.layouts.partials.mobile-menu',
+                'frontend.components.category-nav',
+                'frontend.layouts.partials.footer-menu-follow',
+                'frontend.layouts.partials.main-header'],
             MenuComposer::class
         );
     }
