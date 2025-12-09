@@ -2,6 +2,10 @@
 
 @section('content')
     <form id="productForm"
+<<<<<<< HEAD
+=======
+          data-model="{{ strtolower($model ?? '') }}"
+>>>>>>> hieu/update-feature
           action="{{ isset($id) ? route('admin.products.update', $id) : route('admin.products.store') }}"
           method="POST"
           enctype="multipart/form-data">
@@ -29,6 +33,22 @@
                                 </div>
                                 <span class="help-block">{{ $errors->first('name') }}</span>
                             </div>
+<<<<<<< HEAD
+=======
+                            <div class="form-group @if($errors->first('note')) has-error @endif">
+                                <label class="control-label" for="note">Lưu ý</label>
+                                <input type="text"
+                                       class="form-control change-title"
+                                       name="note"
+                                       value="{{ old('note', $product->note ?? '') }}">
+                                <div class="form-control-feedback">
+                                    @if($errors->first('note'))
+                                        <i class="icon-notification2"></i>
+                                    @endif
+                                </div>
+                                <span class="help-block">{{ $errors->first('name') }}</span>
+                            </div>
+>>>>>>> hieu/update-feature
                             <div class="form-group has-feedback @if($errors->first('description')) has-error @endif">
                                 <label class="control-label text-semibold">Mô tả</label>
                                 <textarea class="ck-editor"
@@ -56,7 +76,11 @@
                         </fieldset>
                     </div>
                 </div>
+<<<<<<< HEAD
 
+=======
+                @include('backend.components.album',['model' => $product ?? null])
+>>>>>>> hieu/update-feature
                 @include('backend.components.seo', ['model' => $product ?? null])
             </div>
 
@@ -169,6 +193,17 @@
                         </fieldset>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <fieldset class="content-group">
+                            <legend class="text-bold">Icon</legend>
+                            @include('backend.components.icon', ['model' => $product ?? null])
+                        </fieldset>
+                    </div>
+                </div>
+>>>>>>> hieu/update-feature
             </div>
         </div>
         @include('backend.components.button')

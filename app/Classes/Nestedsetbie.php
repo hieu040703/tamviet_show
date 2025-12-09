@@ -28,6 +28,7 @@ class Nestedsetbie
 
     public function get()
     {
+<<<<<<< HEAD
         $result = DB::table($this->params['table'] . ' as tb1')
             ->select('tb1.id', 'tb1.name', 'tb1.parent_id', 'tb1.lft', 'tb1.rgt', 'tb1.level')
             ->whereNull('tb1.deleted_at')
@@ -36,6 +37,19 @@ class Nestedsetbie
             ->toArray();
 
         $this->data = $result;
+=======
+        $query = DB::table($this->params['table'] . ' as tb1')
+            ->select('tb1.id', 'tb1.name', 'tb1.parent_id', 'tb1.lft', 'tb1.rgt', 'tb1.level')
+            ->whereNull('tb1.deleted_at');
+
+        if (!empty($this->params['where']) && is_array($this->params['where'])) {
+            foreach ($this->params['where'] as $col => $val) {
+                $query->where('tb1.' . $col, $val);
+            }
+        }
+
+        $this->data = $query->orderBy('tb1.lft', 'asc')->get()->toArray();
+>>>>>>> hieu/update-feature
     }
 
 
@@ -87,9 +101,15 @@ class Nestedsetbie
                 DB::table($this->params['table'])
                     ->where('id', $key)
                     ->update([
+<<<<<<< HEAD
                         'level'   => $val,
                         'lft'     => $this->lft[$key],
                         'rgt'     => $this->rgt[$key],
+=======
+                        'level' => $val,
+                        'lft' => $this->lft[$key],
+                        'rgt' => $this->rgt[$key],
+>>>>>>> hieu/update-feature
                         'user_id' => Auth::id(),
                     ]);
             }
@@ -97,7 +117,10 @@ class Nestedsetbie
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
     public function dropdown($param = null)
     {
         $this->get();

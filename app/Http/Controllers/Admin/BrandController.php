@@ -47,6 +47,10 @@ class BrandController extends Controller
             ['route' => 'admin.brands.index', 'name' => 'Danh Sách Thương Hiệu'],
             ['route' => 'admin.brands.create', 'name' => 'Thêm Mới Thương Hiệu'],
         ];
+<<<<<<< HEAD
+=======
+        $data['model'] = 'Brand';
+>>>>>>> hieu/update-feature
         return view('backend.brands.form', $data);
     }
 
@@ -56,11 +60,19 @@ class BrandController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'brands');
+<<<<<<< HEAD
+=======
+            $this->handleUploads($request, $data, 'brands', null, 'icon');
+>>>>>>> hieu/update-feature
             $brand = Brand::create($data);
             RouterHelper::sync('brands', $brand->id, $data['canonical'] ?? null, $brand->name);
             return redirect()->route('admin.brands.index', $brand->id)->with('success', 'Tạo Thương hiệu thành công');
         } catch (\Exception $e) {
+<<<<<<< HEAD
             return redirect()->back()->with('error', 'Không được được thương hiệu' . $e->getMessage());
+=======
+            return redirect()->back()->with('error', 'Không thêm được thương hiệu' . $e->getMessage());
+>>>>>>> hieu/update-feature
         }
     }
 
@@ -71,6 +83,10 @@ class BrandController extends Controller
         $data['title'] = 'Sửa Thương Hiệu';
         $data['brand'] = Brand::findOrFail($id);
         $data['id'] = $id;
+<<<<<<< HEAD
+=======
+        $data['model'] = 'Brand';
+>>>>>>> hieu/update-feature
         return view('backend.brands.form', $data);
     }
 
@@ -81,6 +97,10 @@ class BrandController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'brands', $brand);
+<<<<<<< HEAD
+=======
+            $this->handleUploads($request, $data, 'brands', $brand, 'icon');
+>>>>>>> hieu/update-feature
             $brand->update($data);
             RouterHelper::sync('brands', $brand->id, $data['canonical'] ?? null, $brand->name);
             return redirect()->route('admin.brands.index', $brand->id)->with('success', 'Cập nhật thương hiệu thành công');
@@ -97,6 +117,12 @@ class BrandController extends Controller
             if (!empty($brand->image)) {
                 Storage::disk('public')->delete($brand->image);
             }
+<<<<<<< HEAD
+=======
+            if (!empty($brand->icon)) {
+                Storage::disk('public')->delete($brand->icon);
+            }
+>>>>>>> hieu/update-feature
             $brand->delete();
             return redirect()->route('admin.brands.index')->with('success', 'Xóa thương hiệu thành công');
         } catch (\Exception $e) {

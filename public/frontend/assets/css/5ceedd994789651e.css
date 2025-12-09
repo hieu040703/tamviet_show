@@ -31,7 +31,11 @@
 }
 
 .btn-login {
+<<<<<<< HEAD
     width: 164px;
+=======
+    width: 190px;
+>>>>>>> hieu/update-feature
     border-width: 0;
     padding: 0 .5rem;
     font-size: .75rem;
@@ -132,4 +136,8 @@
 
 .box-search-fixed-top #hamburgerMenu {
     display: none
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> hieu/update-feature

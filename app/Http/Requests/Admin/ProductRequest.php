@@ -33,7 +33,10 @@ class ProductRequest extends FormRequest
             'quantity' => ['required', 'integer', 'min:1'],
             'description' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
+<<<<<<< HEAD
             'album' => ['nullable'],
+=======
+>>>>>>> hieu/update-feature
             'status' => ['nullable', 'boolean'],
             'is_featured' => ['nullable', 'boolean'],
             'seo_title' => ['nullable', 'string', 'max:255'],
@@ -41,7 +44,11 @@ class ProductRequest extends FormRequest
             'seo_description' => ['nullable', 'string'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'brand_id' => ['required', 'integer', 'exists:brands,id'],
+<<<<<<< HEAD
             'image' => ['nullable', 'image', 'max:2048'],
+=======
+            'note' => ['nullable', 'string'],
+>>>>>>> hieu/update-feature
         ];
     }
 

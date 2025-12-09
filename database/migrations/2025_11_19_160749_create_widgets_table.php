@@ -16,10 +16,22 @@ class CreateWidgetsTable extends Migration
         Schema::create('widgets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+<<<<<<< HEAD
             $table->string('code')->unique();
             $table->integer('position')->default(0);
             $table->boolean('is_active')->default(1);
             $table->timestamps();
+=======
+            $table->string('keyword');
+            $table->text('description')->nullable();
+            $table->longText('album')->nullable();
+            $table->longText('model_id')->nullable();
+            $table->string('model')->nullable();
+            $table->string('short_code')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+            $table->tinyInteger('status')->default(1);
+>>>>>>> hieu/update-feature
         });
     }
 

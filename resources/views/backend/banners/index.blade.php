@@ -1,10 +1,15 @@
 @extends('backend.layout')
 
 @section('content')
+<<<<<<< HEAD
 
     <div class="row">
         <div class="col-md-12">
 
+=======
+    <div class="row">
+        <div class="col-md-12">
+>>>>>>> hieu/update-feature
             <p style="margin: 0; padding: 5px 0;">
                 <span class="text-semibold">
                     {{ ($banners->currentPage() - 1) * $banners->perPage() + 1 }}
@@ -14,9 +19,13 @@
                 trong
                 <span class="text-semibold">{{ $banners->total() }}</span> bản ghi.
             </p>
+<<<<<<< HEAD
 
             <div class="panel panel-flat">
 
+=======
+            <div class="panel panel-flat">
+>>>>>>> hieu/update-feature
                 <div class="navbar navbar-default navbar-xs fillter padding-0">
                     <ul class="nav navbar-nav no-border visible-xs-block">
                         <li>
@@ -24,23 +33,35 @@
                                data-toggle="collapse" data-target="#navbar-filter">
                                 <i class="icon-more"></i>
                             </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
                             <a href="{{ route('admin.banners.create') }}" style="float: right;"
                                class="btn text-right">
                                 <i class="icon-plus3 position-left"></i>
                             </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
                             <a href="{{ route('admin.banners.index') }}" style="float: right;"
                                class="color-black btn">
                                 <i class="icon-cancel-circle2 position-left"></i>
                             </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
                             <button type="submit" style="float: right;" class="btn btn-sucess text-right">
                                 <i class="icon-search4 position-left"></i>
                             </button>
                         </li>
                     </ul>
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
                     <div class="navbar-collapse collapse" id="navbar-filter">
                         <form action="" method="GET">
                             <ul class="nav navbar-nav">
@@ -69,9 +90,13 @@
                         </form>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="clearfix"></div>
 
+=======
+                <div class="clearfix"></div>
+>>>>>>> hieu/update-feature
                 <div class="table-responsive" style="min-height:400px;">
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -91,7 +116,13 @@
                                         {{ ($banners->currentPage() - 1) * $banners->perPage() + $stt + 1 }}
                                     </td>
 
+<<<<<<< HEAD
                                     <td>{{ $banner->name }}</td>
+=======
+                                    <td>
+                                        <a href="{{route('admin.banner_items.index',['banner_id' => $banner->id])}}">{{ $banner->name }}</a>
+                                    </td>
+>>>>>>> hieu/update-feature
                                     <td>{{ $banner->code }}</td>
 
                                     <td class="text-center">
@@ -102,7 +133,10 @@
                                             'value'   => $banner->status
                                         ])
                                     </td>
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
                                     <td class="text-center">
                                         <ul class="icons-list">
                                             <li style="margin-right:10px;">
@@ -147,8 +181,11 @@
 @endsection
 
 @push('styles')
+<<<<<<< HEAD
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+=======
+>>>>>>> hieu/update-feature
     <style>
         .select-xs.select2-selection--single {
             height: 36px;
@@ -200,5 +237,8 @@
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
     <script src="{{ URL::asset('backend/global_assets/js/plugins/ui/moment/moment.min.js')}}"></script>
+<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+=======
+>>>>>>> hieu/update-feature
 @endpush

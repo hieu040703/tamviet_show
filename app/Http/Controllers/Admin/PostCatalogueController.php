@@ -62,6 +62,10 @@ class PostCatalogueController extends Controller
             ['route' => 'admin.post_catalogues.create', 'name' => 'Thêm Mới Nhóm Bài Viết'],
         ];
         $data['dropdown'] = $this->nestedset->Dropdown();
+<<<<<<< HEAD
+=======
+        $data['model'] = 'PostCatalogue';
+>>>>>>> hieu/update-feature
         return view('backend.post.catalogue.form', $data);
     }
 
@@ -71,6 +75,10 @@ class PostCatalogueController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'post_catalogues');
+<<<<<<< HEAD
+=======
+            $this->handleUploads($request, $data, 'post_catalogues', null, 'icon');
+>>>>>>> hieu/update-feature
             $post_catalogue = PostCatalogue::create($data);
             RouterHelper::sync('post_catalogue', $post_catalogue->id, $data['canonical'] ?? null, $post_catalogue->name);
             $this->nestedset = new Nestedsetbie([
@@ -91,6 +99,10 @@ class PostCatalogueController extends Controller
         $data['post_catalogue'] = PostCatalogue::findOrFail($id);
         $data['id'] = $id;
         $data['dropdown'] = $this->nestedset->Dropdown();
+<<<<<<< HEAD
+=======
+        $data['model'] = 'PostCatalogue';
+>>>>>>> hieu/update-feature
         return view('backend.post.catalogue.form', $data);
     }
 
@@ -101,6 +113,10 @@ class PostCatalogueController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'post_catalogues', $post_catalogue);
+<<<<<<< HEAD
+=======
+            $this->handleUploads($request, $data, 'post_catalogues', $post_catalogue, 'icon');
+>>>>>>> hieu/update-feature
             $post_catalogue->update($data);
             RouterHelper::sync('post_catalogue', $post_catalogue->id, $data['canonical'] ?? null, $post_catalogue->name);
             $this->nestedset = new Nestedsetbie([
@@ -121,6 +137,12 @@ class PostCatalogueController extends Controller
             if (!empty($postCatalogue->image)) {
                 Storage::disk('public')->delete($postCatalogue->image);
             }
+<<<<<<< HEAD
+=======
+            if (!empty($postCatalogue->icon)) {
+                Storage::disk('public')->delete($postCatalogue->icon);
+            }
+>>>>>>> hieu/update-feature
             $postCatalogue->delete();
             return redirect()->route('admin.post_catalogues.index')->with('success', 'Xóa nhóm bài viết thành công');
         } catch (\Exception $e) {

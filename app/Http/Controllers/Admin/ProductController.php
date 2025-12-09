@@ -59,6 +59,10 @@ class ProductController extends Controller
             'code' => Product::generateCode(),
             'sku' => Product::generateSku(),
         ]);
+<<<<<<< HEAD
+=======
+        $data['model'] = 'Product';
+>>>>>>> hieu/update-feature
         return view('backend.products.form', $data);
     }
 
@@ -74,6 +78,11 @@ class ProductController extends Controller
                 $data['sku'] = Product::generateSku();
             }
             $this->handleUploads($request, $data, 'products');
+<<<<<<< HEAD
+=======
+            $this->handleUploads($request, $data, 'products', null, 'icon');
+            $this->handleAlbumUploads($request, $data, 'products');
+>>>>>>> hieu/update-feature
             $product = Product::create($data);
             RouterHelper::sync('products', $product->id, $data['canonical'] ?? null, $product->name);
             $this->generateQrForModel('product.show', $product);
@@ -92,6 +101,10 @@ class ProductController extends Controller
         $data['id'] = $id;
         $data['categories'] = Category::orderBy('name')->get();
         $data['brands'] = Brand::orderBy('name')->get();
+<<<<<<< HEAD
+=======
+        $data['model'] = 'Product';
+>>>>>>> hieu/update-feature
         return view('backend.products.form', $data);
     }
 
@@ -101,6 +114,11 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $data = $request->validated();
             $this->handleUploads($request, $data, 'products', $product);
+<<<<<<< HEAD
+=======
+            $this->handleUploads($request, $data, 'products', 'icon');
+            $this->handleUploads($request, $data, 'products', $product, 'icon');
+>>>>>>> hieu/update-feature
             $product->update($data);
             RouterHelper::sync('products', $product->id, $data['canonical'] ?? null, $product->name);
             $this->generateQrForModel('product.show', $product);
@@ -118,7 +136,16 @@ class ProductController extends Controller
             if (!empty($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
+<<<<<<< HEAD
             $product->delete();
+=======
+            if (!empty($product->icon)) {
+                Storage::disk('icon')->delete($product->icon);
+            }
+            $this->deleteAlbumFiles($product);
+            $product->delete();
+            return redirect()->route('admin.products.index')->with('success', 'Xóa sản phẩm + QR thành công');
+>>>>>>> hieu/update-feature
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Không xóa được sản phẩm' . $e->getMessage());
         }

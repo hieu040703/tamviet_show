@@ -96,7 +96,13 @@
                         </tr>
                         </thead>
 
+<<<<<<< HEAD
                         <tbody id="sortable-banner">
+=======
+                        <tbody id="sortable-banner"
+                               data-sort-url="{{ route('ajax.banner_items.sort') }}"
+                               data-token="{{ csrf_token() }}">
+>>>>>>> hieu/update-feature
                         @forelse($items as $stt => $item)
                             <tr data-id="{{ $item->id }}">
                                 <td class="text-center">
@@ -178,6 +184,7 @@
 @endsection
 
 @push('scripts')
+<<<<<<< HEAD
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 
@@ -221,6 +228,12 @@
         });
     </script>
 
+=======
+    <script src="{{URL::asset('backend/jquery-ui.min.js')}}"></script>
+    <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+    <script src="{{URL::asset('backend/assets/js/bannerItem.js')}}">
+    </script>
+>>>>>>> hieu/update-feature
     <style>
         #sortable-banner tr {
             cursor: move;

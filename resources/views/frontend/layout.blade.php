@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi" class="__className_53db79">
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="format-detection" content="telephone=no, date=no, email=no, address=no"/>
     <meta name="theme-color" content="#1B51A3"/>
+=======
+>>>>>>> hieu/update-feature
     @include('frontend.layouts.partials.head-seo')
     @stack('head')
     <link rel="icon" href="{{ asset('frontend/favicon.ico') }}" type="image/x-icon" sizes="256x256"/>
@@ -30,6 +33,7 @@
 
 <body class="bg-neutral-100 md:h-[100%]">
 <main>
+<<<<<<< HEAD
     @include('frontend.layouts.partials.top-banner')
     <div id="mainContainer" class="relative">
         @include('frontend.layouts.partials.header')
@@ -45,3 +49,42 @@
 </body>
 </html>
 
+=======
+    @include('frontend.layouts.partials.header')
+    @yield('content')
+    @include('frontend.layouts.partials.footer')
+    @include('frontend.layouts.partials.bottom-nav')
+    @include('frontend.layouts.partials.btnZaloChat')
+    @include('frontend.components.product-modal')
+    @include('frontend.components.login')
+    @include('frontend.components.register')
+</main>
+@include('frontend.components.toast')
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    window.APP_ROUTES = {
+        addToCart: @json(route('cart.ajaxAdd')),
+        cartUpdate: @json(route('cart.ajaxUpdate')),
+        cartRemove: @json(route('cart.ajaxRemove')),
+        cartClear:  @json(route('cart.ajaxClear')),
+        checkout:  @json(route('checkout.index')),
+        login: @json(route('ajax.login')),
+        register: @json(route('ajax.register')),
+        logout:@json(route('ajax.logout')),
+        home: @json(route('homepage.index')),
+        accountPath:  @json(route('account.index')),
+        redirectUrl:  @json(route('account.personal-info')),
+        breakpoint: 768
+    };
+    window.APP_STATE = window.APP_STATE || {};
+    window.APP_STATE.isAuthenticated = {{ auth('web')->check() ? 'true' : 'false' }};
+</script>
+<script src="{{ asset('frontend/assets/js/cart.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/auth-popup.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/mobile-menu.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/account-redirect.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/back.js') }}"></script>
+@stack('scripts')
+</body>
+</html>
+>>>>>>> hieu/update-feature

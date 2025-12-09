@@ -14,20 +14,32 @@ class PostCatalogueRequest extends FormRequest
 
     public function rules(): array
     {
+<<<<<<< HEAD
         $id = $this->route('id');
+=======
+        $postCatalogue = $this->route('post_catalogue');
+        $id = $postCatalogue ? $postCatalogue->id : $this->route('id');
+>>>>>>> hieu/update-feature
 
         $canonicalRule = Rule::unique('routers', 'canonical')
             ->where(function ($query) {
                 $query->where('module', 'post_catalogue');
             });
+<<<<<<< HEAD
 
+=======
+>>>>>>> hieu/update-feature
         if ($id) {
             $canonicalRule->ignore($id, 'object_id');
         }
 
         $parentRules = ['nullable', 'integer'];
         if ($id) {
+<<<<<<< HEAD
             $parentRules[] = 'not_in:'.$id;
+=======
+            $parentRules[] = 'not_in:' . $id;
+>>>>>>> hieu/update-feature
         }
 
         return [
@@ -37,7 +49,11 @@ class PostCatalogueRequest extends FormRequest
                 'max:255',
                 Rule::unique('post_catalogues', 'name')->ignore($id),
             ],
+<<<<<<< HEAD
             'canonical' => ['required', 'string', 'max:255', $canonicalRule,],
+=======
+            'canonical' => ['required', 'string', 'max:255', $canonicalRule],
+>>>>>>> hieu/update-feature
             'parent_id'   => $parentRules,
             'description' => ['nullable', 'string'],
             'content'     => ['nullable', 'string'],
@@ -47,10 +63,17 @@ class PostCatalogueRequest extends FormRequest
             'seo_title'   => ['nullable', 'string', 'max:255'],
             'seo_keyword' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string'],
+<<<<<<< HEAD
             'image'       => ['nullable', 'image', 'max:2048'],
         ];
     }
 
+=======
+        ];
+    }
+
+
+>>>>>>> hieu/update-feature
     public function messages(): array
     {
         return [

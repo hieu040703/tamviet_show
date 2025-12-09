@@ -27,5 +27,33 @@ class Category extends Model
         'lft',
         'rgt',
         'level',
+<<<<<<< HEAD
     ];
+=======
+        'icon'
+    ];
+
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id')->where('status', 1);
+    }
+
+    public function breadcrumbTrail()
+    {
+        $trail = collect();
+        $cat = $this;
+
+        while ($cat) {
+            $trail->push($cat);
+            $cat = $cat->parent;
+        }
+
+        return $trail->reverse()->values();
+    }
+>>>>>>> hieu/update-feature
 }

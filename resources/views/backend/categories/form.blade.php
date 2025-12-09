@@ -2,6 +2,10 @@
 
 @section('content')
     <form id="productForm"
+<<<<<<< HEAD
+=======
+          data-model="{{ strtolower($model ?? '') }}"
+>>>>>>> hieu/update-feature
           action="{{ isset($id) ? route('admin.categories.update', $id) : route('admin.categories.store') }}"
           method="POST"
           enctype="multipart/form-data">
@@ -31,7 +35,11 @@
                             </div>
                             <div class="form-group has-feedback @if($errors->first('description')) has-error @endif">
                                 <label class="control-label text-semibold">Mô tả</label>
+<<<<<<< HEAD
                                 <textarea class="ck-editor"
+=======
+                                <textarea class="ck-editor "
+>>>>>>> hieu/update-feature
                                           id="description"
                                           name="description">{{ old('description', $category->description ?? '') }}</textarea>
                                 <div class="form-control-feedback">
@@ -91,6 +99,17 @@
                         </fieldset>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <fieldset class="content-group">
+                            <legend class="text-bold">Icon</legend>
+                            @include('backend.components.icon', ['model' => $category ?? null])
+                        </fieldset>
+                    </div>
+                </div>
+>>>>>>> hieu/update-feature
             </div>
         </div>
         @include('backend.components.button')

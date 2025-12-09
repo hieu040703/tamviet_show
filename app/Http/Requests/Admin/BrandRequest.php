@@ -37,8 +37,12 @@ class BrandRequest extends FormRequest
             'order' => ['nullable', 'integer', 'min:0'],
             'seo_title' => ['nullable', 'string', 'max:255'],
             'seo_keyword' => ['nullable', 'string', 'max:255'],
+<<<<<<< HEAD
             'seo_description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:2048'],
+=======
+            'seo_description' => ['nullable', 'string']
+>>>>>>> hieu/update-feature
         ];
     }
 
@@ -50,7 +54,11 @@ class BrandRequest extends FormRequest
             'name.unique' => 'Tên thương hiệu phải là duy nhất',
 
             'canonical.required' => 'Đường dẫn không đươc để chống',
+<<<<<<< HEAD
             'canonical.unique'   => 'Đường dẫn đã tồn tại',
+=======
+            'canonical.unique' => 'Đường dẫn đã tồn tại',
+>>>>>>> hieu/update-feature
         ];
     }
 

@@ -74,6 +74,7 @@
                                 <span>Quản lý bài viết</span></a>
                         </li>
                     @endif
+<<<<<<< HEAD
                     <li class="{{ isset($sidebar) && $sidebar == 'Banner' ? 'active' : '' }}">
                         <a href="{{ route('admin.banners.index') }}">
                             <i class="icon-image2"></i>
@@ -88,6 +89,41 @@
                     </li>
 
                 @if($admin && $admin->hasPermission('view_user'))
+=======
+                    @if($admin && $admin->hasPermission('view_banner'))
+                        <li class="{{ isset($sidebar) && $sidebar == 'Banner' ? 'active' : '' }}">
+                            <a href="{{ route('admin.banners.index') }}">
+                                <i class="icon-image2"></i>
+                                <span>Quản lý Banner</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($admin && $admin->hasPermission('view_widget'))
+                        <li class="{{ (isset($sidebar) && $sidebar == 'Widget') ? 'active' : '' }}">
+                            <a href="{{ route('admin.widgets.index') }}">
+                                <i class="icon-grid"></i>
+                                <span>Widget</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($admin && $admin->hasPermission('view_menu'))
+                        <li class="{{ (isset($sidebar) && $sidebar == 'Menu') ? 'active' : '' }}">
+                            <a href="{{ route('admin.menus.index') }}">
+                                <i class="icon-list2"></i>
+                                <span>Menu</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($admin && $admin->hasPermission('view_contact'))
+                        <li class="{{ (isset($sidebar) && $sidebar == 'Contact') ? 'active' : '' }}">
+                            <a href="{{ route('admin.contacts.index') }}">
+                                <i class="icon-cart2"></i>
+                                <span>Liên hệ</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($admin && $admin->hasPermission('view_user'))
+>>>>>>> hieu/update-feature
                         <li class="{{ isset($sidebar) && $sidebar == 'User' ? 'active' : '' }}">
                             <a href="{{ route('admin.users.index') }}">
                                 <i class="icon-users4"></i>
@@ -112,6 +148,13 @@
                             </a>
                         </li>
                     @endif
+<<<<<<< HEAD
+=======
+                    <li class="{{ @$sidebar == 'SystemLibrary' ? 'active' : null }}">
+                        <a href="{{route('admin.system.index')}}"><i class="icon-lifebuoy"></i>
+                            <span>Cấu hình hệ thống</span></a>
+                    </li>
+>>>>>>> hieu/update-feature
                 </ul>
             </div>
         </div>

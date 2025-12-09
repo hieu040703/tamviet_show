@@ -33,6 +33,7 @@ class DashboardController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
     public function sort(Request $request)
     {
         $order = $request->input('order', []);
@@ -43,4 +44,7 @@ class DashboardController extends Controller
         }
         return response()->json(['status' => 'ok']);
     }
+=======
+
+>>>>>>> hieu/update-feature
 }
