@@ -125,7 +125,7 @@
         <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="https://zalo.me/1123198001548302988?src=qr"
+                href="/"
                 class="relative grid h-full grid-rows-2 justify-center border-0 px-1 py-2 text-center text-sm font-medium
                bg-transparent text-neutral-600 outline-none hover:bg-0 hover:text-neutral-600 focus:text-neutral-600
                focus:ring-primary-300 data-[size=sm]:text-sm"

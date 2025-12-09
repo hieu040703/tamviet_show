@@ -183,7 +183,7 @@
                         </svg>
                     </span>
                         <h4 class="text-[16px] leading-[24px] whitespace-nowrap font-semibold">
-                            Đặt hàng miễn phí
+                           Liên hệ & Đặt hàng
                         </h4>
                     </div>
                     <a rel="noopener noreferrer" target="_blank"
