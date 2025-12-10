@@ -11140,8 +11140,12 @@ input[type=search] {
         background-color: var(--background)
     }
 
+    .md\:bg-\[var\(--background-1\)\] {
+        background-color: white;
+    }
+
     .md\:bg-divider {
-        background-color:
+        background-color: hsl(var(--divider))
     }
 
     .md\:bg-neutral-100 {

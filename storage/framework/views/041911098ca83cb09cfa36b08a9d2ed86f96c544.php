@@ -53,7 +53,7 @@
                                 type="search"
                                 name="keyword"
                                 enterkeyhint="search"
-                                class="w-full border-neutral-500 placeholder:text-neutral-600 focus:ring-neutral-500 focus:border-neutral-700 outline-none p-3.5 search-input flex h-10 items-center justify-start rounded-sm border-0 bg-white py-1 pl-10 text-start text-sm font-medium text-neutral-700"
+                                class="w-full border-neutral-500 placeholder:text-neutral-600 focus:ring-neutral-500 focus:border-neutral-700 outline-none p-3.5 search-input flex h-10 items-center justify-start rounded-sm border-0 bg-white py-1 pl-10 text-start text-sm font-medium text-neutral-700 border-search-header"
                                 placeholder="Bạn đang tìm gì hôm nay..."
                             >
                         </form>
