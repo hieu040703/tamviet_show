@@ -1,0 +1,62 @@
+<?php
+    $arrowSvg = '
+        <span class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full h-3 w-3 text-neutral-800">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.2137 11.2862L8.21971 2.29524C7.82506 1.90159 7.18567 1.90159 6.79002 2.29524C6.39537 2.68889 6.39537 3.32829 6.79002 3.72194L15.0706 11.9995L6.79102 20.2771C6.39637 20.6707 6.39637 21.3101 6.79102 21.7048C7.18567 22.0984 7.82606 22.0984 8.22071 21.7048L17.2147 12.7139C17.6032 12.3243 17.6032 11.6749 17.2137 11.2862Z"
+                    fill="currentColor"></path>
+            </svg>
+        </span>';
+?>
+
+<div class="hidden bg-neutral-100 md:block">
+    <div class="container -mt-4">
+        <div>
+            <ul class="flex items-center py-1.5 text-neutral-600">
+                <?php $__currentLoopData = $breadcrumb; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="h-5 text-sm">
+                        <span class="hover:text-neutral-800 mx-1 font-normal text-[12px] leading-5 <?php echo e($loop->last ? 'text-neutral-900' : ''); ?>">
+                            <?php if(!empty($item['url'])): ?>
+                                <a href="<?php echo e($item['url']); ?>"><?php echo e($item['title']); ?></a>
+                            <?php else: ?>
+                                <?php echo e($item['title']); ?>
+
+                            <?php endif; ?>
+                        </span>
+                        <?php if(!$loop->last): ?>
+                            <?php echo $arrowSvg; ?>
+
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </ul>
+        </div>
+
+        <?php
+            $ldItems = [];
+            foreach ($breadcrumb as $i => $item) {
+                $row = [
+                    '@type'    => 'ListItem',
+                    'position' => $i + 1,
+                    'name'     => $item['title'],
+                ];
+                if (!empty($item['url'])) {
+                    $row['item'] = $item['url'];
+                }
+                $ldItems[] = $row;
+            }
+
+            $ldJson = json_encode([
+                '@context'        => 'https://schema.org',
+                '@type'           => 'BreadcrumbList',
+                'itemListElement' => $ldItems,
+            ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        ?>
+
+        <script type="application/ld+json">
+            <?php echo $ldJson; ?>
+
+        </script>
+    </div>
+</div>
+<?php /**PATH C:\laragon\www\tamviet-ecommerce\resources\views/frontend/components/breadcrumb.blade.php ENDPATH**/ ?>

@@ -115,10 +115,15 @@ class ProductController extends Controller
             $data = $request->validated();
             $this->handleUploads($request, $data, 'products', $product);
 <<<<<<< HEAD
+            $this->handleUploads($request, $data, 'products', $product, 'icon');
+            $this->handleAlbumUploads($request, $data, 'products', $product);
+=======
+<<<<<<< HEAD
 =======
             $this->handleUploads($request, $data, 'products', 'icon');
             $this->handleUploads($request, $data, 'products', $product, 'icon');
 >>>>>>> hieu/update-feature
+>>>>>>> c2d9a21f11584f23b70dda583d32b1529ac542eb
             $product->update($data);
             RouterHelper::sync('products', $product->id, $data['canonical'] ?? null, $product->name);
             $this->generateQrForModel('product.show', $product);
