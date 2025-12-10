@@ -318,9 +318,6 @@
     color: #fff;
 }
 
-.btn-login:hover .p-icon {
-    color: hsl(216.18deg 71.58% 37.25%);
-}
 
 .bg-single {
     background-color: hsl(216.18deg 71.58% 37.25%);
@@ -328,6 +325,19 @@
 
 #openLogin, #openRegister {
     color: white;
+}
+
+.openLogin, .openRegister {
+    color: hsl(216.18deg 71.58% 37.25%)!important;
+}
+
+.p-icon-header svg,
+.p-icon-header svg path {
+    fill: hsl(216.18deg 71.58% 37.25%);
+}
+
+.logo-mobile-header {
+    margin-left: 35%;
 }
 
 @media (max-width: 768px) {
@@ -343,8 +353,14 @@
     #mainNav.box-search-fixed-top input[type="search"] {
         width: 265px;
     }
-
+    .button-header .p-icon {
+        color: #111;
+    }
     .mb-mobile {
         margin-bottom: 6rem;
     }
+    button .p-icon {
+        color: #fff;
+    }
+
 }

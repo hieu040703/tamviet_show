@@ -15,7 +15,7 @@
                         <button
                                 data-size="sm"
                                 type="button"
-                                class="relative justify-center outline-none font-semibold bg-white border border-neutral-200 hover:bg-bg-white hover:text-primary-500 focus:text-primary-500 text-sm px-4 py-2 h-9 items-center rounded-full btn-login flex"
+                                class="button-header relative justify-center outline-none font-semibold bg-white border border-neutral-200 hover:bg-bg-white hover:text-primary-500 focus:text-primary-500 text-sm px-4 py-2 h-9 items-center rounded-full btn-login flex"
                         >
                     <span
                             class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full m-[-1] mr-1 h-6 w-6 px-0">
@@ -26,8 +26,8 @@
                             ></path>
                         </svg>
                     </span>
-                            <span id="openLogin">Đăng nhập /</span>
-                            <span id="openRegister" class="ml-1">Đăng ký</span>
+                            <span class="openLogin" id="openLogin">Đăng nhập /</span>
+                            <span  id="openRegister" class="ml-1 openRegister">Đăng ký</span>
                         </button>
 
                         <button data-size="sm" type="button"

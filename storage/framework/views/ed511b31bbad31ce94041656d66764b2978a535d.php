@@ -7,7 +7,7 @@
         <div class="absolute bottom-0 h-full w-full  md:static">
             <picture>
                 <img
-                    class="absolute bottom-0 h-full w-full bg-primary-500 object-cover object-bottom data-[rank='default']:bottom-0 md:bottom-0 md:hidden"
+                    class="absolute bottom-0 h-[60px] w-full bg-primary-500 object-cover object-bottom data-[rank='default']:bottom-0 md:bottom-0 md:hidden"
                     src="<?php echo e(asset('frontend/assets/image/giaohang/giao-hang.png')); ?>"
                     alt="Customer ranking" loading="eager" width="500" height="500"
                     srcset="<?php echo e(asset('frontend/assets/image/giaohang/giao-hang.png')); ?>"
@@ -40,14 +40,14 @@
                         <div class="flex w-full flex-col-reverse items-start md:flex-row">
                             <div class="hidden flex-shrink-0 md:flex md:w-[187px] md:justify-center">
                                 <a href="/">
-                                    <img class="w-auto h-[70px] cursor-pointer"
+                                    <img class="w-auto h-[72px] cursor-pointer"
                                          src="<?php echo e(asset('storage/' . $logo)); ?>"
                                          alt="Tâm việt logo">
                                 </a>
                             </div>
                             <?php echo $__env->make('frontend.components.search-box', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <div id="fixedNav"
-                                 class="top-0 z-10 flex w-full min-w-[340px] flex-1 flex-row-reverse gap-3 px-4 py-3 text-right transition-colors max-md:bg-primary-500 md:static md:mx-0 md:min-w-[286px] md:flex-row md:pb-0 md:pl-1.5 md:pr-0 md:pt-0 md:mt-4">
+                                 class="top-0 z-10 flex w-full min-w-[340px] flex-1 flex-row-reverse gap-3 px-4 py-3 text-right transition-colors md:bg-[var(--background-1)] md:static md:mx-0 md:min-w-[286px] md:flex-row md:pb-0 md:pl-1.5 md:pr-0 md:pt-0 md:mt-4">
                                 <?php echo $__env->make('frontend.components.cart-icon-desktop', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <?php echo $__env->make('frontend.components.header.account-area', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             </div>

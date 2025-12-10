@@ -1,0 +1,175 @@
+.pmc-content-html:not(.ignore-css) {
+    font-size: 1rem;
+    line-height: 1.5rem
+}
+
+.pmc-content-html figure:not(.ignore-css figure) {
+    max-width: 100%
+}
+
+.pmc-content-html h1:not(.ignore-css h1) {
+    display: block;
+    font-size: 1.5rem;
+    margin-top: .5rem;
+    margin-block-end: .5rem;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: 700;
+    line-height: 1.2
+}
+
+.pmc-content-html h2:not(.ignore-css h2) {
+    font-size: 1.25rem
+}
+
+.pmc-content-html h2:not(.ignore-css h2),
+.pmc-content-html h3:not(.ignore-css h3) {
+    display: block;
+    margin-block-start: .6rem;
+    margin-block-end: .6rem;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: 700;
+    line-height: 1.4
+}
+
+.pmc-content-html h3:not(.ignore-css h3) {
+    font-size: 1.125rem
+}
+
+.pmc-content-html h4:not(.ignore-css h4) {
+    font-size: 1rem;
+    line-height: 1.5
+}
+
+.pmc-content-html h4:not(.ignore-css h4),
+.pmc-content-html h5:not(.ignore-css h5) {
+    display: block;
+    margin-block-start: .8rem;
+    margin-block-end: .8rem;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: 700
+}
+
+.pmc-content-html h5:not(.ignore-css h5) {
+    font-size: .875rem;
+    line-height: 1.6
+}
+
+.pmc-content-html h6:not(.ignore-css h6) {
+    display: block;
+    font-size: .75rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: 700;
+    line-height: 1.7
+}
+
+.pmc-content-html p:not(.ignore-css p) {
+    margin-block-start: .5rem;
+    margin-block-end: .5rem;
+    margin-inline-start: 0
+}
+
+.pmc-content-html ul:not(.ignore-css ul) {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    padding-inline-start: 40px;
+    list-style-type: disc
+}
+
+.pmc-content-html ol:not(.ignore-css ol) {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    padding-inline-start: 40px;
+    list-style-type: number
+}
+
+.pmc-content-html li:not(.ignore-css li) {
+    outline: none;
+    display: list-item
+}
+
+.pmc-content-html table:not(.ignore-css table),
+.pmc-content-html td:not(.ignore-css td),
+.pmc-content-html thead:not(.ignore-css thead),
+.pmc-content-html tr:not(.ignore-css tr) {
+    border-width: 1px;
+    border-color: hsl(var(--neutral-200))
+}
+
+.pmc-content-html table:not(.ignore-css table) {
+    table-layout: auto;
+    border-collapse: collapse;
+    display: table;
+    text-indent: 0
+}
+
+.pmc-content-html thead:not(.ignore-css thead) {
+    display: table-header-group;
+    vertical-align: middle
+}
+
+.pmc-content-html tr:not(.ignore-css tr) {
+    display: table-row;
+    vertical-align: inherit
+}
+
+.pmc-content-html td:not(.ignore-css td) {
+    border-bottom-width: 1px;
+    padding: .5rem .5rem .5rem 1rem;
+    display: table-cell;
+    vertical-align: inherit
+}
+
+.pmc-content-html figcaption:not(.ignore-css figcaption) {
+    text-align: center
+}
+
+.ignore-css a {
+    color: inherit
+}
+
+.pmc-content-html img {
+    display: inline
+}
+
+.pmc-content-html img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.pmc-content-html iframe {
+    max-width: 100%
+}
+
+@media (max-width:767px) {
+    .pmc-content-html h1:not(.ignore-css h1) {
+        font-size: 28px;
+        line-height: 1.2
+    }
+    .pmc-content-html h2:not(.ignore-css h2) {
+        font-size: 20px;
+        line-height: 1.3
+    }
+    .pmc-content-html h3:not(.ignore-css h3) {
+        font-size: 18px;
+        line-height: 1.4
+    }
+    .pmc-content-html h4:not(.ignore-css h4) {
+        font-size: 16px;
+        line-height: 1.5
+    }
+    .pmc-content-html h5:not(.ignore-css h5) {
+        font-size: 14px;
+        line-height: 1.6
+    }
+    .pmc-content-html h6:not(.ignore-css h6) {
+        font-size: 12px;
+        line-height: 1.7
+    }
+}

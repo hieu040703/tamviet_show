@@ -169,7 +169,7 @@
                     data-mobile-menu-toggle
                     class="inline-flex items-center justify-center"
                 >
-                    <span class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
+                    <span class="p-icon p-icon-header inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-neutral-50">
                             <path
                                 d="M21.2188 11.2222H2.78125C2.34977 11.2222 2 11.5704 2 11.9999C2 12.4295 2.34977 12.7777 2.78125 12.7777H21.2188C21.6502 12.7777 22 12.4295 22 11.9999C22 11.5704 21.6502 11.2222 21.2188 11.2222Z"
@@ -185,9 +185,9 @@
                 </button>
             </div>
 
-            <a href="/">
+            <a class="logo-mobile-header" href="/">
                 <img
-                    class="cursor-default my-auto h-[36px] w-[90px]"
+                    class="cursor-default my-auto h-[36px] w-[90px] ml-20"
                     src="{{ asset('storage/' . $logo) }}"
                     alt="Tâm việt logo"
                 >

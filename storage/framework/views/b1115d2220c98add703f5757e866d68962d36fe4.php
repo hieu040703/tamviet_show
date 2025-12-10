@@ -18,11 +18,6 @@
                         <?php echo e($widget->name ?? 'Góc sức khỏe'); ?>
 
                     </h4>
-                    <div>
-                        <a
-                            class="relative flex justify-center border-0 bg-transparent text-sm font-normal text-hyperLink outline-none md:hover:text-primary-600 md:text-base"
-                            type="button" href="<?php echo e(router_link('post_catalogue', $firstCat->id)); ?>">Xem tất cả</a>
-                    </div>
                 </div>
             </div>
             <div class="mb-4">
