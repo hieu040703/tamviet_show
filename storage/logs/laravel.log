@@ -1254,3 +1254,24 @@
 #57 C:\\laragon\\www\\tamviet-ecommerce\\server.php(21): require_once('C:\\\\laragon\\\\www\\\\...')
 #58 {main}
 "} 
+[2025-12-10 04:49:38] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:192)
+[stacktrace]
+#0 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(118): Illuminate\\Log\\LogManager->resolve(NULL)
+#1 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(98): Illuminate\\Log\\LogManager->get(NULL)
+#2 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(543): Illuminate\\Log\\LogManager->driver()
+#3 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(123): Illuminate\\Log\\LogManager->error('syntax error, u...', Array)
+#4 C:\\laragon\\www\\tamviet-ecommerce\\app\\Exceptions\\Handler.php(39): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(ParseError))
+#5 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(366): App\\Exceptions\\Handler->report(Object(ParseError))
+#6 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(ParseError))
+#7 C:\\laragon\\www\\tamviet-ecommerce\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2025-12-10 04:49:38] laravel.ERROR: syntax error, unexpected '<<' (T_SL), expecting ']' {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting ']' at C:\\laragon\\www\\tamviet-ecommerce\\config\\app.php:55)
+[stacktrace]
+#0 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#1 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#2 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#3 C:\\laragon\\www\\tamviet-ecommerce\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 C:\\laragon\\www\\tamviet-ecommerce\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 

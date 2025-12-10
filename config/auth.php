@@ -38,12 +38,25 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+<<<<<<< HEAD
+            'provider' => 'users',
+=======
             'provider' => 'customers',
+>>>>>>> hieu/update-feature
         ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'users',
+<<<<<<< HEAD
+        ],
+
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+        ],
+=======
         ]
+>>>>>>> hieu/update-feature
     ],
 
     /*
@@ -75,7 +88,11 @@ return [
         // ],
         'customers' => [
             'driver' => 'eloquent',
+<<<<<<< HEAD
+            'model' => App\Models\User::class,
+=======
             'model' => App\Models\Customer::class,
+>>>>>>> hieu/update-feature
         ],
     ],
 

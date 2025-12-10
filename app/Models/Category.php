@@ -27,6 +27,9 @@ class Category extends Model
         'lft',
         'rgt',
         'level',
+<<<<<<< HEAD
+    ];
+=======
         'icon'
     ];
 
@@ -52,4 +55,5 @@ class Category extends Model
 
         return $trail->reverse()->values();
     }
+>>>>>>> hieu/update-feature
 }

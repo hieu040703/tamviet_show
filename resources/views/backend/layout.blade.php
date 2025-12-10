@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="vn">
 <head>
+<<<<<<< HEAD
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ data_get(@$system, 'homepage_favicon') }}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{ data_get(@$system, 'homepage_favicon') }}" type="image/png" sizes="30x30">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title><?= isset($page_title) ? $page_title . ' | ' . 'VietLink CMS' : \Str::title(__(request()->segment(2))) . ' | VietLink CMS' ?></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+=======
     @php
         $defaults = [
             'title'              => system_setting('seo_meta_title', 'Tên website của bạn'),
@@ -19,6 +29,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{$seo['title']}}</title>
     <link href="{{URL::asset('backend/assets/css/family.css')}}" rel="stylesheet"
+>>>>>>> hieu/update-feature
           type="text/css">
     <link href="{{ URL::asset('backend/global_assets/css/icons/icomoon/styles.css') }}" rel="stylesheet"
           type="text/css">

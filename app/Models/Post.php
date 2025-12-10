@@ -14,7 +14,10 @@ class Post extends Model
         'description',
         'content',
         'image',
+<<<<<<< HEAD
+=======
         'icon',
+>>>>>>> hieu/update-feature
         'post_catalogue_id',
         'user_id',
         'status',

@@ -3,6 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
+
+class Widget extends Model
+{
+    protected $fillable = [
+        'name',
+        'code',
+        'position',
+        'is_active',
+    ];
+
+    public function items()
+    {
+        return $this->hasMany(WidgetItem::class)->orderBy('sort_order');
+    }
+=======
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Widget extends Model
@@ -29,4 +45,5 @@ class Widget extends Model
         'status' => 'integer',
         'sort_order' => 'integer',
     ];
+>>>>>>> hieu/update-feature
 }

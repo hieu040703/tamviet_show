@@ -62,7 +62,11 @@ class CategoryController extends Controller
             ['route' => 'admin.categories.create', 'name' => 'Thêm Mới Danh Mục'],
         ];
         $data['dropdown'] = $this->nestedset->Dropdown();
+<<<<<<< HEAD
+
+=======
         $data['model'] = 'Category';
+>>>>>>> hieu/update-feature
         return view('backend.categories.form', $data);
     }
 
@@ -72,7 +76,10 @@ class CategoryController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'categories');
+<<<<<<< HEAD
+=======
             $this->handleUploads($request, $data, 'categories', null, 'icon');
+>>>>>>> hieu/update-feature
             $category = Category::create($data);
             RouterHelper::sync('categories', $category->id, $data['canonical'] ?? null, $category->name);
             $this->nestedset = new Nestedsetbie([
@@ -93,7 +100,10 @@ class CategoryController extends Controller
         $data['category'] = Category::findOrFail($id);
         $data['id'] = $id;
         $data['dropdown'] = $this->nestedset->Dropdown();
+<<<<<<< HEAD
+=======
         $data['model'] = 'Category';
+>>>>>>> hieu/update-feature
         return view('backend.categories.form', $data);
     }
 
@@ -104,7 +114,10 @@ class CategoryController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'categories', $category);
+<<<<<<< HEAD
+=======
             $this->handleUploads($request, $data, 'categories', $category, 'icon');
+>>>>>>> hieu/update-feature
             $category->update($data);
             RouterHelper::sync('categories', $category->id, $data['canonical'] ?? null, $category->name);
             $this->nestedset = new Nestedsetbie([
@@ -128,9 +141,12 @@ class CategoryController extends Controller
             if (!empty($category->image)) {
                 Storage::disk('public')->delete($category->image);
             }
+<<<<<<< HEAD
+=======
             if (!empty($category->icon)) {
                 Storage::disk('public')->delete($category->icon);
             }
+>>>>>>> hieu/update-feature
             $category->delete();
             return redirect()->route('admin.categories.index')->with('success', 'Xóa danh mục thành công');
         } catch (\Exception $e) {

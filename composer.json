@@ -9,12 +9,18 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+<<<<<<< HEAD
+=======
         "bumbummen99/shoppingcart": "^4.2",
+>>>>>>> hieu/update-feature
         "ckeditor/ckeditor": "^4.25",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+<<<<<<< HEAD
+=======
         "jenssegers/agent": "^2.6",
+>>>>>>> hieu/update-feature
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "simplesoftwareio/simple-qrcode": "^4.2",
@@ -49,6 +55,9 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
+<<<<<<< HEAD
+        }
+=======
         },
         "files": [
             "app/Helpers/MyHelper.php",
@@ -56,6 +65,7 @@
             "app/Helpers/router.php",
             "app/Helpers/system.php"
         ]
+>>>>>>> hieu/update-feature
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

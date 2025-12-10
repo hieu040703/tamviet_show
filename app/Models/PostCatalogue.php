@@ -26,8 +26,12 @@ class PostCatalogue extends Model
         'seo_keyword',
         'seo_description',
         'canonical',
+<<<<<<< HEAD
+        'image'
+=======
         'image',
         'icon'
+>>>>>>> hieu/update-feature
     ];
 
     public function posts()

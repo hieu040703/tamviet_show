@@ -49,7 +49,10 @@ class PostController extends Controller
             ['route' => 'admin.posts.create', 'name' => 'Thêm Mới Bài Viết'],
         ];
         $data['catalogues'] = PostCatalogue::orderBy('name')->get();
+<<<<<<< HEAD
+=======
         $data['model'] = 'Post';
+>>>>>>> hieu/update-feature
         return view('backend.post.form', $data);
     }
 
@@ -59,7 +62,10 @@ class PostController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'posts');
+<<<<<<< HEAD
+=======
             $this->handleUploads($request, $data, 'posts', null, 'icon');
+>>>>>>> hieu/update-feature
             $posts = Post::create($data);
             RouterHelper::sync('posts', $posts->id, $data['canonical'] ?? null, $posts->name);
             return redirect()->route('admin.posts.index')->with('success', 'Tạo bài viết thành công');
@@ -76,7 +82,10 @@ class PostController extends Controller
         $data['post'] = Post::findOrFail($id);
         $data['id'] = $id;
         $data['catalogues'] = PostCatalogue::orderBy('name')->get();
+<<<<<<< HEAD
+=======
         $data['model'] = 'Post';
+>>>>>>> hieu/update-feature
         return view('backend.post.form', $data);
     }
 
@@ -87,7 +96,10 @@ class PostController extends Controller
             $data = $request->validated();
             $data['user_id'] = Auth::id();
             $this->handleUploads($request, $data, 'posts', $post);
+<<<<<<< HEAD
+=======
             $this->handleUploads($request, $data, 'posts', $post, 'icon');
+>>>>>>> hieu/update-feature
             $post->update($data);
             RouterHelper::sync('posts', $post->id, $data['canonical'] ?? null, $post->name);
             return redirect()->route('admin.posts.index')->with('success', 'Cập nhật  bài viết thành công');
@@ -104,9 +116,12 @@ class PostController extends Controller
             if (!empty($post->image)) {
                 Storage::disk('public')->delete($post->image);
             }
+<<<<<<< HEAD
+=======
             if (!empty($post->icon)) {
                 Storage::disk('public')->delete($post->icon);
             }
+>>>>>>> hieu/update-feature
             $post->delete();
             return redirect()->route('admin.post.index')->with('success', 'Xóa  bài viết thành công');
         } catch (\Exception $e) {

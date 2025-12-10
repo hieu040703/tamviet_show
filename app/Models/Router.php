@@ -13,6 +13,8 @@ class Router extends Model
         'module',
         'object_id',
     ];
+<<<<<<< HEAD
+=======
     public function category()
     {
         return $this->belongsTo(Category::class, 'object_id');
@@ -37,4 +39,5 @@ class Router extends Model
     {
         return $this->belongsTo(Post::class, 'object_id');
     }
+>>>>>>> hieu/update-feature
 }

@@ -8,6 +8,11 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+<<<<<<< HEAD
+    public function show(Product $product)
+    {
+        return view('frontend.products.show', compact('product'));
+=======
     public function show(int $id, Request $request)
     {
         $hidden = "hidden md:grid";
@@ -38,5 +43,6 @@ class ProductController extends Controller
     protected function getRelatedProducts(Product $product)
     {
         return Product::where('brand_id', $product->brand_id)->where('id', '!=', $product->id)->where('status', 1)->limit(10)->get();
+>>>>>>> hieu/update-feature
     }
 }

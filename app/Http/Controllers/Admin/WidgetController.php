@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Widget;
+<<<<<<< HEAD
+use Illuminate\Http\Request;
+=======
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
@@ -11,6 +14,7 @@ use App\Models\Post;
 use App\Models\PostCatalogue;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\WidgetRequest;
+>>>>>>> hieu/update-feature
 
 class WidgetController extends Controller
 {
@@ -24,13 +28,24 @@ class WidgetController extends Controller
         $data['breadcrumb'] = [
             ['route' => 'admin.widgets.index', 'name' => 'Danh sách Widget'],
         ];
+<<<<<<< HEAD
+        $widgets = Widget::query();
+=======
 
         $widgets = Widget::query();
 
+>>>>>>> hieu/update-feature
         if ($request->filled('keyword')) {
             $keyword = $request->keyword;
             $widgets->where(function ($q) use ($keyword) {
                 $q->where('name', 'like', '%' . $keyword . '%')
+<<<<<<< HEAD
+                    ->orWhere('code', 'like', '%' . $keyword . '%');
+            });
+        }
+        $widgets->orderByDesc('id');
+        $data['widgets'] = $widgets->paginate($this->limit);
+=======
                     ->orWhere('keyword', 'like', '%' . $keyword . '%');
             });
         }
@@ -40,6 +55,7 @@ class WidgetController extends Controller
         $data['widgets'] = $widgets->paginate($this->limit);
         $data['model'] = 'Widget';
 
+>>>>>>> hieu/update-feature
         return view('backend.widgets.index', $data);
     }
 
@@ -52,6 +68,69 @@ class WidgetController extends Controller
             ['route' => 'admin.widgets.index', 'name' => 'Danh sách Widget'],
             ['route' => 'admin.widgets.create', 'name' => 'Thêm Widget'],
         ];
+<<<<<<< HEAD
+        $data['widget'] = null;
+        return view('backend.widgets.form', $data);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:widgets,code',
+            'type' => 'nullable|string|max:50',
+            'position' => 'nullable|integer',
+            'status' => 'nullable|boolean',
+        ]);
+        $data['status'] = $request->has('status') ? 1 : 0;
+        Widget::create($data);
+        return redirect()->route('admin.widgets.index')
+            ->with('success', 'Thêm Widget thành công');
+    }
+
+    public function edit($id)
+    {
+        $widget = Widget::findOrFail($id);
+
+        $data['title'] = 'Cập nhật widget';
+        $data['widget'] = $widget;
+        $data['breadcrumb'] = [
+            ['route' => 'admin.widgets.index', 'name' => 'Danh sách widget'],
+            [
+                'route'  => 'admin.widgets.edit',
+                'name'   => 'Cập nhật widget',
+                'params' => ['id' => $widget->id], // 👈 BẮT BUỘC PHẢI CÓ
+            ],
+        ];
+
+        return view('backend.widgets.form', $data);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $widget = Widget::findOrFail($id);
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:widgets,code,' . $widget->id,
+            'type' => 'nullable|string|max:50',
+            'position' => 'nullable|integer',
+            'status' => 'nullable|boolean',
+        ]);
+        $data['status'] = $request->has('status') ? 1 : 0;
+        $widget->update($data);
+        return redirect()->route('admin.widgets.edit', $widget->id)->with('success', 'Cập nhật Widget thành công');
+    }
+
+    public function destroy($id)
+    {
+        $widget = Widget::with('items')->findOrFail($id);
+        foreach ($widget->items as $item) {
+            $item->delete();
+        }
+        $widget->delete();
+        return redirect()->route('admin.widgets.index')->with('success', 'Xóa Widget thành công');
+=======
 
         $data['widget'] = null;
         $data['selectedItems'] = collect();
@@ -168,5 +247,6 @@ class WidgetController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Không xóa được widget' . $e->getMessage());
         }
+>>>>>>> hieu/update-feature
     }
 }

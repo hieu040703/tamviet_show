@@ -4,9 +4,30 @@
 /storage/*.key
 /vendor
 .env
+.env.*
 .env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# Laravel logs
+/storage/logs/*
+!storage/logs/.gitignore
+
+# Laravel cache
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!storage/framework/cache/.gitignore
+!storage/framework/sessions/.gitignore
+!storage/framework/views/.gitignore
+
+# IDE files
+/.idea
+/.vscode
+
+# OS files
+.DS_Store
+Thumbs.db

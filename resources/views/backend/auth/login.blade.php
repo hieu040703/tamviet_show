@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CMS VOD - ĐĂNG NHẬP</title>
+<<<<<<< HEAD
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+=======
     <link href="{{ URL::asset('backend/assets/css/family.css') }}" rel="stylesheet" type="text/css">
+>>>>>>> hieu/update-feature
     <link href="{{ URL::asset('backend/global_assets/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('backend/assets/css/core.min.css') }}" rel="stylesheet" type="text/css">
