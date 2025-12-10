@@ -28,7 +28,8 @@
             <ul>
                 @foreach($aboutGroup->children as $item)
                     <li class="pb-2">
-                        <a href="{{ router_link_from_canonical(optional($item->router)->canonical) }}" target="{{ $item->target ?: '_self' }}">{{ $item->name }}</a>
+                        <a href="{{ router_link_from_canonical(optional($item->router)->canonical) }}"
+                           target="{{ $item->target ?: '_self' }}">{{ $item->name }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -78,10 +79,13 @@
             </ul>
         </div>
     @endif
-    <div>
-        <h4 class="text-[14px] leading-[20px] mb-4 font-bold">Tổng đài chăm sóc khách hàng</h4>
-        <p>Hỗ trợ đặt hàng</p>
-        <a href="tel:0921681688" class="block pt-2 font-bold text-primary-500">0921681688</a>
-    </div>
+    @if(isset($system['contact_hotline']))
+        <div>
+            <h4 class="text-[14px] leading-[20px] mb-4 font-bold">Tổng đài chăm sóc khách hàng</h4>
+            <p>Hỗ trợ đặt hàng</p>
+            <a href="tel:{{$system['contact_hotline']}}"
+               class="block pt-2 font-bold text-primary-500">{{$system['contact_hotline']}}</a>
+        </div>
+    @endif
 
 </div>

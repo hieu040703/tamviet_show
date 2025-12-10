@@ -1,5 +1,6 @@
 @extends('frontend.layout')
 @section('content')
+    @include('frontend.product.partials.product-mobile-header')
     <div id="mainContent" class="z-20 mx-auto bg-white pt-14 md:pt-4">
         <div class="md:pb-0 pb-[87px]">
             <div>
@@ -148,7 +149,7 @@
                             </div>
                         @endif
                     </div>
-                    @include('frontend.product.partials.cta-desktop')
+                    @include('frontend.product.partials.cta-desktop',['product' => $product])
                     @include('frontend.product.partials.cta-mobile')
                     @include('frontend.product.partials.add-to-cart-modal')
                 </div>
@@ -160,75 +161,7 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('frontend/assets/js/product.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/modal-add-to-cart.js') }}"></script>
 @endpush
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const modal = document.getElementById('addToCartModal');
-            if (!modal) return;
-
-            const openBtns = document.querySelectorAll('[data-qty-modal-trigger]');
-            const closeBtns = modal.querySelectorAll('[data-modal-close]');
-            const primaryBtn = document.getElementById('qtyModalPrimaryBtn');
-            const labelSpan = document.getElementById('qtyModalPrimaryLabel');
-            const qtyInput = modal.querySelector('[data-qty-input]');
-
-            function openModal(trigger) {
-                const label = trigger.dataset.label || 'Thêm vào giỏ';
-                const url = trigger.dataset.url || '#';
-                const action = trigger.dataset.action || 'cart';
-
-                labelSpan.textContent = label;      // đổi text: Thêm vào giỏ / Mua ngay
-                primaryBtn.dataset.url = url;        // lưu link tương ứng
-                primaryBtn.dataset.action = action;   // lưu loại hành động
-
-                modal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-            }
-
-            function closeModal() {
-                modal.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-
-            openBtns.forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    openModal(this);
-                });
-            });
-
-            closeBtns.forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    closeModal();
-                });
-            });
-
-            // Click nút trong modal
-            primaryBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                const urlBase = this.dataset.url || '#';
-                const action = this.dataset.action || 'cart';
-                const qty = qtyInput ? (qtyInput.value || 1) : 1;
-
-                // Ví dụ: gửi bằng GET, thêm qty vào query
-                const finalUrl = urlBase + (urlBase.includes('?') ? '&' : '?') + 'qty=' + encodeURIComponent(qty);
-
-                // Nếu muốn xử lý khác cho buy/cart thì check action ở đây
-                // if (action === 'buy') { ... }
-
-                window.location.href = finalUrl;
-            });
-
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    closeModal();
-                }
-            });
-        });
-    </script>
-@endpush
-
 
 

@@ -14,6 +14,11 @@
                         class="swiper custom-swiper-navigation w-full product-playlist !px-4 sm:rounded-lg md:!px-1">
                         <div class="swiper-wrapper">
                             @foreach($relatedProducts as $item)
+                                @php
+                                    $image = $item->image
+                                        ? asset('storage/'.$item->image)
+                                        : asset('backend/img/not-found.jpg');
+                                @endphp
                                 <div class="swiper-slide !h-auto !w-[178px] pb-[1px] md:!w-[202.6px]">
                                     <div class="mr-[10px] md:mr-4 h-full relative !max-h-[460px]">
                                         <div class="product-card flex h-full flex-col">
@@ -23,7 +28,7 @@
                                                     <a href="{{ router_link('products', $item->id) ?? '#' }}">
                                                         <img
                                                             class="max-h-[100%] max-w-[100%] object-contain"
-                                                            src="{{ asset('storage/'.$item->image) ?? asset('frontend/images/no-image.png') }}"
+                                                            src="{{$image }}"
                                                             alt="{{ $item->name }}"
                                                             loading="lazy"
                                                             width="500"
@@ -43,11 +48,15 @@
                                                     </a>
                                                     <div class="flex flex-1 flex-col justify-end">
                                                         <div class="flex items-end justify-center">
-                                                            <a
-                                                                class="relative flex justify-center outline-none font-semibold text-white bg-primary-500 border-0 hover:bg-primary-600 focus:ring-primary-300 w-full text-sm px-4 py-2 h-9 items-center rounded-lg mt-2"
-                                                                href="{{ router_link('products', $item->id) ?? '#' }}">
+                                                            <button
+                                                                data-open-product-modal
+                                                                data-product-id="{{ $item->id }}"
+                                                                data-product-name="{{ $item->name }}"
+                                                                data-product-image="{{ $image }}"
+                                                                class="btn-choose-product relative flex justify-center outline-none font-semibold text-white bg-primary-500 border-0 hover:bg-primary-600 focus:ring-primary-300 w-full
+                                                                 text-sm px-4 py-2 h-9 items-center rounded-lg mt-2">
                                                                 <span>Chọn sản phẩm</span>
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                     </div>
 

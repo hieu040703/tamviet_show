@@ -41,6 +41,10 @@ class ProductRequest extends FormRequest
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'brand_id' => ['required', 'integer', 'exists:brands,id'],
             'note' => ['nullable', 'string'],
+            'album' => ['nullable', 'array'],
+            'album.*' => ['nullable', 'string', 'max:255'],
+            'album_files' => ['nullable', 'array'],
+            'album_files.*' => ['file', 'image', 'mimes:jpeg,png,jpg,webp', 'max:4096',],
         ];
     }
 
@@ -63,6 +67,10 @@ class ProductRequest extends FormRequest
 
             'canonical.required' => 'Đường dẫn không đươc để trống',
             'canonical.unique' => 'Đường dẫn đã tồn tại',
+            'album_files.array'   => 'Dữ liệu file album không hợp lệ',
+            'album_files.*.image' => 'Mỗi ảnh trong album phải là file hình ảnh',
+            'album_files.*.mimes' => 'Ảnh trong album chỉ hỗ trợ jpeg, png, jpg, webp',
+            'album_files.*.max'   => 'Mỗi ảnh trong album không được lớn hơn 4MB',
         ];
     }
 

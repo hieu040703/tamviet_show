@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-12">
 
-        <form action="{{route('admin.system.store')}}" method="POST">
+        <form action="{{route('admin.system.store')}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="panel panel-flat">
                 <div class="panel-heading">

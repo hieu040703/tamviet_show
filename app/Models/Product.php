@@ -54,6 +54,16 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function contactRequestItems()
+    {
+        return $this->hasMany(ContactRequestItem::class, 'product_id');
+    }
+
+    public function contactRequests()
+    {
+        return $this->hasManyThrough(ContactRequest::class, ContactRequestItem::class, 'product_id', 'id', 'id', 'contact_request_id');
+    }
+
     public static function generateCode(): string
     {
         return 'PRD-' . now()->format('Ymd') . '-' . Str::upper(Str::random(4));

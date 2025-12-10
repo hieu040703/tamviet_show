@@ -9,7 +9,7 @@
 
 <div>
     <div class="relative aspect-square overflow-y-hidden">
-        <div class="relative flex h-full w-full items-center">
+        <div class="relative flex  w-full items-center">
             <div
                 class="swiper custom-swiper-navigation w-full product-media-slide"
                 id="product-main-media"

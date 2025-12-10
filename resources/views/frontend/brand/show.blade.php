@@ -3,6 +3,7 @@
 @section('content')
     <div class="z-20 mx-auto bg-neutral-100">
         <div class="bg-white pt-11 md:pb-0 md:pt-4">
+            @include('frontend.layouts.partials.header-mobile',['model' => $brand])
             @include('frontend.components.breadcrumb', ['items' => $breadcrumb ?? []])
             <div class="bg-neutral-100"></div>
             <div id="brand-page"

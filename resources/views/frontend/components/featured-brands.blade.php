@@ -32,7 +32,7 @@
                                     : asset('backend/img/not-found.jpg');
                             @endphp
                             <div class="swiper-slide mr-2 !w-[126px] md:mr-4 md:!w-[288px]">
-                                <a href="{{ router_link('brands', $item->id) }}">
+                                <a href="{{ router_link('categories', $item->id) }}">
                                     <div class="h-full w-full">
                                         <img
                                             class="h-full w-full rounded-sm object-contain"
@@ -47,6 +47,21 @@
                                 </a>
                             </div>
                         @endforeach
+                        <div class="swiper-slide mr-2 !w-[126px] md:mr-4 md:!w-[288px]">
+                            <a href="http://phongkhamtaimuihongnhi.com/" target="_blank" rel="noopener noreferrer">
+                                <div class="h-full w-full">
+                                    <img
+                                        class="h-full w-full rounded-sm object-contain"
+                                        src="{{ asset('frontend/assets/image/brand/brand-1.png') }}"
+                                        alt="phòng khám tâm việt"
+                                        width="500"
+                                        height="500"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -85,72 +100,36 @@
         </div>
     </div>
 @endif
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        function updateButtons(swiper, el, customPrevBtn, customNextBtn) {
-            const prevBtn = el.querySelector('.swiper-button-prev');
-            const nextBtn = el.querySelector('.swiper-button-next');
+        if (typeof Swiper === 'undefined') return;
 
-            const canScroll = swiper.slides.length > 0 && !(swiper.isBeginning && swiper.isEnd);
-            const showLeft = canScroll && !swiper.isBeginning;
-            const showRight = canScroll && !swiper.isEnd;
-
-            [prevBtn, customPrevBtn].forEach(function (btn) {
-                if (!btn) return;
-                if (showLeft) btn.classList.remove('hidden');
-                else btn.classList.add('hidden');
-            });
-
-            [nextBtn, customNextBtn].forEach(function (btn) {
-                if (!btn) return;
-                if (showRight) btn.classList.remove('hidden');
-                else btn.classList.add('hidden');
-            });
-        }
-
-        const brandSwipers = document.querySelectorAll('.pb-4.md\\:container .custom-swiper-navigation');
+        var brandSwipers = document.querySelectorAll('.pb-4.md\\:container .custom-swiper-navigation');
+        if (!brandSwipers.length) return;
 
         brandSwipers.forEach(function (el) {
-            const wrapper = el.closest('.relative');
-            const customNextBtn = wrapper ? wrapper.querySelector('.custom-swiper-button-next') : null;
-            const customPrevBtn = wrapper ? wrapper.querySelector('.custom-swiper-button-prev') : null;
+            var wrapper = el.closest('.relative') || el.parentElement || document;
+            var customPrevBtn = wrapper.querySelector('.custom-swiper-button-prev');
+            var customNextBtn = wrapper.querySelector('.custom-swiper-button-next');
 
-            const swiper = new Swiper(el, {
+            new Swiper(el, {
                 slidesPerView: 'auto',
                 spaceBetween: 8,
+                loop: false,
+                watchOverflow: true,
+                autoplay: false,
                 navigation: {
-                    nextEl: el.querySelector('.swiper-button-next'),
-                    prevEl: el.querySelector('.swiper-button-prev'),
+                    prevEl: customPrevBtn || el.querySelector('.swiper-button-prev'),
+                    nextEl: customNextBtn || el.querySelector('.swiper-button-next')
                 },
                 breakpoints: {
                     768: {
-                        spaceBetween: 16,
-                    },
-                },
-                on: {
-                    init: function (sw) {
-                        updateButtons(sw, el, customPrevBtn, customNextBtn);
-                    },
-                    slideChange: function (sw) {
-                        updateButtons(sw, el, customPrevBtn, customNextBtn);
-                    },
-                    resize: function (sw) {
-                        updateButtons(sw, el, customPrevBtn, customNextBtn);
-                    },
-                },
+                        spaceBetween: 16
+                    }
+                }
             });
-
-            if (customNextBtn) {
-                customNextBtn.addEventListener('click', function () {
-                    swiper.slideNext();
-                });
-            }
-            if (customPrevBtn) {
-                customPrevBtn.addEventListener('click', function () {
-                    swiper.slidePrev();
-                });
-            }
         });
     });
 </script>
+
+

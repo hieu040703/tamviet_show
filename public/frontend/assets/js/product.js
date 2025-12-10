@@ -64,42 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-    var qtyWrappers = document.querySelectorAll('[data-qty="wrapper"]');
 
-    qtyWrappers.forEach(function (w) {
-        var input = w.querySelector('[data-qty="input"]');
-        var minus = w.querySelector('[data-qty="minus"]');
-        var plus = w.querySelector('[data-qty="plus"]');
-        if (!input || !minus || !plus) return;
-        var min = parseInt(input.getAttribute('data-min') || '1', 10);
-        var maxAttr = input.getAttribute('data-max');
-        var max = maxAttr ? parseInt(maxAttr, 10) : null;
-
-        function normalize() {
-            var raw = (input.value || '').toString().replace(/[^0-9]/g, '');
-            var v = parseInt(raw, 10);
-            if (isNaN(v) || v < min) v = min;
-            if (max && v > max) v = max;
-            input.value = v;
-            minus.disabled = v <= min;
-            minus.classList.toggle('cursor-not-allowed', v <= min);
-            minus.classList.toggle('bg-neutral-100', v <= min);
-        }
-
-        minus.addEventListener('click', function () {
-            if (minus.disabled) return;
-            input.value = parseInt(input.value || min, 10) - 1;
-            normalize();
-        });
-        plus.addEventListener('click', function () {
-            input.value = parseInt(input.value || min, 10) + 1;
-            normalize();
-        });
-        input.addEventListener('input', normalize);
-        input.addEventListener('blur', normalize);
-
-        normalize();
-    });
     const modal = document.getElementById('addToCartModal');
     if (modal) {
         const openBtns = document.querySelectorAll('[data-qty-modal-trigger]');

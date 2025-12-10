@@ -10,14 +10,26 @@ class PostController extends Controller
 {
     public function show(int $id, Request $request)
     {
+        $hidden = "hidden md:grid";
+        $hiddenHeader = "hidden md:grid";
         $post = $this->findPost($id);
         $breadcrumb = $this->getBreadcrumb($post);
         $relatedPosts = $this->getRelatedPosts($post, 6);
-
+        $defaultCanonical = url(($post->canonical ?? '') . '.html');
+        $seo = [
+            'title' => system_setting('homepage_title', $post->seo_title ?? $post->name),
+            'description' => system_setting('homepage_description', $post->seo_description ?? $post->description),
+            'keywords' => system_setting('seo_meta_keyword', $post->seo_keyword ?? $post->name),
+            'canonical' => system_setting('seo_meta_canonical', $defaultCanonical),
+            'favicon' => system_setting('seo_meta_favicon', $post->image ?? $post->icon),
+        ];
         return view('frontend.post.show', [
             'post' => $post,
             'breadcrumb' => $breadcrumb,
             'relatedPosts' => $relatedPosts,
+            'hiddenHeader' => $hiddenHeader,
+            'hidden' => $hidden,
+            'seo' => $seo,
         ]);
     }
 

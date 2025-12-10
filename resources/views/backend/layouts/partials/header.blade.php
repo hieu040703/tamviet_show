@@ -1,8 +1,8 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header">
         <a class="navbar-brand" href="{{ route('admin.backend.home') }}">
-            @if (!empty($system['homepage_logo']))
-                <img style="max-width: 100px; height: auto;" src="{{ asset($system['homepage_logo']) }}" alt="Logo">
+            @if (!empty($seo['logo']))
+                <img style="max-width: 100px; height: auto;" src="{{  asset('storage/' . $seo['logo']) ?? asset('frontend/assets/image/logo_1.webp') }} " alt="Logo">
             @else
                 <img  style="max-width: 100px; height: auto;" src="" alt="Default Logo">
             @endif

@@ -36,19 +36,27 @@ if (!function_exists('renderSystemInput')) {
 if (!function_exists('renderSystemImages')) {
     function renderSystemImages(string $name = '', $systems = null)
     {
-        $value = old($name, is_object($systems) ? ($systems->{$name} ?? '') : ($systems[$name] ?? ''));
-
-        return '<input
-            type="text"
-            id="image"
+        $value = is_object($systems) ? ($systems->{$name} ?? '') : ($systems[$name] ?? '');
+        $html  = '<input
+            type="file"
             name="config[' . $name . ']"
-            value="' . htmlspecialchars($value) . '"
-            class="form-control upload-image"
-            placeholder=""
-            autocomplete="off"
+            class="form-control"
+            accept="image/*"
         >';
+        if (!empty($value)) {
+            $url = \Illuminate\Support\Str::startsWith($value, ['http://', 'https://'])
+                ? $value
+                : asset('storage/' . $value);
+            $html .= '<p class="help-block" style="margin-top:5px;">
+                        Đã lưu: <code>' . e($value) . '</code><br>
+                        <a href="' . e($url) . '" target="_blank">Xem ảnh</a>
+                      </p>';
+        }
+        return $html;
     }
 }
+
+
 
 if (!function_exists('renderSystemTextarea')) {
     function renderSystemTextarea(string $name = '', $systems = null)

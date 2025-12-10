@@ -105,8 +105,8 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $data = $request->validated();
             $this->handleUploads($request, $data, 'products', $product);
-            $this->handleUploads($request, $data, 'products', 'icon');
             $this->handleUploads($request, $data, 'products', $product, 'icon');
+            $this->handleAlbumUploads($request, $data, 'products', $product);
             $product->update($data);
             RouterHelper::sync('products', $product->id, $data['canonical'] ?? null, $product->name);
             $this->generateQrForModel('product.show', $product);

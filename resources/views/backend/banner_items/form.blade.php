@@ -96,3 +96,6 @@
         @include('backend.components.button')
     </form>
 @endsection
+@push('scripts')
+    @include('backend.partials.ckeditor')
+@endpush
