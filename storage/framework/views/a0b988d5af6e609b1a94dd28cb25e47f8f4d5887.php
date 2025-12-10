@@ -1,0 +1,67 @@
+<?php
+    $defaults = [
+        'title'              => system_setting('seo_meta_title', 'Tên website của bạn'),
+        'description'        => system_setting('seo_meta_description', 'Mô tả website của bạn'),
+        'keywords'           => system_setting('seo_meta_keyword', 'tu khoa 1, tu khoa 2'),
+
+        'author'             => system_setting('seo_meta_author', config('app.name')),
+        'robots'             => system_setting('seo_meta_robots', 'index,follow'),
+        'canonical'          => system_setting('seo_meta_canonical',url()->current()),
+        'og_type'            => 'website',
+        'og_site_name'       => system_setting('seo_site_name', config('app.name')),
+        'og_title'           => system_setting('seo_meta_title', 'Tên website của bạn'),
+        'og_description'     => system_setting('seo_meta_description', 'Mô tả website của bạn'),
+        'og_url'             => url()->current(),
+        'og_image'           => system_setting('seo_meta_image', asset('backend/img/not-found.jpg')),
+        'og_image_width'     => '1200',
+        'og_image_height'    => '630',
+        'og_locale'          => 'vi_VN',
+        'twitter_card'       => 'summary_large_image',
+        'twitter_title'      => system_setting('seo_meta_title', 'Tên website của bạn'),
+        'twitter_description'=> system_setting('seo_meta_description', 'Mô tả website của bạn'),
+        'twitter_image'      => system_setting('seo_meta_image',  asset('backend/img/not-found.jpg')),
+        'twitter_site'       => '@ten_twitter_cua_ban',
+        'twitter_creator'    => '@ten_twitter_cua_ban',
+        'favicon' => system_setting('homepage_favicon', asset('frontend/images/favicon.png')),
+        'shortcut_icon'      => asset('frontend/images/favicon.png'),
+    ];
+    $seo = array_merge($defaults, $seo ?? []);
+?>
+<base href="<?php echo e(config('app.url')); ?>"/>
+
+<title><?php echo e($seo['title']); ?></title>
+<meta charset="utf-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+<meta name="theme-color" content="#1B51A3">
+<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+<meta name="description" content="<?php echo e($seo['description']); ?>">
+<meta name="keywords" content="<?php echo e($seo['keywords']); ?>">
+<meta name="author" content="<?php echo e($seo['author']); ?>">
+<meta name="robots" content="<?php echo e($seo['robots']); ?>">
+
+<link rel="canonical" href="<?php echo e($seo['canonical']); ?>">
+
+<meta property="og:type" content="<?php echo e($seo['og_type']); ?>">
+<meta property="og:site_name" content="<?php echo e($seo['og_site_name']); ?>">
+<meta property="og:title" content="<?php echo e($seo['og_title']); ?>">
+<meta property="og:description" content="<?php echo e($seo['og_description']); ?>">
+<meta property="og:url" content="<?php echo e($seo['og_url']); ?>">
+<meta property="og:image" content="<?php echo e($seo['og_image']); ?>">
+<meta property="og:image:width" content="<?php echo e($seo['og_image_width']); ?>">
+<meta property="og:image:height" content="<?php echo e($seo['og_image_height']); ?>">
+<meta property="og:locale" content="<?php echo e($seo['og_locale']); ?>">
+
+<meta name="twitter:card" content="<?php echo e($seo['twitter_card']); ?>">
+<meta name="twitter:title" content="<?php echo e($seo['twitter_title']); ?>">
+<meta name="twitter:description" content="<?php echo e($seo['twitter_description']); ?>">
+<meta name="twitter:image" content="<?php echo e($seo['twitter_image']); ?>">
+<meta name="twitter:site" content="<?php echo e($seo['twitter_site']); ?>">
+<meta name="twitter:creator" content="<?php echo e($seo['twitter_creator']); ?>">
+<link rel="icon"
+      href="<?php echo e(asset('storage/' . $seo['favicon'])); ?>">
+<link rel="shortcut icon" href="<?php echo e(asset('storage/' . $seo['shortcut_icon'])); ?>" type="image/x-icon">
+<?php /**PATH C:\laragon\www\tamviet-ecommerce\resources\views/frontend/layouts/partials/head-seo.blade.php ENDPATH**/ ?>
