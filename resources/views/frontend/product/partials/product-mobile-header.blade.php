@@ -5,7 +5,7 @@
                     data-back-button="true"
                     class="relative flex justify-center outline-none font-semibold focus:ring-primary-300 text-sm bg-transparent data-[size=sm]:text-sm border-0 hover:bg-0 hover:text-primary-500 focus:text-primary-500 h-6 p-0 text-neutral-900">
                                         <span
-                                            class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
+                                            class="p-icon-1 inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
                                             <svg viewBox="0 0 24 24" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -19,7 +19,7 @@
             @include('frontend.components.cart-icon-mobile')
             <button data-size="sm" type="button" data-go-home
                     class="relative flex justify-center outline-none font-semibold focus:ring-primary-300 text-sm bg-transparent data-[size=sm]:text-sm border-0 hover:bg-0 hover:text-primary-500 focus:text-primary-500 text-neutral-900 -mr-2 h-9 items-center p-2">
-    <span class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
+    <span class="p-icon-1 inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M12 2L22 10.8894L21.2004 12L12 3.82146L2.79963 12L2 10.8894L12 2Z"
