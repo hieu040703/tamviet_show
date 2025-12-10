@@ -24,14 +24,12 @@
                 </span>
             </button>
         </div>
-
         <div class="w-full drop-shadow">
             <div class="mx-auto w-full ">
                 <div type="button" aria-haspopup="dialog" aria-expanded="false"
                      aria-controls="radix-:rq9:" data-state="closed">
                     <div class="relative text-neutral-600" data-search-trigger>
-                        <!-- Nút kính lúp -->
-                        <button data-size="sm" type="button"
+                        <button data-size="sm" type="submit"
                                 class="flex justify-center outline-none font-semibold focus:ring-primary-300 text-sm bg-transparent data-[size=sm]:text-sm border-0 hover:bg-0 hover:text-primary-500 focus:text-primary-500 absolute left-0 top-0 z-10 h-10 px-2 py-[10px] text-neutral-900">
                             <span
                                 class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
@@ -47,160 +45,17 @@
                             </span>
                         </button>
 
-                        <!-- Form search -->
                         <form action="" method="GET" class="w-full">
                             <input
                                 type="search"
                                 name="keyword"
                                 enterkeyhint="search"
-                                class="w-full border-neutral-500 placeholder:text-neutral-600 focus:ring-neutral-500 focus:border-neutral-700 outline-none p-3.5 search-input flex h-10 items-center justify-start rounded-sm border-0 bg-white py-1 pl-10 text-start text-sm font-medium text-neutral-700 border-search-header"
-                                placeholder="Bạn đang tìm gì hôm nay..."
-                            >
+                                class="w-full border-neutral-500 placeholder:text-neutral-600 focus:ring-neutral-500 focus:border-neutral-700 outline-none p-3.5 search-input flex h-10 items-center justify-start rounded-sm border-0 bg-white py-1 pl-10 text-start text-sm font-medium text-neutral-700"
+                                placeholder="Bạn đang tìm gì hôm nay...">
                         </form>
-
-                        <!-- Kết quả tìm kiếm (dropdown giống Pharmacity) -->
-                        <div
-                            id="searchResults"
-                            class="absolute left-0 right-0 mt-1 max-h-[calc(100vh-150px)] overflow-y-auto rounded-sm bg-transparent hidden"
-                        >
-                            <!-- JS sẽ render nội dung vào đây -->
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector('#boxSearchContainer form');
-        const input = form.querySelector('input[name="keyword"]');
-        const resultsBox = document.getElementById('searchResults');
-        const searchButton = document.querySelector('[data-search-trigger] button');
-
-        let timer = null;
-
-        function debounceSearch() {
-            clearTimeout(timer);
-
-            const keyword = input.value.trim();
-
-            if (!keyword) {
-                resultsBox.classList.add('hidden');
-                resultsBox.innerHTML = '';
-                return;
-            }
-
-            timer = setTimeout(function () {
-                fetch('/ajax/search?keyword=' + encodeURIComponent(keyword))
-                    .then(function (res) { return res.json(); })
-                    .then(function (res) {
-                        if (res.status !== 'success') {
-                            resultsBox.classList.add('hidden');
-                            resultsBox.innerHTML = '';
-                            return;
-                        }
-
-                        renderResultDropdown(res.data, keyword);
-                    })
-                    .catch(function () {
-                        resultsBox.classList.add('hidden');
-                    });
-            }, 250); // 250ms debounce
-        }
-
-        function renderBlock(title, items) {
-            if (!items || !items.length) return '';
-
-            let html = `
-                <div class="mb-3">
-                    <p class="text-sm font-semibold text-neutral-900 mb-1">${title}</p>
-                    <div class="grid gap-1">
-            `;
-
-            items.forEach(function (item) {
-                html += `
-                    <a href="${item.url}"
-                       class="flex items-center gap-2 rounded px-2 py-2 text-sm hover:bg-neutral-100">
-                        ${item.image
-                    ? `<div class="h-8 w-8 flex-shrink-0 overflow-hidden rounded bg-neutral-100">
-                                   <img src="${item.image}" alt="${item.name}" class="h-full w-full object-cover">
-                               </div>`
-                    : `<div class="h-8 w-8 flex-shrink-0 rounded-full bg-primary-50 flex items-center justify-center text-[10px] text-primary-500 uppercase">
-                                   ${title.charAt(0)}
-                               </div>`
-                }
-                        <span class="flex-1 truncate text-neutral-900">${item.name}</span>
-                    </a>
-                `;
-            });
-
-            html += `</div></div>`;
-            return html;
-        }
-
-        function renderResultDropdown(data, keyword) {
-            let any =
-                (data.products && data.products.length) ||
-                (data.categories && data.categories.length) ||
-                (data.brands && data.brands.length) ||
-                (data.post_catalogues && data.post_catalogues.length) ||
-                (data.posts && data.posts.length);
-
-            if (!any) {
-                resultsBox.innerHTML = `
-                    <div class="bg-white rounded shadow-lg px-3 py-2 text-sm text-neutral-600">
-                        Không tìm thấy kết quả cho "<span class="font-semibold">${keyword}</span>".
-                    </div>
-                `;
-                resultsBox.classList.remove('hidden');
-                return;
-            }
-
-            let html = `
-                <div class="bg-white rounded shadow-lg p-3 grid gap-2">
-            `;
-
-            html += renderBlock('Sản phẩm', data.products);
-            html += renderBlock('Danh mục', data.categories);
-            html += renderBlock('Thương hiệu', data.brands);
-            html += renderBlock('Nhóm bài viết', data.post_catalogues);
-            html += renderBlock('Bài viết', data.posts);
-
-            html += `</div>`;
-
-            resultsBox.innerHTML = html;
-            resultsBox.classList.remove('hidden');
-        }
-
-        // Gõ -> tìm
-        input.addEventListener('input', debounceSearch);
-
-        // Enter trong form
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            debounceSearch();
-        });
-
-        // Click nút kính lúp
-        if (searchButton) {
-            searchButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                debounceSearch();
-            });
-        }
-
-        // Ẩn dropdown khi click ra ngoài
-        document.addEventListener('click', function (e) {
-            const container = document.querySelector('[data-search-trigger]');
-            const isClickInside =
-                container.contains(e.target) || resultsBox.contains(e.target);
-
-            if (!isClickInside) {
-                resultsBox.classList.add('hidden');
-            }
-        });
-    });
-</script>
-

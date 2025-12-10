@@ -27,7 +27,7 @@
                      class="border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-[9] m-0 block w-full rounded-[0_0_calc(12rem/16)_calc(12rem/16)] border-none bg-transparent p-0 pt-4 outline-none !duration-300 data-[state=closed]:!animate-none data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90"
                      tabindex="-1"
                      style="--radix-popover-content-transform-origin: var(--radix-popper-transform-origin); --radix-popover-content-available-width: var(--radix-popper-available-width); --radix-popover-content-available-height: var(--radix-popper-available-height); --radix-popover-trigger-width: var(--radix-popper-anchor-width); --radix-popover-trigger-height: var(--radix-popper-anchor-height);">
-                    <div class="bg-white bg-white-mt-25">
+                    <div class="bg-white bg-white-mt-50">
                         <div class="container">
                             <div dir="ltr" data-orientation="horizontal"
                                  class="grid h-full grid-cols-[234px,1fr] items-start justify-start">

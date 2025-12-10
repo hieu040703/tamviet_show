@@ -22,7 +22,7 @@ class ProductController extends Controller
             'description' => system_setting('homepage_description', $product->seo_description ?? $product->description),
             'keywords' => system_setting('seo_meta_keyword', $product->seo_keyword ?? $product->name),
             'canonical' => system_setting('seo_meta_canonical', $defaultCanonical),
-            'favicon' => system_setting('seo_meta_favicon', $product->image ?? $product->album ?? $product->icon ?? asset('backend/img/not-found.jpg')),
+            'favicon' => system_setting('seo_meta_favicon', $product->image ?? $product->album ?? $product->icon),
         ];
         return view('frontend.product.show', [
             'product' => $product,

@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\ProductController;
@@ -9,7 +10,19 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\AccountController;
 
+Route::get('/nhom-bai-viet-tuyen-dung', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('optimize:clear');
 
+    return 'Đã clear cache xong trên server!';
+});
+Route::get('/storage-link-hiu', function () {
+    Artisan::call('storage:link');
+    return 'Đã chạy storage:link xong!';
+});
 Route::get('/', [HomePageController::class, 'getHomePage'])->name('homepage.index');
 Route::get('/cart.html', [CartController::class, 'index'])->name('cart.index');
 Route::get('/checkout.html', [CheckoutController::class, 'index'])->name('checkout.index');
@@ -26,13 +39,4 @@ Route::group(['middleware' => ['web', 'customer.auth']], function () {
 });
 Route::get('{canonical}.html', [RouterController::class, 'handle'])->where('canonical', '^(?!login$)(?!admin$)[A-Za-z0-9\-_]+$')->name('router.handle');
 
-Route::get('/clear-cache', function () {
 
-    Artisan::call('optimize:clear');
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('view:clear');
-    Artisan::call('route:clear');
-
-    return "<h2 style='font-family: sans-serif; color: green;'>Đã clear toàn bộ cache thành công! ✅</h2>";
-});

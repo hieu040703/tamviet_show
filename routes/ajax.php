@@ -7,7 +7,6 @@ use App\Http\Controllers\Ajax\MenuController;
 use App\Http\Controllers\Ajax\WidgetController;
 use App\Http\Controllers\Ajax\Auth\CustomerAuthController;
 use App\Http\Controllers\Ajax\ContactController;
-use App\Http\Controllers\Ajax\SearchController;
 
 use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\Frontend\CartController;
@@ -46,6 +45,3 @@ Route::post('logout', [CustomerAuthController::class, 'ajaxLogout'])->name('ajax
 
 /* Contact */
 Route::post('contact-request/{id}/update-status', [ContactController::class, 'updateStatus'])->name('ajax.contact-request.updateStatus');
-
-/* search */
-Route::get('/search', [SearchController::class, 'ajaxSearch'])->name('ajax.search');

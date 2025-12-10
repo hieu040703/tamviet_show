@@ -47,7 +47,7 @@
                                 <div class="mt-3 flex flex-col items-center gap-[10px] bg-white p-3">
                                     <img
                                         class="h-[60px] w-[60px] rounded-lg"
-                                        src="https://prod-cdn.pharmacity.io/e-com/images/static-website/20240706162028-0-pharmacity-logo.png"
+                                        src="{{asset('frontend/assets/image/logo/Logo-header.png')}}"
                                         alt="apple icon"
                                         loading="lazy"
                                         width="500"

@@ -3,8 +3,8 @@
         $logo = $system['homepage_logo'];
     @endphp
     <nav id="mainNav" style="--background:hsl(var(--primary-500))"
-         class="relative top-0 z-20 w-full pb-[25.64%] transition-[padding] max-md:min-h-[116px] md:relative md:!pb-0  md:!bg-none">
-        <div class="absolute bottom-0 h-full w-full  md:static">
+         class="relative top-0 z-20 w-full pb-[25.64%] transition-[padding] max-md:min-h-[116px] md:relative md:!pb-0 md:bg-[var(--background)] md:!bg-none">
+        <div class="absolute bottom-0 h-full w-full md:bg-[var(--background)] md:static">
             <picture>
                 <img
                     class="absolute bottom-0 h-full w-full bg-primary-500 object-cover object-bottom data-[rank='default']:bottom-0 md:bottom-0 md:hidden"
@@ -34,35 +34,29 @@
                     </div>
                 </div>
             </div>
-            <div class="md:bg-[var(--background-1)]">
-                <div class="mx-auto w-full md:container md:relative md:pb-2 md:pt-3">
-                    <div class="flex items-center md:mb-3">
-                        <div class="flex w-full flex-col-reverse items-start md:flex-row">
-                            <div class="hidden flex-shrink-0 md:flex md:w-[187px] md:justify-center">
-                                <a href="/">
-                                    <img class="w-auto h-[70px] cursor-pointer"
-                                         src="{{ asset('storage/' . $logo) }}"
-                                         alt="Tâm việt logo">
-                                </a>
-                            </div>
-                            @include('frontend.components.search-box')
-                            <div id="fixedNav"
-                                 class="top-0 z-10 flex w-full min-w-[340px] flex-1 flex-row-reverse gap-3 px-4 py-3 text-right transition-colors max-md:bg-primary-500 md:static md:mx-0 md:min-w-[286px] md:flex-row md:pb-0 md:pl-1.5 md:pr-0 md:pt-0 md:mt-4">
-                                @include('frontend.components.cart-icon-desktop')
-                                @include('frontend.components.header.account-area')
-                            </div>
+            <div class="mx-auto w-full md:container md:relative md:pb-3 md:pt-4">
+                <div class="flex items-center md:mb-4">
+                    <div class="flex w-full flex-col-reverse items-start md:flex-row">
+                        <div class="hidden flex-shrink-0 md:flex md:w-[187px] md:justify-center">
+                            <a href="{{route('homepage.index')}}">
+                                <img class="w-auto h-[63px] cursor-pointer"
+                                     src="{{ asset('storage/' . $logo) }}"
+                                     alt="Tâm việt logo">
+                            </a>
+                        </div>
+                        @include('frontend.components.search-box')
+                        <div id="fixedNav"
+                             class="top-0 z-10 flex w-full min-w-[340px] flex-1 flex-row-reverse gap-3 px-4 py-3 text-right transition-colors max-md:bg-primary-500 md:static md:mx-0 md:min-w-[286px] md:flex-row md:pb-0 md:pl-1.5 md:pr-0 md:pt-0 md:mt-4">
+                            @include('frontend.components.cart-icon-desktop')
+                            @include('frontend.components.header.account-area')
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="md:bg-[var(--background)]">
-                <div class="mx-auto w-full md:container md:relative md:pb-2 md:pt-3">
-                    <div class="hidden grid-cols-[187px_1fr] items-center md:grid md:gap-4 lg:gap-4">
-                        @include('frontend.components.category-nav',['menuKey' => 'main-menu'])
-                        @include('frontend.layouts.partials.menu', ['menuKey' => 'main-menu'])
-                    </div>
-
+                <div class="hidden grid-cols-[187px_1fr] items-center md:grid md:gap-4 lg:gap-4">
+                    @include('frontend.components.category-nav',['menuKey' => 'main-menu'])
+                    @include('frontend.layouts.partials.menu', ['menuKey' => 'main-menu'])
                 </div>
+
             </div>
         </div>
     </nav>
