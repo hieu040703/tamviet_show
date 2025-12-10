@@ -588,11 +588,7 @@ select[readonly].select2 + .select2-container .select2-selection__clear {
     min-height: 80px;
 }
 
-<<<<<<< HEAD
-.image-target {
-=======
 .image-target, .icon-target-1 {
->>>>>>> hieu/update-feature
     cursor: pointer;
 }
 

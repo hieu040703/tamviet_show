@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "e1ae19fd848ccd3e115c040c731d5277",
-=======
     "content-hash": "d34df8529517a76455f6bf7e11aac187",
->>>>>>> hieu/update-feature
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -181,8 +177,6 @@
             "time": "2021-08-15T20:50:18+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "bumbummen99/shoppingcart",
             "version": "4.2.0",
             "source": {
@@ -254,7 +248,6 @@
             "time": "2022-05-15T15:32:38+00:00"
         },
         {
->>>>>>> hieu/update-feature
             "name": "carbonphp/carbon-doctrine-types",
             "version": "2.1.0",
             "source": {
@@ -941,7 +934,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "MÃ¡rk SÃ¡gi-KazÃ¡r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -1136,7 +1129,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "MÃ¡rk SÃ¡gi-KazÃ¡r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -1146,7 +1139,7 @@
                     "homepage": "https://github.com/Tobion"
                 },
                 {
-                    "name": "Márk Sági-Kazár",
+                    "name": "MÃ¡rk SÃ¡gi-KazÃ¡r",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://sagikazarmark.hu"
                 }
@@ -1183,8 +1176,6 @@
             "time": "2025-08-23T21:21:41+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "jaybizzle/crawler-detect",
             "version": "v1.3.6",
             "source": {
@@ -1320,7 +1311,6 @@
             "time": "2020-06-13T08:05:20+00:00"
         },
         {
->>>>>>> hieu/update-feature
             "name": "laravel/framework",
             "version": "v7.30.7",
             "source": {
@@ -1792,8 +1782,6 @@
             "time": "2024-09-21T08:32:55+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.8.45",
             "source": {
@@ -1856,7 +1844,6 @@
             "time": "2023-11-07T21:57:25+00:00"
         },
         {
->>>>>>> hieu/update-feature
             "name": "monolog/monolog",
             "version": "2.10.0",
             "source": {
@@ -3450,7 +3437,7 @@
                     "email": "fabien@symfony.com"
                 },
                 {
-                    "name": "Jean-François Simon",
+                    "name": "Jean-FranÃ§ois Simon",
                     "email": "jeanfrancois.simon@sensiolabs.com"
                 },
                 {
@@ -6094,7 +6081,7 @@
             ],
             "authors": [
                 {
-                    "name": "François Zaninotto"
+                    "name": "FranÃ§ois Zaninotto"
                 }
             ],
             "description": "Faker is a PHP library that generates fake data for you.",
@@ -6273,7 +6260,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "PÃ¡draic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "https://github.com/padraic",
                     "role": "Author"

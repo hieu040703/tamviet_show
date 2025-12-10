@@ -86,10 +86,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> hieu/update-feature
         @include('backend.components.button')
     </form>
 @endsection

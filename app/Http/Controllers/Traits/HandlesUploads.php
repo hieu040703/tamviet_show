@@ -42,8 +42,6 @@ trait HandlesUploads
             }
         }
     }
-<<<<<<< HEAD
-=======
 
     protected function handleAlbumUploads(
         Request $request,
@@ -94,5 +92,4 @@ trait HandlesUploads
             Storage::disk($disk)->delete($path);
         }
     }
->>>>>>> hieu/update-feature
 }

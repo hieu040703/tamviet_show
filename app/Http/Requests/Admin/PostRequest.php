@@ -22,15 +22,6 @@ class PostRequest extends FormRequest
      *
      * @return array
      */
-<<<<<<< HEAD
-    public function rules()
-    {
-        $id = $this->route('id');
-        $canonicalRule = Rule::unique('routers', 'canonical')
-            ->where(function ($query) {
-                $query->where('module', 'post_catalogue');
-            });
-=======
     public function rules(): array
     {
         $post = $this->route('post');
@@ -42,21 +33,14 @@ class PostRequest extends FormRequest
         if ($id) {
             $canonicalRule->ignore($id, 'object_id');
         }
->>>>>>> hieu/update-feature
         return [
             'name' => [
                 'required',
                 'string',
                 'max:255',
-<<<<<<< HEAD
-                Rule::unique('products', 'name')->ignore($id),
-            ],
-            'canonical' => ['required', 'string', 'max:255', $canonicalRule,],
-=======
                 Rule::unique('posts', 'name')->ignore($id),
             ],
             'canonical' => ['required', 'string', 'max:255', $canonicalRule],
->>>>>>> hieu/update-feature
             'description' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
             'album' => ['nullable'],
@@ -65,10 +49,6 @@ class PostRequest extends FormRequest
             'seo_title' => ['nullable', 'string', 'max:255'],
             'seo_keyword' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string'],
-<<<<<<< HEAD
-            'image' => ['nullable', 'image', 'max:2048'],
-=======
->>>>>>> hieu/update-feature
             'post_catalogue_id' => ['required', 'integer', 'exists:post_catalogues,id'],
         ];
     }

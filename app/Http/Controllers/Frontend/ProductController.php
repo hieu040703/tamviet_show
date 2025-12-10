@@ -8,11 +8,6 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-<<<<<<< HEAD
-    public function show(Product $product)
-    {
-        return view('frontend.products.show', compact('product'));
-=======
     public function show(int $id, Request $request)
     {
         $hidden = "hidden md:grid";
@@ -27,7 +22,7 @@ class ProductController extends Controller
             'description' => system_setting('homepage_description', $product->seo_description ?? $product->description),
             'keywords' => system_setting('seo_meta_keyword', $product->seo_keyword ?? $product->name),
             'canonical' => system_setting('seo_meta_canonical', $defaultCanonical),
-            'favicon' => system_setting('seo_meta_favicon', $product->image ?? $product->album ?? $product->icon),
+            'favicon' => system_setting('seo_meta_favicon', $product->image ?? $product->album ?? $product->icon ?? asset('backend/img/not-found.jpg')),
         ];
         return view('frontend.product.show', [
             'product' => $product,
@@ -43,6 +38,5 @@ class ProductController extends Controller
     protected function getRelatedProducts(Product $product)
     {
         return Product::where('brand_id', $product->brand_id)->where('id', '!=', $product->id)->where('status', 1)->limit(10)->get();
->>>>>>> hieu/update-feature
     }
 }

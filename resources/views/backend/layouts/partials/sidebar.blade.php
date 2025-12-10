@@ -74,22 +74,6 @@
                                 <span>Quản lý bài viết</span></a>
                         </li>
                     @endif
-<<<<<<< HEAD
-                    <li class="{{ isset($sidebar) && $sidebar == 'Banner' ? 'active' : '' }}">
-                        <a href="{{ route('admin.banners.index') }}">
-                            <i class="icon-image2"></i>
-                            <span>Quản lý Banner</span>
-                        </a>
-                    </li>
-                    <li class="{{ (isset($sidebar) && $sidebar == 'Widget') ? 'active' : '' }}">
-                        <a href="{{ route('admin.widgets.index') }}">
-                            <i class="icon-grid"></i>
-                            <span>Widget</span>
-                        </a>
-                    </li>
-
-                @if($admin && $admin->hasPermission('view_user'))
-=======
                     @if($admin && $admin->hasPermission('view_banner'))
                         <li class="{{ isset($sidebar) && $sidebar == 'Banner' ? 'active' : '' }}">
                             <a href="{{ route('admin.banners.index') }}">
@@ -123,7 +107,6 @@
                         </li>
                     @endif
                     @if($admin && $admin->hasPermission('view_user'))
->>>>>>> hieu/update-feature
                         <li class="{{ isset($sidebar) && $sidebar == 'User' ? 'active' : '' }}">
                             <a href="{{ route('admin.users.index') }}">
                                 <i class="icon-users4"></i>
@@ -148,13 +131,10 @@
                             </a>
                         </li>
                     @endif
-<<<<<<< HEAD
-=======
                     <li class="{{ @$sidebar == 'SystemLibrary' ? 'active' : null }}">
                         <a href="{{route('admin.system.index')}}"><i class="icon-lifebuoy"></i>
                             <span>Cấu hình hệ thống</span></a>
                     </li>
->>>>>>> hieu/update-feature
                 </ul>
             </div>
         </div>

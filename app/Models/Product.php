@@ -28,13 +28,9 @@ class Product extends Model
         'seo_keyword',
         'seo_description',
         'canonical',
-<<<<<<< HEAD
-        'image'
-=======
         'image',
         'note',
         'icon'
->>>>>>> hieu/update-feature
     ];
 
     protected $casts = [
@@ -58,8 +54,6 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-<<<<<<< HEAD
-=======
     public function contactRequestItems()
     {
         return $this->hasMany(ContactRequestItem::class, 'product_id');
@@ -70,7 +64,6 @@ class Product extends Model
         return $this->hasManyThrough(ContactRequest::class, ContactRequestItem::class, 'product_id', 'id', 'id', 'contact_request_id');
     }
 
->>>>>>> hieu/update-feature
     public static function generateCode(): string
     {
         return 'PRD-' . now()->format('Ymd') . '-' . Str::upper(Str::random(4));
