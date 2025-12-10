@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
+
 use App\Http\Controllers\Ajax\DashboardController;
-=======
 use App\Http\Controllers\Ajax\BannerItemController;
-use App\Http\Controllers\Ajax\DashboardController;
 use App\Http\Controllers\Ajax\MenuController;
 use App\Http\Controllers\Ajax\WidgetController;
 use App\Http\Controllers\Ajax\Auth\CustomerAuthController;
@@ -15,14 +13,11 @@ use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CategoryController;
 
->>>>>>> hieu/update-feature
 
 Route::prefix('dashboard')->group(function () {
     Route::post('changeStatus', [DashboardController::class, 'changeStatus'])->name('ajax.changeStatus');
     Route::post('/sort', [DashboardController::class, 'sort'])->name('ajax.banner_icons.sort');
 });
-<<<<<<< HEAD
-=======
 Route::get('widgets/search-items', [WidgetController::class, 'searchItems'])->name('ajax.widgets.searchItems');
 // SORT
 Route::post('/sort', [BannerItemController::class, 'sort'])->name('ajax.banner_items.sort');
@@ -51,4 +46,3 @@ Route::post('logout', [CustomerAuthController::class, 'ajaxLogout'])->name('ajax
 
 /* Contact */
 Route::post('contact-request/{id}/update-status', [ContactController::class, 'updateStatus'])->name('ajax.contact-request.updateStatus');
->>>>>>> hieu/update-feature

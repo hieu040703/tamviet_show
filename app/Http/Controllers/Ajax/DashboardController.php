@@ -33,18 +33,5 @@ class DashboardController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
-    public function sort(Request $request)
-    {
-        $order = $request->input('order', []);
-        if (is_array($order) && count($order)) {
-            foreach ($order as $index => $id) {
-                BannerIcon::where('id', $id)->update(['sort_order' => $index + 1]);
-            }
-        }
-        return response()->json(['status' => 'ok']);
-    }
-=======
 
->>>>>>> hieu/update-feature
 }

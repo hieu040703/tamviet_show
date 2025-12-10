@@ -132,11 +132,6 @@
 @endsection
 
 @push('styles')
-<<<<<<< HEAD
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-=======
->>>>>>> hieu/update-feature
     <style>
         .table > tbody > tr > td,
         .table > tbody > tr > th,
@@ -154,8 +149,4 @@
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
     <script src="{{ URL::asset('backend/global_assets/js/plugins/ui/moment/moment.min.js')}}"></script>
-<<<<<<< HEAD
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-=======
->>>>>>> hieu/update-feature
 @endpush

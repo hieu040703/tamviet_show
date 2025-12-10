@@ -13,10 +13,7 @@ class Brand extends Model
         'user_id',
         'name',
         'image',
-<<<<<<< HEAD
-=======
         'icon',
->>>>>>> hieu/update-feature
         'description',
         'status',
         'is_featured',

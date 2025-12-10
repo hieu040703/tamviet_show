@@ -12,19 +12,15 @@
                 <div class="lg:flex">
                     <div class="[&amp;_a:not(.ignore-css_a)]:text-hyperLink mt-1 lg:w-[45%]"
                     >
+                        <p>GCNDKDN: <?php echo e($system['contact_address'] ?? '0108893581 do sở KH &amp; ĐT TP. Hà Nội cấp ngày
+                            10/09/2019.'); ?>
+
+                        </p>
                         <p>Trụ sở: <?php echo e($system['contact_office'] ?? '139 Đa Lộc, Thiên Lộc, Thành phố Hà Nội'); ?>
 
                         </p>
                         <p>Điện thoại: <?php echo e($system['contact_hotline'] ??'092.686.5566'); ?> -
                             Email: <?php echo e($system['contact_email'] ?? 'duoctbyt@tamvietmed.com'); ?></p>
-                    </div>
-                    <div
-                        class="[&amp;_a:not(.ignore-css_a)]:text-hyperLink mt-1 text-left lg:w-[55%] lg:text-end"
-                    >
-                        <p>GCNDKDN:<?php echo e($system['contact_address'] ?? '0108893581 do sở KH &amp; ĐT TP. Hà Nội cấp ngày
-                            10/09/2019.'); ?>
-
-                        </p>
                     </div>
                 </div>
             </div>

@@ -4,19 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
 use App\Models\PostCatalogue;
 use App\Models\Banner;
->>>>>>> hieu/update-feature
 
 class HomePageController extends Controller
 {
     public function getHomePage(Request $request)
     {
-<<<<<<< HEAD
-        return view('frontend.home.index');
-=======
         $data['homeCategories'] = widget_items('home_category');
         $data['homeProductCategories'] = widget_items('home_product_category');
         $data['homeProductBrands'] = widget_items('home_product_brand');
@@ -52,6 +46,5 @@ class HomePageController extends Controller
             'homeMainBanner' => $banners->get('home_main_slider'),
             'homeRightBanner' => $banners->get('home_top_right_banner'),
         ];
->>>>>>> hieu/update-feature
     }
 }

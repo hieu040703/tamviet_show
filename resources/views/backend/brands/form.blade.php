@@ -2,10 +2,7 @@
 
 @section('content')
     <form id="productForm"
-<<<<<<< HEAD
-=======
           data-model="{{ strtolower($model ?? '') }}"
->>>>>>> hieu/update-feature
           action="{{ isset($id) ? route('admin.brands.update', $id) : route('admin.brands.store') }}"
           method="POST"
           enctype="multipart/form-data">
@@ -13,10 +10,6 @@
         @if(isset($id))
             @method('PUT')
         @endif
-<<<<<<< HEAD
-
-=======
->>>>>>> hieu/update-feature
         <div class="col-md-12">
             <div class="col-md-9">
                 <div class="panel panel-flat">
@@ -82,8 +75,6 @@
                         </fieldset>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
                 <div class="panel panel-flat">
                     <div class="panel-body">
                         <fieldset class="content-group">
@@ -92,7 +83,6 @@
                         </fieldset>
                     </div>
                 </div>
->>>>>>> hieu/update-feature
             </div>
         </div>
         @include('backend.components.button')
