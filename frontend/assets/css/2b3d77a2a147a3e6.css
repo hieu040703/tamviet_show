@@ -1,0 +1,48 @@
+.product-card .discount {
+    position: absolute;
+    left: -.25rem;
+    top: .5rem;
+    display: block;
+    padding-bottom: .25rem
+}
+
+.product-card .discount:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    margin-top: 1px;
+    height: 100%;
+    width: .25rem;
+    border-bottom-left-radius: calc(var(--radius) - 4px);
+    border-top-left-radius: calc(var(--radius) - 4px);
+    background-color: hsl(var(--pink-700))
+}
+
+.product-card .discount .discount-label {
+    z-index: 1;
+    position: relative;
+    height: 1.25rem;
+    white-space: nowrap;
+    border-radius: calc(var(--radius) - 4px);
+    border-bottom-left-radius: 0;
+    background-color: hsl(var(--pink-600));
+    padding: .25rem .5rem;
+    font-size: .75rem;
+    line-height: 1rem;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255/var(--tw-text-opacity))
+}
+
+.product-card-image {
+    position: relative;
+    padding-top: 100%
+}
+
+.product-card-image>* {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}

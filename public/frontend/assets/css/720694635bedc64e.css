@@ -4976,7 +4976,10 @@ body {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255/var(--tw-bg-opacity))
 }
-
+.bg-white-1 {
+    --tw-bg-opacity: 1;
+    background-color: #f7f7f7;
+}
 .bg-white\/50 {
     background-color: hsla(0, 0%, 100%, .5)
 }

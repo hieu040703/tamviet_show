@@ -330,6 +330,14 @@
     color: white;
 }
 
+.p-icon-header svg,
+.p-icon-header svg path {
+    fill: hsl(216.18deg 71.58% 37.25%);
+}
+.logo-mobile-header{
+    margin-left: 35%;
+}
+
 @media (max-width: 768px) {
     .tv-cart-toast {
         bottom: 110px;

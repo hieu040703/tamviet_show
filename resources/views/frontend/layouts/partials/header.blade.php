@@ -7,7 +7,7 @@
         <div class="absolute bottom-0 h-full w-full  md:static">
             <picture>
                 <img
-                    class="absolute bottom-0 h-full w-full bg-primary-500 object-cover object-bottom data-[rank='default']:bottom-0 md:bottom-0 md:hidden"
+                    class="absolute bottom-0 h-[60px] w-full bg-primary-500 object-cover object-bottom data-[rank='default']:bottom-0 md:bottom-0 md:hidden"
                     src="{{asset('frontend/assets/image/giaohang/giao-hang.png')}}"
                     alt="Customer ranking" loading="eager" width="500" height="500"
                     srcset="{{asset('frontend/assets/image/giaohang/giao-hang.png')}}"
@@ -47,7 +47,7 @@
                             </div>
                             @include('frontend.components.search-box')
                             <div id="fixedNav"
-                                 class="top-0 z-10 flex w-full min-w-[340px] flex-1 flex-row-reverse gap-3 px-4 py-3 text-right transition-colors max-md:bg-primary-500 md:static md:mx-0 md:min-w-[286px] md:flex-row md:pb-0 md:pl-1.5 md:pr-0 md:pt-0 md:mt-4">
+                                 class="top-0 z-10 flex w-full min-w-[340px] flex-1 flex-row-reverse gap-3 px-4 py-3 text-right transition-colors md:bg-[var(--background-1)] md:static md:mx-0 md:min-w-[286px] md:flex-row md:pb-0 md:pl-1.5 md:pr-0 md:pt-0 md:mt-4">
                                 @include('frontend.components.cart-icon-desktop')
                                 @include('frontend.components.header.account-area')
                             </div>

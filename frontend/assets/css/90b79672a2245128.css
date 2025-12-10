@@ -1,0 +1,3 @@
+.is-loading>:not(.loading-icon) {
+    opacity: 0
+}
