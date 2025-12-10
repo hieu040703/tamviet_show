@@ -318,9 +318,6 @@
     color: #fff;
 }
 
-.btn-login:hover .p-icon {
-    color: hsl(216.18deg 71.58% 37.25%);
-}
 
 .bg-single {
     background-color: hsl(216.18deg 71.58% 37.25%);
@@ -329,7 +326,9 @@
 #openLogin, #openRegister {
     color: white;
 }
-
+.openLogin, .openRegister {
+    color: hsl(216.18deg 71.58% 37.25%)!important;
+}
 .p-icon-header svg,
 .p-icon-header svg path {
     fill: hsl(216.18deg 71.58% 37.25%);
@@ -354,5 +353,14 @@
 
     .mb-mobile {
         margin-bottom: 6rem;
+    }
+    .button-header .p-icon {
+        color: #111;
+    }
+    .mb-mobile {
+        margin-bottom: 6rem;
+    }
+    button .p-icon {
+        color: #fff;
     }
 }

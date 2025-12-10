@@ -11,14 +11,6 @@
                 <?php echo e($widget->name ?? 'Thương hiệu nổi bật'); ?>
 
             </h4>
-            <div>
-                <a
-                    class="relative flex justify-center border-0 bg-transparent text-sm font-normal text-hyperLink outline-none md:hover:text-primary-600 md:text-base"
-                    href="/thuong-hieu"
-                >
-                    Xem thêm
-                </a>
-            </div>
         </div>
         <div class="w-full">
             <div class="relative flex h-full w-full items-center">

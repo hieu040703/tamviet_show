@@ -14,14 +14,6 @@
 
                     </h4>
                 </div>
-                <div>
-                    <a
-                        class="relative flex justify-center border-0 bg-transparent text-sm font-normal text-hyperLink outline-none md:hover:text-primary-600 md:text-base"
-                        href="#"
-                    >
-                        Xem thêm
-                    </a>
-                </div>
             </div>
             <div class="md:-ml-1">
                 <div class="relative flex h-full w-full items-center">

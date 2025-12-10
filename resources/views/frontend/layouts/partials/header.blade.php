@@ -40,7 +40,7 @@
                         <div class="flex w-full flex-col-reverse items-start md:flex-row">
                             <div class="hidden flex-shrink-0 md:flex md:w-[187px] md:justify-center">
                                 <a href="/">
-                                    <img class="w-auto h-[70px] cursor-pointer"
+                                    <img class="w-auto h-[72px] cursor-pointer"
                                          src="{{ asset('storage/' . $logo) }}"
                                          alt="Tâm việt logo">
                                 </a>
