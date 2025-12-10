@@ -18,7 +18,7 @@
                                                 class="relative flex justify-center outline-none font-semibold focus:ring-primary-300 text-sm bg-transparent data-[size=sm]:text-sm border-0 hover:bg-0 hover:text-primary-500 focus:text-primary-500 h-6 p-0 text-neutral-900"
                                             >
                                                 <span
-                                                    class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
+                                                    class="p-icon-1 inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
                                                     <svg
                                                         viewBox="0 0 24 24"
                                                         fill="none"
@@ -58,7 +58,7 @@
                                 <div class="mt-5">
                                     <div class="flex items-center justify-center gap-2 text-neutral-700">
                                         <span
-                                            class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6 text-neutral-700">
+                                            class="p-icon-1 inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6 text-neutral-700">
                                             <svg
                                                 viewBox="0 0 24 24"
                                                 fill="none"

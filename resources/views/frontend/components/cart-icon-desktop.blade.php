@@ -6,7 +6,7 @@
     <a href="{{ route('cart.index') }}"
        class="relative flex h-9 w-9 items-center justify-center rounded-full border-0 bg-white-1 p-2 md:!h-10 md:!w-10 md:bg-transparent md:text-white hover:md:bg-transparent hover:md:text-white focus:md:text-white">
         <span
-            class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
+            class="p-icon-1 inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fill-rule="evenodd" clip-rule="evenodd"

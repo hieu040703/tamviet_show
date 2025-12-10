@@ -310,7 +310,7 @@
     padding: 6px 8px;
 }
 
-.p-icon {
+.p-icon-1 {
     color: hsl(216.18deg 71.58% 37.25%);
 }
 
@@ -328,7 +328,7 @@
 }
 
 .openLogin, .openRegister {
-    color: hsl(216.18deg 71.58% 37.25%)!important;
+    color: hsl(216.18deg 71.58% 37.25%) !important;
 }
 
 .p-icon-header svg,
@@ -353,14 +353,20 @@
     #mainNav.box-search-fixed-top input[type="search"] {
         width: 265px;
     }
+
     .button-header .p-icon {
         color: #111;
     }
+
     .mb-mobile {
         margin-bottom: 6rem;
     }
+
     button .p-icon {
         color: #fff;
     }
 
+    .bottom-header .p-icon {
+        color: white;
+    }
 }
