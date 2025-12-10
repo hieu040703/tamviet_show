@@ -16,7 +16,7 @@
             <div class="grid grid-cols-2 gap-2 md:grid-cols-5 md:gap-4">
                 <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php
-                        $image = $item->image ? asset('storage/'.$item->image) : asset('backend/img/not-found.jpg');
+                        $image = $item->icon ? asset('storage/'.$item->icon) : asset('backend/img/not-found.jpg');
                     ?>
 
                     <a
