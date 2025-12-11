@@ -78,6 +78,7 @@ class ProductController extends Controller
             $this->handleUploads($request, $data, 'products', null, 'icon');
             $this->handleAlbumUploads($request, $data, 'products');
             $product = Product::create($data);
+            $product->categories()->sync($request->category_ids);
             RouterHelper::sync('products', $product->id, $data['canonical'] ?? null, $product->name);
             $this->generateQrForModel('product.show', $product);
             return redirect()->route('admin.products.index')->with('success', 'Tạo sản phẩm + QR thành công');
@@ -91,13 +92,14 @@ class ProductController extends Controller
         $data['sidebar'] = 'Product';
         $data['sidebar_child'] = 'Product';
         $data['title'] = 'Sửa Sản Phẩm';
-        $data['product'] = Product::findOrFail($id);
+        $data['product'] = Product::with('categories')->findOrFail($id);
         $data['id'] = $id;
         $data['categories'] = Category::orderBy('name')->get();
         $data['brands'] = Brand::orderBy('name')->get();
         $data['model'] = 'Product';
         return view('backend.products.form', $data);
     }
+
 
     public function update(ProductRequest $request, $id)
     {
@@ -108,6 +110,7 @@ class ProductController extends Controller
             $this->handleUploads($request, $data, 'products', $product, 'icon');
             $this->handleAlbumUploads($request, $data, 'products', $product);
             $product->update($data);
+            $product->categories()->sync($request->category_ids);
             RouterHelper::sync('products', $product->id, $data['canonical'] ?? null, $product->name);
             $this->generateQrForModel('product.show', $product);
             return redirect()->route('admin.products.index')->with('success', 'Cập nhật sản phẩm + QR thành công');

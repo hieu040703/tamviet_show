@@ -8,8 +8,12 @@ use App\Models\PostCatalogue;
 use App\Models\Post;
 
 if (!function_exists('widget_items')) {
-    function widget_items(string $keyword): array
+    function widget_items(?string $keyword = null, int $limit = 20): array
     {
+        if (empty($keyword)) {
+            return ['widget' => null, 'items' => collect()];
+        }
+
         $widget = Widget::where('keyword', $keyword)
             ->where('status', 1)
             ->first();
@@ -47,6 +51,7 @@ if (!function_exists('widget_items')) {
             ->whereIn('id', $ids)
             ->where('status', 1)
             ->orderByRaw('FIELD(id,' . $idList . ')')
+            ->take($limit)
             ->get();
 
         $result['items'] = $items;
@@ -54,4 +59,3 @@ if (!function_exists('widget_items')) {
         return $result;
     }
 }
-

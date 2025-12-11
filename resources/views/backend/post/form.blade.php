@@ -94,6 +94,12 @@
                                   'label' => 'Nổi bật',
                                   'value' => $post->is_featured ?? 1,
                               ])
+                            <div class="form-group {{ $errors->first('published_at') ? 'has-error' : '' }}">
+                                <label class="control-label text-semibold">Ngày xuất bản</label>
+                                <input type="datetime-local" name="published_at" class="form-control"
+                                       value="{{ old('published_at', $post->published_at ?? '') }}">
+                                <span class="help-block">{{ $errors->first('published_at') }}</span>
+                            </div>
                         </fieldset>
                     </div>
                 </div>

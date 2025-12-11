@@ -40,6 +40,12 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id')->where('status', 1);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'category_product');
+    }
+
+
     public function breadcrumbTrail()
     {
         $trail = collect();

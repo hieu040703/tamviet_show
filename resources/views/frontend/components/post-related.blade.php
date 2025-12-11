@@ -10,8 +10,6 @@
             @php
                 $suffix = config('apps.general.suffix', '');
             @endphp
-
-            {{-- MOBILE: list dọc --}}
             <div class="md:hidden">
                 @foreach($relatedPosts as $item)
                     @php
@@ -58,7 +56,7 @@
                             </a>
 
                             <div class="[&_a:not(.ignore-css_a)]:text-hyperLink line-clamp-2 text-sm">
-                                <p>{{ \Illuminate\Support\Str::limit(strip_tags($item->description), 200) }}</p>
+                                <p>{!! \Illuminate\Support\Str::limit(strip_tags($item->description), 200) !!}</p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +114,7 @@
                                             </a>
 
                                             <div class="[&_a:not(.ignore-css_a)]:text-hyperLink line-clamp-2 text-sm">
-                                                <p>{{ \Illuminate\Support\Str::limit(strip_tags($item->description), 200) }}</p>
+                                                <p>{!! \Illuminate\Support\Str::limit(strip_tags($item->description), 200) !!}</p>
                                             </div>
                                         </div>
                                     </div>

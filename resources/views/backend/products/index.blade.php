@@ -109,30 +109,24 @@
                                                 </div>
                                                 <div class="category text-xs mt-1">
                                                     <span class="text-danger font-semibold">Nhóm danh mục: </span>
-                                                    @if($product->categories && $product->categories->count())
-                                                        @foreach($product->categories as $idx => $category)
-                                                            <a href="#"
-                                                               title="{{ $category->name }}">
-                                                                {{ $category->name }}@if(!$loop->last)
-                                                                    ,
-                                                                @endif
-                                                            </a>
-                                                        @endforeach
+                                                    @if(isset($product->category->name))
+                                                        <a href="#"
+                                                           title="{{ $product->category->name }}">
+                                                            {{ $product->category->name }}@if(!$loop->last)
+                                                                ,
+                                                            @endif
+                                                        </a>
                                                     @else
                                                         <span>Chưa gán danh mục</span>
                                                     @endif
                                                 </div>
                                                 <div class="brand text-xs mt-1">
                                                     <span class="text-danger font-semibold">Nhóm thương hiệu: </span>
-                                                    @if($product->brands && $product->brands->count())
-                                                        @foreach($product->brands as $brand)
-                                                            <a href="#"
-                                                               title="{{ $brand->name }}">
-                                                                {{ $brand->name }}@if(!$loop->last)
-                                                                    ,
-                                                                @endif
-                                                            </a>
-                                                        @endforeach
+                                                    @if(isset($product->brand))
+                                                        <a href="#"
+                                                           title="{{ $product->brand->name }}">
+                                                            {{ $product->brand->name }}
+                                                        </a>
                                                     @else
                                                         <span>Chưa gán thương hiệu</span>
                                                     @endif

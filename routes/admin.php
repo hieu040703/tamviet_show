@@ -14,7 +14,6 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BannerItemController;
 use App\Http\Controllers\Admin\WidgetController;
-use App\Http\Controllers\Admin\WidgetItemController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SystemController;
@@ -136,16 +135,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/update/{widget}', [WidgetController::class, 'update'])->name('widgets.update')->middleware(['auth:admin', 'permission:edit_widget']);
         Route::delete('/{id}', [WidgetController::class, 'delete'])->name('widgets.delete')->middleware(['auth:admin', 'permission:delete_widget']);
     });
-
-    Route::group(['prefix' => 'widget-items'], function () {
-        Route::get('/create/{widget}', [WidgetItemController::class, 'create'])->name('widget_items.create')->middleware(['auth:admin', 'permission:create_widget_item']);
-        Route::post('/store/{widget}', [WidgetItemController::class, 'store'])->name('widget_items.store')->middleware(['auth:admin', 'permission:create_widget_item']);
-        Route::get('/edit/{id}', [WidgetItemController::class, 'edit'])->name('widget_items.edit')->middleware(['auth:admin', 'permission:edit_widget_item']);
-        Route::post('/update/{id}', [WidgetItemController::class, 'update'])->name('widget_items.update')->middleware(['auth:admin', 'permission:edit_widget_item']);
-        Route::post('/delete/{id}', [WidgetItemController::class, 'destroy'])->name('widget_items.destroy')->middleware(['auth:admin', 'permission:delete_widget_item']);
-
-        Route::get('/search', [WidgetItemController::class, 'search'])->name('widget_items.search')->middleware(['auth:admin', 'permission:view_widget_item']);
-    });
+    
 
     Route::group(['prefix' => 'menus'], function () {
         Route::get('/', [MenuController::class, 'index'])->name('menus.index')->middleware(['auth:admin', 'permission:view_menu']);
