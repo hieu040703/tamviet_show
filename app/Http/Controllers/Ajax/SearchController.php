@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
-// Models của bạn — đổi namespace nếu khác
+use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
@@ -19,94 +18,17 @@ class SearchController extends Controller
     {
         try {
             $keyword = trim($request->query('keyword', ''));
-
             if ($keyword === '') {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Keyword empty',
-                ], 400);
+                return response()->json(['status' => 'error', 'message' => 'Vui lòng nhập từ khóa tìm kiếm'], 400);
             }
 
-            // Số lượng tối đa trả về mỗi loại (tùy chỉnh)
             $limit = 6;
 
-            // Tìm sản phẩm
-            $products = Product::query()
-                ->where(function ($q) use ($keyword) {
-                    $q->where('name', 'like', "%{$keyword}%")
-                        ->orWhere('sku', 'like', "%{$keyword}%")
-                        ->orWhere('slug', 'like', "%" . Str::slug($keyword) . "%");
-                })
-                ->take($limit)
-                ->get()
-                ->map(function ($p) {
-                    return [
-                        'id'    => $p->id,
-                        'name'  => $p->name,
-                        'url'   => $p->url ?? route('product.show', [$p->id]),
-                        'image' => $this->getImageUrl($p),
-                    ];
-                });
-
-            // Tìm danh mục
-            $categories = Category::query()
-                ->where('name', 'like', "%{$keyword}%")
-                ->take($limit)
-                ->get()
-                ->map(function ($c) {
-                    return [
-                        'id'   => $c->id,
-                        'name' => $c->name,
-                        'url'  => $c->url ?? route('category.show', [$c->id]),
-                        'image'=> $this->getImageUrl($c),
-                    ];
-                });
-
-            // Tìm thương hiệu
-            $brands = Brand::query()
-                ->where('name', 'like', "%{$keyword}%")
-                ->take($limit)
-                ->get()
-                ->map(function ($b) {
-                    return [
-                        'id'   => $b->id,
-                        'name' => $b->name,
-                        'url'  => $b->url ?? route('brand.show', [$b->id]),
-                        'image'=> $this->getImageUrl($b),
-                    ];
-                });
-
-            // Nhóm bài viết (post catalogues)
-            $postCatalogues = PostCatalogue::query()
-                ->where('name', 'like', "%{$keyword}%")
-                ->take($limit)
-                ->get()
-                ->map(function ($pc) {
-                    return [
-                        'id'   => $pc->id,
-                        'name' => $pc->name,
-                        'url'  => $pc->url ?? route('post.catalogue', [$pc->id]),
-                        'image'=> $this->getImageUrl($pc),
-                    ];
-                });
-
-            // Bài viết
-            $posts = Post::query()
-                ->where(function ($q) use ($keyword) {
-                    $q->where('title', 'like', "%{$keyword}%")
-                        ->orWhere('excerpt', 'like', "%{$keyword}%")
-                        ->orWhere('slug', 'like', "%" . Str::slug($keyword) . "%");
-                })
-                ->take($limit)
-                ->get()
-                ->map(function ($post) {
-                    return [
-                        'id'   => $post->id,
-                        'name' => $post->title,
-                        'url'  => $post->url ?? route('post.show', [$post->id]),
-                        'image'=> $this->getImageUrl($post),
-                    ];
-                });
+            $products = $this->queryModel(Product::class, $keyword, $limit);
+            $categories = $this->queryModel(Category::class, $keyword, $limit);
+            $brands = $this->queryModel(Brand::class, $keyword, $limit);
+            $postCatalogues = $this->queryModel(PostCatalogue::class, $keyword, $limit);
+            $posts = $this->queryModel(Post::class, $keyword, $limit);
 
             return response()->json([
                 'status' => 'success',
@@ -119,7 +41,6 @@ class SearchController extends Controller
                 ],
             ]);
         } catch (\Throwable $e) {
-            // Ghi log chi tiết để bạn test
             \Log::error('Search API Exception: '.$e->getMessage(), [
                 'exception' => get_class($e),
                 'message' => $e->getMessage(),
@@ -128,39 +49,96 @@ class SearchController extends Controller
                 'trace' => $e->getTraceAsString(),
                 'keyword' => $request->query('keyword'),
             ]);
-
-            // Nếu APP_DEBUG=true trả message lỗi chi tiết, ngược lại trả generic
-            $message = config('app.debug') ? $e->getMessage() : 'Internal Server Error';
-
-            return response()->json([
-                'status' => 'error',
-                'message' => $message,
-            ], 500);
+            $msg = config('app.debug') ? $e->getMessage() : 'Lỗi hệ thống, vui lòng thử lại sau';
+            return response()->json(['status' => 'error', 'message' => $msg], 500);
         }
     }
 
-    /**
-     * Lấy url ảnh phù hợp — thay đổi tùy model/project của bạn.
-     */
+    protected function queryModel($modelClass, $keyword, $limit)
+    {
+        return $modelClass::query()
+            ->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                    ->orWhere('canonical', 'like', "%{$keyword}%");
+            })
+            ->take($limit)
+            ->get()
+            ->map(fn($m) => $this->buildResult($m));
+    }
+
+    protected function buildResult($model)
+    {
+        return [
+            'id' => $model->id,
+            'name' => $model->name,
+            'url' => $this->safeRoute($this->detectRoute($model), [$model->id]) ?? ($model->url ?? null),
+            'canonical' => $this->buildCanonical($model),
+            'image' => $this->getImageUrl($model),
+        ];
+    }
+
+    protected function detectRoute($model)
+    {
+        if ($model instanceof Product) return 'product.show';
+        if ($model instanceof Category) return 'category.show';
+        if ($model instanceof Brand) return 'brand.show';
+        if ($model instanceof PostCatalogue) return 'post.catalogue';
+        if ($model instanceof Post) return 'post.show';
+        return null;
+    }
+
+    protected function buildCanonical($model)
+    {
+        if (isset($model->canonical) && $model->canonical) {
+            $c = $model->canonical;
+            $c = preg_replace('#(^https?://[^/]+)#i', '', $c);
+            $c = '/' . ltrim($c, '/');
+            $c = preg_replace('/\.html$/i', '', $c);
+            return $c;
+        }
+
+        if (isset($model->name) && $model->name) {
+            $s = Str::slug($model->name);
+        } else {
+            $s = 'item-' . ($model->id ?? time());
+        }
+
+        $s = '/' . ltrim($s, '/');
+        $s = preg_replace('/\.html$/i', '', $s);
+        return $s;
+    }
+
     protected function getImageUrl($model)
     {
-        // Nếu model có field 'image' và là đường dẫn tương đối
         if (isset($model->image) && $model->image) {
-            // nếu đã là URL đầy đủ thì trả về luôn
             if (Str::startsWith($model->image, ['http://', 'https://'])) {
                 return $model->image;
             }
-            // ngược lại ghép base url hoặc storage
-            return asset($model->image);
+            $path = ltrim($model->image, '/');
+            if (!Str::startsWith($path, 'storage/')) {
+                $path = 'storage/' . $path;
+            }
+            return asset($path);
         }
 
-        // Có thể có method helper getFirstMediaUrl (nếu dùng spatie/media-library)
         if (method_exists($model, 'getFirstMediaUrl')) {
             $url = $model->getFirstMediaUrl();
             if ($url) return $url;
         }
 
-        // Fallback: trả null -> frontend sẽ hiển thị placeholder
         return null;
+    }
+
+    protected function safeRoute($name, $params = [])
+    {
+        if (!$name || !Route::has($name)) {
+            return null;
+        }
+        try {
+            return route($name, $params);
+        } catch (\Throwable $e) {
+            \Log::warning('safeRoute failed for '.$name, ['message'=>$e->getMessage()]);
+            return null;
+        }
     }
 }

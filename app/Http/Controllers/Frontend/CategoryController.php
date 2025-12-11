@@ -149,8 +149,13 @@ class CategoryController extends Controller
     protected function getCategoryProductsQuery(Category $category): Builder
     {
         return Product::query()
-            ->where('category_id', $category->id)
-            ->where('status', 1);
+            ->where('status', 1)
+            ->where(function ($q) use ($category) {
+                $q->where('category_id', $category->id)
+                    ->orWhereHas('categories', function ($qc) use ($category) {
+                        $qc->where('categories.id', $category->id);
+                    });
+            });
     }
 
     protected function buildFilteredProductsQuery(Category $category, Request $request): Builder

@@ -69,7 +69,7 @@
                             </li>
                             <li class="text-sm text-neutral-900">
                                 Nếu sau 24 giờ bạn chưa nhận được cuộc gọi, hãy liên hệ trực tiếp qua
-                                hotline <strong>0921681688</strong> để được hỗ trợ.
+                                hotline <strong>{{$system['contact_hotline'] ?? '092.686.5566'}}</strong> để được hỗ trợ.
                             </li>
                         </ul>
                     </div>
