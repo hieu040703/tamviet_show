@@ -24,6 +24,10 @@ class Post extends Model
         'seo_keyword',
         'seo_description',
         'canonical',
+        'published_at'
+    ];
+    protected $casts = [
+        'published_at' => 'datetime',
     ];
 
     public function catalogue()

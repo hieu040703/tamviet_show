@@ -45,7 +45,7 @@
                                            name="phone"
                                            class="form-control"
                                            placeholder="Nhập số điện thoại"
-                                           value="{{ old('phone', $contactRequest->phone) }}">
+                                           value="{{ old('phone', $contactRequest->phone) }}" disabled>
                                     <div class="form-control-feedback">
                                         @if($errors->first('phone'))
                                             <i class="icon-notification2"></i>

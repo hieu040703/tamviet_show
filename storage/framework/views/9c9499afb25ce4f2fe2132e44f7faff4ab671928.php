@@ -9,7 +9,7 @@
             <?php echo $__env->make('frontend.components.deal',compact('homeProductCategories'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php echo $__env->make('frontend.components.featured-brands',compact('homeProductBrands'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php echo $__env->make('frontend.components.featured-categories',compact('homeCategories'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php echo $__env->make('frontend.components.disease-lookup', compact('healthCategories'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('frontend.components.disease-lookup', compact('healthCategories','featuredArticle'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

@@ -10,7 +10,7 @@
             @include('frontend.components.deal',compact('homeProductCategories'))
             @include('frontend.components.featured-brands',compact('homeProductBrands'))
             @include('frontend.components.featured-categories',compact('homeCategories'))
-            @include('frontend.components.disease-lookup', compact('healthCategories'))
+            @include('frontend.components.disease-lookup', compact('healthCategories','featuredArticle'))
         </div>
     </div>
 @endsection

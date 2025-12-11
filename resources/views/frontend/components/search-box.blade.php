@@ -34,7 +34,7 @@
                         <button data-size="sm" type="button"
                                 class="flex justify-center outline-none font-semibold focus:ring-primary-300 text-sm bg-transparent data-[size=sm]:text-sm border-0 hover:bg-0 hover:text-primary-500 focus:text-primary-500 absolute left-0 top-0 z-10 h-10 px-2 py-[10px] text-neutral-900">
                             <span
-                                class="p-icon inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
+                                class="p-icon-1 inline-flex align-[-0.125em] justify-center max-h-full max-w-full w-6 h-6">
                                 <svg viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"

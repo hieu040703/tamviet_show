@@ -41,6 +41,7 @@ class ProductRequest extends FormRequest
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'brand_id' => ['required', 'integer', 'exists:brands,id'],
             'note' => ['nullable', 'string'],
+            'category_ids.*' => 'exists:categories,id',
         ];
     }
 

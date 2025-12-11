@@ -79,13 +79,13 @@
                     <div class="panel-body">
                         <fieldset class="content-group">
                             <legend class="text-bold">THÔNG TIN CHUNG</legend>
-                            <div class="form-group @if($errors->first('category_id')) has-error @endif">
+                            <div class="form-group {{ $errors->first('category_id') ? 'has-error' : '' }}">
                                 <label class="control-label text-semibold">Danh mục</label>
                                 <select name="category_id" class="form-control select2">
                                     <option value="">-- Chọn danh mục --</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}"
-                                            {{ (string)$category->id === (string)old('category_id', $product->category_id ?? '') ? 'selected' : '' }}>
+                                            {{ (string)$category->id === (string) old('category_id', $product->category_id ?? '') ? 'selected' : '' }}>
                                             {{ $category->name }}
                                         </option>
                                     @endforeach
@@ -96,6 +96,24 @@
                                     @endif
                                 </div>
                                 <span class="help-block">{{ $errors->first('category_id') }}</span>
+                            </div>
+                            @php
+                                $selectedCategoryIds = collect(old('category_ids', $product->categories->pluck('id')->toArray() ?? []))
+                                    ->map(fn($v) => (string)$v)
+                                    ->all();
+                            @endphp
+                            <div class="form-group {{ $errors->first('category_ids') ? 'has-error' : '' }}">
+                                <label class="control-label text-semibold">Danh mục (chọn nhiều)</label>
+                                <select name="category_ids[]" class="form-control select2" multiple
+                                        data-placeholder="-- Chọn Danh mục (chọn nhiều) --">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ in_array((string)$category->id, $selectedCategoryIds) ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="help-block">{{ $errors->first('category_ids') }}</span>
                             </div>
                             <div class="form-group @if($errors->first('brand_id')) has-error @endif">
                                 <label class="control-label text-semibold">Thương hiệu</label>

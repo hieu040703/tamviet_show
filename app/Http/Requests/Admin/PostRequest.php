@@ -50,6 +50,7 @@ class PostRequest extends FormRequest
             'seo_keyword' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string'],
             'post_catalogue_id' => ['required', 'integer', 'exists:post_catalogues,id'],
+            'published_at' => ['nullable', 'date'],
         ];
     }
 
@@ -65,6 +66,7 @@ class PostRequest extends FormRequest
 
             'canonical.required' => 'Đường dẫn không đươc để trống',
             'canonical.unique' => 'Đường dẫn đã tồn tại',
+            'published_at.date' => 'Trường ngày xuất bản không hợp lệ',
         ];
     }
 

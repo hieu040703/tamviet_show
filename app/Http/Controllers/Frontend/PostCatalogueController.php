@@ -78,7 +78,7 @@ class PostCatalogueController extends Controller
                     ->orWhere('description', 'like', "%{$k}%");
             });
         }
-        return $query->orderByDesc('id')->paginate($this->limit)->appends($request->query());
+        return $query->orderByRaw('COALESCE(published_at, created_at) DESC')->paginate($this->limit)->appends($request->query());
     }
 
     protected function ajaxResponse($posts)

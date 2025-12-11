@@ -36,7 +36,7 @@ class PostController extends Controller
     protected function findPost(int $id): Post
     {
         return Post::with('catalogue')
-            ->select('id', 'name', 'image', 'description', 'content', 'canonical', 'post_catalogue_id', 'created_at')
+            ->select('id', 'name', 'image', 'description', 'content', 'canonical', 'post_catalogue_id', 'created_at','published_at')
             ->findOrFail($id);
     }
 
@@ -51,7 +51,7 @@ class PostController extends Controller
             ->where('status', 1)
             ->where('post_catalogue_id', $post->post_catalogue_id)
             ->where('id', '!=', $post->id)
-            ->orderByDesc('id')
+            ->orderByRaw('COALESCE(published_at, created_at) DESC')
             ->limit($limit)
             ->get();
     }
