@@ -315,7 +315,7 @@
                         <div
                             class="m-auto block aspect-square mb-3 md:mb-4 w-[calc(120rem/16)] h-[calc(120rem/16)] md:w-[calc(190rem/16)] md:h-[calc(190rem/16)]">
                             <img class="max-h-[100%] max-w-[100%] object-contain"
-                                 src="https://prod-cdn.pharmacity.io/e-com/images/static-website/20240706155710-0-empty-cart.png"
+                                 src="{{asset('frontend/assets/image/cart/empty-cart.png')}}"
                                  alt="" loading="lazy" width="500" height="500"></div>
                         <div class="grid justify-items-center gap-2">
                             <div class="text-base font-semibold text-neutral-900"><span>Chưa có sản phẩm nào</span>
