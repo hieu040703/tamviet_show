@@ -269,9 +269,9 @@
                                     <div class="border-t border-neutral-200 pt-3 space-y-1 text-sm text-neutral-700">
                                         <p class="font-semibold">Liên hệ hỗ trợ</p>
                                         <p class="text-xs text-neutral-500">Hỗ trợ đặt hàng</p>
-                                        <a href="tel:0921681688"
+                                        <a href="tel:{{$system['contact_hotline'] ?? '092.686.5566'}}"
                                            class="text-primary-500 text-sm font-semibold hover:underline">
-                                            0921681688
+                                            {{$system['contact_hotline'] ?? '092.686.5566'}}
                                         </a>
                                     </div>
                                 </div>
