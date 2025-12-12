@@ -49,7 +49,7 @@
 
                                 <div class="w-auto relative block md:hidden">
                                     <div class="flex">
-                                        <a
+                                        <a id="open-mobile-search"
                                             class="relative flex justify-center outline-none font-semibold focus:ring-primary-300 text-sm h-9 bg-transparent data-[size=sm]:text-sm text-inherit border-0 hover:bg-0 hover:text-primary-500 focus:text-primary-500 items-center p-0"
                                             href="/tim-bai-viet?init=true">
                                             <span

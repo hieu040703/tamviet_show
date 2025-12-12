@@ -2,7 +2,8 @@
     $cartCount = $cartCount ?? \Cart::count();
 @endphp
 
-<div class="w-[62px] grid-cols-2 justify-items-end gap-2">
+<div class=" grid-cols-2 justify-items-end gap-2">
+
     <a href="{{ route('cart.index') }}"
        class="relative flex h-9 w-9 items-center justify-center rounded-full border-0 bg-white p-2 md:!h-10 md:!w-10 md:bg-transparent md:text-white hover:md:bg-transparent hover:md:text-white focus:md:text-white">
         <span
