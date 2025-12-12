@@ -32,6 +32,7 @@
     @include('frontend.components.product-modal')
     @include('frontend.components.login')
     @include('frontend.components.register')
+    @include('frontend.components.search-mobile')
 </main>
 @include('frontend.components.toast')
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

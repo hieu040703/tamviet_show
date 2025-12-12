@@ -420,6 +420,10 @@
 }
 
 @media (max-width: 768px) {
+    #searchResults {
+        display: none !important;
+    }
+
     .tv-cart-toast {
         bottom: 110px;
     }
@@ -451,5 +455,11 @@
 
     #searchResults {
         display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    #mobile-search-dialog {
+        display: none !important;
     }
 }
