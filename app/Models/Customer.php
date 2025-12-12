@@ -2,18 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Customer extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     protected $fillable = [
         'name',
         'email',
         'phone',
         'password',
+        'status',
+        'gender',
+        'birthday',
+        'address',
+    ];
+    protected $casts = [
+        'birthday' => 'date',
+        'email_verified_at' => 'datetime',
     ];
 
     protected $hidden = [
@@ -21,9 +30,6 @@ class Customer extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public function contactRequests()
     {

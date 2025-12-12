@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\WidgetController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SystemController;
+use App\Http\Controllers\Admin\CustomerController;
 
 Route::get('control', function () {
     $control = session('control');
@@ -135,7 +136,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/update/{widget}', [WidgetController::class, 'update'])->name('widgets.update')->middleware(['auth:admin', 'permission:edit_widget']);
         Route::delete('/{id}', [WidgetController::class, 'delete'])->name('widgets.delete')->middleware(['auth:admin', 'permission:delete_widget']);
     });
-    
+
 
     Route::group(['prefix' => 'menus'], function () {
         Route::get('/', [MenuController::class, 'index'])->name('menus.index')->middleware(['auth:admin', 'permission:view_menu']);
@@ -155,6 +156,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('/{id}', [ContactController::class, 'delete'])->name('contacts.delete')->middleware(['auth:admin', 'permission:delete_contact']);
     });
 
+    Route::group(['prefix' => 'customers'], function () {
+        Route::get('/', [CustomerController::class, 'index'])->name('customers.index')->middleware(['auth:admin', 'permission:view_customer']);
+        Route::get('/create', [CustomerController::class, 'create'])->name('customers.create')->middleware(['auth:admin', 'permission:create_customer']);
+        Route::post('/', [CustomerController::class, 'store'])->name('customers.store')->middleware(['auth:admin', 'permission:create_customer']);
+        Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customers.edit')->middleware(['auth:admin', 'permission:edit_customer']);
+        Route::put('/update/{id}', [CustomerController::class, 'update'])->name('customers.update')->middleware(['auth:admin', 'permission:edit_customer']);
+        Route::delete('/{id}', [CustomerController::class, 'delete'])->name('customers.delete')->middleware(['auth:admin', 'permission:delete_customer']);
+    });
     Route::group(['prefix' => '/system'], function () {
         Route::get('/', [SystemController::class, 'index'])->name('system.index');
         Route::post('create', [SystemController::class, 'store'])->name('system.store');

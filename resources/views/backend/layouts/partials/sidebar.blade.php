@@ -106,6 +106,14 @@
                             </a>
                         </li>
                     @endif
+                    @if($admin && $admin->hasPermission('view_customer'))
+                        <li class="{{ isset($sidebar) && $sidebar == 'Customer' ? 'active' : '' }}">
+                            <a href="{{ route('admin.customers.index') }}">
+                                <i class="icon-users4"></i>
+                                <span>Khách hàng</span>
+                            </a>
+                        </li>
+                    @endif
                     @if($admin && $admin->hasPermission('view_user'))
                         <li class="{{ isset($sidebar) && $sidebar == 'User' ? 'active' : '' }}">
                             <a href="{{ route('admin.users.index') }}">

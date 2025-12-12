@@ -142,7 +142,10 @@
             slidesPerView: 1,
             loop: false,
             watchOverflow: true,
-            autoplay: false,
+            autoplay: {
+                delay: 5500,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: bannerEl.querySelector('.swiper-pagination'),
                 clickable: true,
@@ -153,9 +156,6 @@
             },
             on: {
                 init(swiperInstance) {
-                    if (swiperInstance.autoplay && swiperInstance.autoplay.stop) {
-                        swiperInstance.autoplay.stop();
-                    }
                     updateNavState(swiperInstance);
                 },
                 slideChange(swiperInstance) {
@@ -165,4 +165,5 @@
         });
     });
 </script>
+
 <?php /**PATH C:\laragon\www\tamviet-ecommerce\resources\views/frontend/layouts/partials/banner.blade.php ENDPATH**/ ?>
