@@ -7,7 +7,7 @@
 <?php if($widget && $items->isNotEmpty()): ?>
     <div class="pb-4 md:container">
         <div class="block-title flex items-center p-4 md:px-0">
-            <h4 class="font-semibold flex flex-1 text-base md:text-[20px]">
+            <h4 class="p-icon-1 font-semibold flex flex-1 text-base md:text-[20px]">
                 <?php echo e($widget->name ?? 'Thương hiệu nổi bật'); ?>
 
             </h4>

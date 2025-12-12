@@ -13,7 +13,7 @@
     <div class="md:container">
         <div>
             <div class="block-title flex items-center p-4 md:px-0">
-                <h4 class="font-semibold flex flex-1 text-base md:text-[20px]">
+                <h4 class="p-icon-1 font-semibold flex flex-1 text-base md:text-[20px]">
                     {{$widget->name ?? 'Tin tức & Sức khỏe'}}
                 </h4>
             </div>
@@ -26,7 +26,7 @@
                         <div class="swiper-wrapper">
                             @foreach($catalogues as $catalogue)
                                 <div class="swiper-slide mr-4 !w-auto last:mr-2">
-                                    <a class="relative flex justify-center outline-none font-semibold bg-neutral-200 border-0 hover:bg-neutral-300 focus:ring-neutral-300 text-neutral-900 text-sm px-4 py-2 h-9 items-center rounded-full"
+                                    <a class="p-icon-1 relative flex justify-center outline-none font-semibold bg-neutral-200 border-0 hover:bg-neutral-300 focus:ring-neutral-300 text-neutral-900 text-sm px-4 py-2 h-9 items-center rounded-full"
                                        href="{{router_link('post_catalogue',$catalogue->id)}}">
                                         {{$catalogue->name ?? ''}}
                                     </a>
@@ -110,22 +110,4 @@
         @endif
 
     </div>
-    @if(!empty($intro))
-        <div>
-            <div class="bg-neutral-100 h-3"></div>
-            <div class="container">
-                <div class="py-4">
-                    <div class="text-sm [&_a:not(.ignore-css_a)]:text-hyperLink">
-                        <h2>
-                        <span style="font-size: 22px;">
-                            <b>Giới thiệu Tâm Việt</b>
-                        </span>
-                        </h2>
-                        {!! $intro !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
 </div>

@@ -82,6 +82,14 @@
                             </a>
                         </li>
                     @endif
+                    @if($admin && $admin->hasPermission('view_video'))
+                        <li class="{{ isset($sidebar) && $sidebar == 'Video' ? 'active' : '' }}">
+                            <a href="{{ route('admin.videos.index') }}">
+                                <i class="icon-video-camera"></i>
+                                <span>Quản lý Video</span>
+                            </a>
+                        </li>
+                    @endif
                     @if($admin && $admin->hasPermission('view_widget'))
                         <li class="{{ (isset($sidebar) && $sidebar == 'Widget') ? 'active' : '' }}">
                             <a href="{{ route('admin.widgets.index') }}">
@@ -103,6 +111,14 @@
                             <a href="{{ route('admin.contacts.index') }}">
                                 <i class="icon-cart2"></i>
                                 <span>Liên hệ</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($admin && $admin->hasPermission('view_customer'))
+                        <li class="{{ isset($sidebar) && $sidebar == 'Customer' ? 'active' : '' }}">
+                            <a href="{{ route('admin.customers.index') }}">
+                                <i class="icon-users4"></i>
+                                <span>Khách hàng</span>
                             </a>
                         </li>
                     @endif

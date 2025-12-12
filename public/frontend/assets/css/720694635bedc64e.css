@@ -1892,7 +1892,9 @@ body {
 .h-\[280px\] {
     height: 280px
 }
-
+.h-\[300px\] {
+    height: 300px
+}
 .h-\[28px\] {
     height: 28px
 }
@@ -12105,7 +12107,9 @@ input[type=search] {
     .lg\:mr-5 {
         margin-right: 1.25rem
     }
-
+    .lg\:mr-6 {
+        margin-right: 2rem !important;
+    }
     .lg\:block {
         display: block
     }

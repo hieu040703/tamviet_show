@@ -102,6 +102,7 @@
                         }
 
                         $moduleLabels = [
+                             'videos'        => 'Videos',
                             'products'        => 'Sản phẩm',
                             'categories'      => 'Danh mục',
                             'brands'          => 'Thương hiệu',
@@ -120,6 +121,11 @@
                             <div class="form-group">
                                 <label>Chọn module</label>
                                 <div>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="model"
+                                               value="videos" {{ $currentModel == 'videos' ? 'checked' : '' }}>
+                                       Video
+                                    </label>
                                     <label class="radio-inline">
                                         <input type="radio" name="model"
                                                value="post_catalogues" {{ $currentModel == 'post_catalogues' ? 'checked' : '' }}>

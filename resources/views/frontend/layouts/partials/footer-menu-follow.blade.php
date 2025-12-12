@@ -5,13 +5,13 @@
         return mb_strtolower(trim($value), 'UTF-8');
     };
     $aboutGroup = $parents->first(function ($item) use ($normalize) {
-        return $normalize($item->name) === $normalize('Về Tâm Việt');
+        return $normalize($item->name) === $normalize('Tâm Việt');
     });
     $categoryGroup = $parents->first(function ($item) use ($normalize) {
         return $normalize($item->name) === $normalize('Danh mục');
     });
     $socialGroup = $parents->first(function ($item) use ($normalize) {
-        return $normalize($item->name) === $normalize('Theo dõi chúng tôi trên');
+        return $normalize($item->name) === $normalize('Kết nối chúng tôi');
     });
     $iconMap = [
         'facebook' => URL::asset('frontend/assets/image/social/facebook.svg'),
