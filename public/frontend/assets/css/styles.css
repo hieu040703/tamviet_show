@@ -335,11 +335,15 @@
 .p-icon-header svg path {
     fill: hsl(216.18deg 71.58% 37.25%);
 }
-
-.logo-mobile-header {
-    margin-left: 35%;
+.flex.h-full.items-center.gap-2.md\:hidden {
+    position: relative !important;
 }
 
+.logo-mobile-header {
+    position: absolute !important;
+    left: 65% !important;
+    transform: translateX(-50%) !important;
+}
 #searchResults .search-dropdown {
     background: #fff;
     border-radius: 8px;
@@ -418,7 +422,59 @@
     font-size: 0.925rem;
     color: #6b7280
 }
+.min-w-\[420px\] {
+    min-width: 420px
+}
+.border-blue-100 {
+    border-color: #dbeafe;
+}
+.h-\[95px\] {
+    height: 210px;
+}
+.brand-video {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 12px;
+}
 
+.brand-video-main {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.brand-video-main iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.brand-video-side {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.brand-video-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.brand-video-item iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    #mobile-search-dialog {
+        display: none !important;
+    }
+}
 @media (max-width: 768px) {
     #searchResults {
         display: none !important;
@@ -456,10 +512,39 @@
     #searchResults {
         display: none;
     }
-}
+    .brand-video {
+        grid-template-columns: 1fr;
+    }
 
-@media (min-width: 768px) {
-    #mobile-search-dialog {
-        display: none !important;
+    .brand-video-side {
+        display: none;
     }
 }
+.size-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.size-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+.size-btn:hover {
+    background-color: hsl(216.18deg 71.58% 37.25%);
+    border-color: hsl(216.18deg 71.58% 37.25%);
+    color: #fff;
+}
+
+.size-btn.active {
+    background-color: hsl(216.18deg 71.58% 37.25%);
+    border-color: hsl(216.18deg 71.58% 37.25%);
+    color: #fff;
+}
+

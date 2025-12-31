@@ -71,6 +71,7 @@
                     </div>
                 </div>
                 @include('backend.components.album',['model' => $product ?? null])
+                @include('backend.products.variant')
                 @include('backend.components.seo', ['model' => $product ?? null])
             </div>
 
@@ -220,4 +221,5 @@
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script src="{{ URL::asset('backend/global_assets/js/plugins/forms/selects/selectboxit.min.js') }}"></script>
     @include('backend.partials.ckeditor')
+    <script src="{{ URL::asset('backend/library/variant.js') }}"></script>
 @endpush

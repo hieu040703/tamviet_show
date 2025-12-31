@@ -23,10 +23,34 @@
                                     <div class="flex flex-col px-4 md:px-0">
                                         <div class="grid grid-cols-[1fr,calc(24rem/16)] gap-4 md:grid-cols-1 mb-2">
                                             <h1 title="{{$product->name ?? ''}}"
-                                                class="line-clamp-3 text-base font-semibold text-neutral-900 md:text-xl md:font-bold">
+                                                class="line-clamp-3 text-base font-semibold text-neutral-900 md:text-xl md:font-bold"
+                                                id="productTitle"
+                                            >
                                                 {{$product->name ?? ''}}
                                             </h1>
                                         </div>
+                                        @if(!empty($attributes))
+                                            <div class="mb-4 space-y-4">
+                                                @foreach($attributes as $attr)
+                                                    <div class="attribute-section"
+                                                         data-catalogue-id="{{ $attr['catalogue_id'] }}">
+                                                        <p class="text-sm font-bold mb-3">{{ $attr['catalogue_name'] }}</p>
+                                                        <div class="flex flex-wrap gap-2">
+                                                            @foreach($attr['values'] as $value)
+                                                                <button type="button"
+                                                                        class="size-btn px-4 py-2 border border-neutral-300 rounded hover:border-primary-500 transition-colors"
+                                                                        data-value-id="{{ $value->id }}"
+                                                                        data-value-name="{{ $value->name }}"
+                                                                        data-catalogue-name="{{ $attr['catalogue_name'] }}"
+                                                                >
+                                                                    {{$value->name}}
+                                                                </button>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
                                         <div class="flex items-center justify-between mb-3 md:mb-4">
                                             <div class="flex content-start items-center space-x-1 py-[calc(2rem/16)]">
                                                 <p class="text-sm leading-5 text-neutral-600">{{$product->sku ?? ''}}</p>

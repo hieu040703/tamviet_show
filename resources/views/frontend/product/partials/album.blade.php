@@ -5,24 +5,37 @@
         $images = [$product->image];
     }
     $totalImages = count($images);
+    $defaultAlbum = $images;
+    $getImageUrl = function($img) {
+        if (empty($img)) return asset('backend/img/not-found.jpg');
+        if (str_starts_with($img, '/storage/') || str_starts_with($img, '/uploads/')) {
+            return asset(ltrim($img, '/'));
+        }
+        return asset('storage/' . $img);
+    };
 @endphp
 
-<div>
+<script>
+    window.productAlbumData = window.productAlbumData || {};
+    window.productAlbumData.defaultAlbum = @json($defaultAlbum);
+    window.productAlbumData.productImage = "{{ $product->image ?? '' }}";
+    window.productAlbumData.variants = @json($variantsData ?? []);
+</script>
+
+<div id="productAlbumContainer">
     <div class="relative aspect-square overflow-y-hidden">
-        <div class="relative flex  w-full items-center">
-            <div
-                class="swiper custom-swiper-navigation w-full product-media-slide"
-                id="product-main-media"
-            >
-                <div class="swiper-wrapper">
+        <div class="relative flex w-full items-center">
+            <div class="swiper custom-swiper-navigation w-full product-media-slide" id="product-main-media">
+                <div class="swiper-wrapper" id="mainSwiperWrapper">
                     @if($totalImages)
                         @foreach($images as $index => $img)
                             <div class="swiper-slide relative cursor-pointer">
                                 <img
-                                    class="h-full w-full"
-                                    src="{{ asset('storage/'.$img) }}"
+                                    class="h-full w-full object-cover"
+                                    src="{{ $getImageUrl($img) }}"
                                     alt="{{ $product->name }} - {{ $index+1 }}"
                                     loading="lazy"
+                                    onerror="this.src='{{ asset('backend/img/not-found.jpg') }}'"
                                 >
                                 <div class="absolute bottom-0 z-[1] flex h-12 w-full md:h-[54px]"></div>
                             </div>
@@ -30,7 +43,7 @@
                     @else
                         <div class="swiper-slide relative cursor-pointer">
                             <img
-                                class="h-full w-full"
+                                class="h-full w-full object-cover"
                                 src="{{ asset('backend/img/not-found.jpg') }}"
                                 alt="{{ $product->name }}"
                                 loading="lazy"
@@ -54,22 +67,24 @@
         <div class="relative flex h-full w-full items-center">
             <div
                 class="swiper swiper-horizontal swiper-free-mode custom-swiper-navigation w-full product-media-slide-thumbnail swiper-thumbs"
-                id="product-thumb-media"
-            >
-                <div class="swiper-wrapper">
+                id="product-thumb-media">
+                <div class="swiper-wrapper" id="thumbSwiperWrapper">
                     @if($totalImages)
                         @foreach($images as $index => $img)
                             <div class="swiper-slide relative mr-3 aspect-square !w-[20%] cursor-pointer">
                                 <img
-                                    src="{{ asset('storage/'.$img) }}"
+                                    class="w-full h-full object-cover"
+                                    src="{{ $getImageUrl($img) }}"
                                     alt="{{ $product->name }} - thumbnail {{ $index+1 }}"
                                     loading="lazy"
+                                    onerror="this.src='{{ asset('backend/img/not-found.jpg') }}'"
                                 >
                             </div>
                         @endforeach
                     @else
                         <div class="swiper-slide relative mr-3 aspect-square !w-[20%] cursor-pointer">
                             <img
+                                class="w-full h-full object-cover"
                                 src="{{ asset('backend/img/not-found.jpg') }}"
                                 alt="{{ $product->name }}"
                                 loading="lazy"

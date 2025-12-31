@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     function getCurrentHeaderCartCount() {
         const firstBadge = document.querySelector('[data-cart-count]');
         if (!firstBadge) return 0;
@@ -109,6 +108,40 @@ document.addEventListener('DOMContentLoaded', function () {
         updateMinusState();
     })();
 
+    const selectedAttributes = {};
+
+    (function handleProductAttributes() {
+        const attributeSections = document.querySelectorAll('.attribute-section');
+        if (!attributeSections.length) return;
+
+        attributeSections.forEach(function (section) {
+            const catalogueId = section.dataset.catalogueId;
+            const buttons = section.querySelectorAll('.size-btn');
+
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    buttons.forEach(function (b) {
+                        b.classList.remove('border-primary-500', 'bg-primary-50', 'text-primary-500');
+                        b.classList.add('border-neutral-300');
+                    });
+
+                    btn.classList.remove('border-neutral-300');
+                    btn.classList.add('border-primary-500', 'bg-primary-50', 'text-primary-500');
+
+                    selectedAttributes[catalogueId] = {
+                        id: btn.dataset.valueId,
+                        name: btn.dataset.valueName,
+                        catalogue_name: btn.dataset.catalogueName
+                    };
+                });
+            });
+        });
+    })();
+
+    window.getSelectedAttributes = function () {
+        return selectedAttributes;
+    };
+
     (function handlePdpAddToCart() {
         const addToCartBtn = document.querySelector('.js-add-to-cart');
         if (!addToCartBtn) return;
@@ -119,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         addToCartBtn.addEventListener('click', async function () {
             const productId = this.dataset.productId;
+            const variantId = this.dataset.variantId;
             let qty = 1;
 
             if (qtyInput) {
@@ -127,7 +161,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (qty > 99) qty = 99;
             }
 
+            const attrs = window.getSelectedAttributes ? window.getSelectedAttributes() : {};
+            const attributeSections = document.querySelectorAll('.attribute-section');
+
+            if (attributeSections.length > 0) {
+                const missingAttributes = [];
+                attributeSections.forEach(function (section) {
+                    const catalogueId = section.dataset.catalogueId;
+                    const catalogueName = section.querySelector('p')?.textContent || 'Thuộc tính';
+
+                    if (!attrs[catalogueId]) {
+                        missingAttributes.push(catalogueName);
+                    }
+                });
+
+                if (missingAttributes.length > 0) {
+                    showCartToast('Vui lòng chọn: ' + missingAttributes.join(', '));
+                    return;
+                }
+            }
+
             try {
+                const requestBody = {
+                    product_id: productId,
+                    quantity: qty,
+                    qty: qty,
+                };
+
+                if (variantId) {
+                    requestBody.variant_id = variantId;
+                }
+
+                if (Object.keys(attrs).length > 0) {
+                    requestBody.attributes = attrs;
+                }
+
                 const res = await fetch(addToCartUrl, {
                     method: 'POST',
                     headers: {
@@ -135,11 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         'X-Requested-With': 'XMLHttpRequest',
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        product_id: productId,
-                        quantity: qty,
-                        qty: qty,
-                    }),
+                    body: JSON.stringify(requestBody),
                 });
 
                 if (!res.ok) {
@@ -147,8 +211,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 const data = await res.json();
-                console.log('ajax add response', data);
-
                 let newCount = null;
 
                 if (typeof data.cart_count !== 'undefined') {
@@ -168,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 showCartToast('Sản phẩm đã được thêm vào Giỏ hàng');
             } catch (e) {
-                console.error(e);
                 showCartToast('Có lỗi khi thêm vào Giỏ hàng, vui lòng thử lại.');
             }
         });

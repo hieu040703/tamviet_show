@@ -13,6 +13,8 @@ use App\Http\Controllers\Ajax\SearchController;
 use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Ajax\AttributeController;
+use App\Http\Controllers\Ajax\UploadController;
 
 
 Route::prefix('dashboard')->group(function () {
@@ -25,6 +27,10 @@ Route::post('/sort', [BannerItemController::class, 'sort'])->name('ajax.banner_i
 
 Route::get('//search-router', [MenuController::class, 'searchRouter'])->name('ajax.menus.searchRouter');
 
+Route::prefix('attribute')->group(function () {
+    Route::get('get', [AttributeController::class, 'getAttribute'])->name('ajax.attribute.getAttribute');
+    Route::get('load', [AttributeController::class, 'loadAttribute'])->name('ajax.attribute.loadAttribute');
+});
 /* Category */
 Route::post('/category/filter', [CategoryController::class, 'filterAjaxAll'])->name('ajax.category.filter.all');
 Route::get('/category/{id}/filter', [CategoryController::class, 'filterAjax'])->name('ajax.category.filter');
@@ -50,3 +56,6 @@ Route::post('contact-request/{id}/update-status', [ContactController::class, 'up
 
 /* Search */
 Route::get('/search', [SearchController::class, 'search'])->name('ajax.search');
+
+Route::post('/upload/variant-image', [UploadController::class, 'uploadVariantImage'])->name('ajax.upload.variant');
+Route::post('/delete/variant-image', [UploadController::class, 'deleteVariantImage'])->name('ajax.delete.variant');

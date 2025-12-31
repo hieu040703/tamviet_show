@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Video;
 use App\Models\Widget;
 use App\Models\Category;
 use App\Models\Brand;
@@ -28,11 +29,12 @@ if (!function_exists('widget_items')) {
         }
 
         $map = [
-            'categories'      => Category::class,
-            'brands'          => Brand::class,
-            'products'        => Product::class,
+            'categories' => Category::class,
+            'brands' => Brand::class,
+            'products' => Product::class,
             'post_catalogues' => PostCatalogue::class,
-            'posts'           => Post::class,
+            'posts' => Post::class,
+            'videos' => Video::class,
         ];
 
         $modelClass = $map[$widget->model] ?? null;
@@ -40,7 +42,7 @@ if (!function_exists('widget_items')) {
             return $result;
         }
 
-        $ids = is_array($widget->model_id) ? $widget->model_id : (array) $widget->model_id;
+        $ids = is_array($widget->model_id) ? $widget->model_id : (array)$widget->model_id;
         if (empty($ids)) {
             return $result;
         }

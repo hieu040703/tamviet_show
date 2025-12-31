@@ -187,8 +187,8 @@
 
             <a class="logo-mobile-header" href="/">
                 <img
-                    class="cursor-default my-auto h-[36px] w-[90px] ml-20"
-                    src="{{ asset('storage/' . $logo) }}"
+                    class="cursor-default my-auto h-[36px] w-[65px] ml-20"
+                    src="https://tamvietmed.com/storage/system/logo-tong-hop-1-1765340530.png"
                     alt="Tâm việt logo"
                 >
             </a>

@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Post;
 use App\Models\PostCatalogue;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\WidgetRequest;
 
@@ -35,7 +36,7 @@ class WidgetController extends Controller
             });
         }
 
-        $widgets->orderBy('sort_order')->orderByDesc('id');
+        $widgets->orderBy('sort_order');
 
         $data['widgets'] = $widgets->paginate($this->limit);
         $data['model'] = 'Widget';
@@ -105,6 +106,10 @@ class WidgetController extends Controller
         if (!empty($ids)) {
             $idList = implode(',', $ids);
             switch ($model) {
+                case 'videos':
+                    $selectedItems = Video::whereIn('id', $ids)
+                        ->orderByRaw('FIELD(id,' . $idList . ')')->get();
+                    break;
                 case 'products':
                     $selectedItems = Product::whereIn('id', $ids)
                         ->orderByRaw('FIELD(id,' . $idList . ')')->get();
@@ -124,7 +129,6 @@ class WidgetController extends Controller
                 case 'post_catalogues':
                     $selectedItems = PostCatalogue::whereIn('id', $ids)
                         ->orderByRaw('FIELD(id,' . $idList . ')')->get();
-                    break;
             }
         }
 

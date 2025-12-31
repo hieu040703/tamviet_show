@@ -1505,7 +1505,7 @@ body {
 }
 
 .line-clamp-2 {
-    -webkit-line-clamp: 2
+    -webkit-line-clamp: 4
 }
 
 .line-clamp-3 {
@@ -1892,7 +1892,9 @@ body {
 .h-\[280px\] {
     height: 280px
 }
-
+.h-\[300px\] {
+    height: 300px
+}
 .h-\[28px\] {
     height: 28px
 }
@@ -3028,7 +3030,9 @@ body {
 .w-\[90px\] {
     width: 90px
 }
-
+.w-\[65px\] {
+    width: 65px
+}
 .w-\[92px\] {
     width: 92px
 }
@@ -6068,7 +6072,9 @@ body {
     font-size: 1.125rem;
     line-height: 1.75rem
 }
-
+.text-sm-1 {
+    font-size: 13px !important;
+}
 .text-sm {
     font-size: .875rem;
     line-height: 1.25rem
@@ -12105,7 +12111,9 @@ input[type=search] {
     .lg\:mr-5 {
         margin-right: 1.25rem
     }
-
+    .lg\:mr-6 {
+        margin-right: 2rem !important;
+    }
     .lg\:block {
         display: block
     }

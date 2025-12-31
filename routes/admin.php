@@ -18,6 +18,9 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SystemController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\AttributeCatalogueController;
+use App\Http\Controllers\Admin\AttributeController;
 
 Route::get('control', function () {
     $control = session('control');
@@ -52,6 +55,24 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('brands.edit')->middleware('auth:admin', 'permission:edit_brand');
         Route::put('/update/{id}', [BrandController::class, 'update'])->name('brands.update')->middleware('auth:admin', 'permission:edit_brand');
         Route::delete('/delete/{id}', [BrandController::class, 'delete'])->name('brands.delete')->middleware('auth:admin', 'permission:delete_brand');
+    });
+    Route::group(['prefix' => 'attributes'], function () {
+        Route::group(['prefix' => '/'], function () {
+            Route::get('/', [AttributeController::class, 'index'])->name('attributes.index');
+            Route::get('create', [AttributeController::class, 'create'])->name('attributes.create');
+            Route::post('create', [AttributeController::class, 'store'])->name('attributes.store');
+            Route::get('edit/{id}', [AttributeController::class, 'edit'])->name('attributes.edit');
+            Route::put('edit/{id}', [AttributeController::class, 'update'])->name('attributes.update');
+            Route::delete('delete/{id}', [AttributeController::class, 'delete'])->name('attributes.delete');
+        });
+        Route::group(['prefix' => '/catalogues'], function () {
+            Route::get('/', [AttributeCatalogueController::class, 'index'])->name('attribute.catalogues.index');
+            Route::get('create', [AttributeCatalogueController::class, 'create'])->name('attribute.catalogues.create');
+            Route::post('create', [AttributeCatalogueController::class, 'store'])->name('attribute.catalogues.store');
+            Route::get('edit/{id}', [AttributeCatalogueController::class, 'edit'])->name('attribute.catalogues.edit');
+            Route::put('edit/{id}', [AttributeCatalogueController::class, 'update'])->name('attribute.catalogues.update');
+            Route::delete('delete/{id}', [AttributeCatalogueController::class, 'delete'])->name('attribute.catalogues.delete');
+        });
     });
 
     Route::group(['prefix' => 'products'], function () {
@@ -163,6 +184,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customers.edit')->middleware(['auth:admin', 'permission:edit_customer']);
         Route::put('/update/{id}', [CustomerController::class, 'update'])->name('customers.update')->middleware(['auth:admin', 'permission:edit_customer']);
         Route::delete('/{id}', [CustomerController::class, 'delete'])->name('customers.delete')->middleware(['auth:admin', 'permission:delete_customer']);
+    });
+    Route::group(['prefix' => 'videos'], function () {
+        Route::get('/', [VideoController::class, 'index'])->name('videos.index')->middleware('auth:admin', 'permission:view_video');
+        Route::get('/create', [VideoController::class, 'create'])->name('videos.create')->middleware('auth:admin', 'permission:create_video');
+        Route::post('/store', [VideoController::class, 'store'])->name('videos.store')->middleware('auth:admin', 'permission:create_video');
+        Route::get('/edit/{id}', [VideoController::class, 'edit'])->name('videos.edit')->middleware('auth:admin', 'permission:edit_video');
+        Route::put('/update/{id}', [VideoController::class, 'update'])->name('videos.update')->middleware('auth:admin', 'permission:edit_video');
+        Route::delete('/delete/{id}', [VideoController::class, 'delete'])->name('videos.delete')->middleware('auth:admin', 'permission:delete_video');
     });
     Route::group(['prefix' => '/system'], function () {
         Route::get('/', [SystemController::class, 'index'])->name('system.index');

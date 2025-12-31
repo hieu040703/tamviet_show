@@ -679,7 +679,12 @@ select[readonly].select2 + .select2-container .select2-selection__clear {
     cursor: pointer;
 }
 
-.variantTable thead td:first-child {
+.variantTable thead td:first-child,
+.variantTable thead th:first-child {
+    text-align: left;
+}
+
+.variantTable tbody td:first-child {
     text-align: left;
 }
 
@@ -771,3 +776,550 @@ select[readonly].select2 + .select2-container .select2-selection__clear {
 .variant-item {
     padding-bottom: 15px;
 }
+
+.variant-update-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 6px 6px 0 0;
+}
+
+.variant-update-header h5 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.variant-update-header .fa {
+    margin-right: 6px;
+}
+
+.variant-update-content {
+    background: #f8f9fc;
+    border: 1px solid #e3e6f0;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 20px;
+}
+
+.btn-modern {
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+}
+
+.btn-modern:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-modern i {
+    margin-right: 5px;
+}
+
+.input-modern {
+    border-radius: 4px;
+    border: 1px solid #d1d3e2;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+
+.input-modern:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.control-label-bold {
+    font-weight: 600;
+    color: #5a5c69;
+    font-size: 13px;
+}
+
+.control-label {
+    font-weight: 500;
+    color: #5a5c69;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.variant-content-group {
+    border: 1px solid #e3e6f0;
+    border-radius: 6px;
+    padding: 20px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.variant-content-group:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.legend-modern {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.legend-modern i {
+    margin-right: 6px;
+    color: #667eea;
+}
+
+.upload-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: #f8f9ff;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #e3e6f0;
+}
+
+.btn-choose-variant-album {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.25);
+    font-size: 13px;
+}
+
+.btn-choose-variant-album:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(102, 126, 234, 0.35);
+    color: white;
+}
+
+.help-text {
+    color: #718096;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.help-text i {
+    color: #667eea;
+    margin-right: 4px;
+}
+
+.variant-album-empty-box {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e0;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.variant-album-empty-box:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.album-empty-inner {
+    width: 100%;
+}
+
+.empty-icon {
+    font-size: 48px;
+    color: #cbd5e0;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.variant-album-empty-box:hover .empty-icon {
+    color: #667eea;
+    transform: scale(1.05);
+}
+
+.empty-icon i {
+    display: inline-block;
+}
+
+.empty-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+.empty-description {
+    font-size: 13px;
+    color: #718096;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.variant-album-list-wrapper {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e3e6f0;
+}
+
+.variant-album-list {
+    margin: 0 -8px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.variant-album-item {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.variant-album-thumb {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    background: #f8f9fc;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: move;
+    border: 2px solid transparent;
+}
+
+.variant-album-thumb:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: #667eea;
+}
+
+.variant-album-thumb::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.variant-album-thumb:hover::after {
+    opacity: 1;
+}
+
+.variant-album-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.variant-album-thumb:hover .variant-album-image {
+    transform: scale(1.08);
+}
+
+.variant-delete-image {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    background: rgba(239, 68, 68, 0.95);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.variant-album-thumb:hover .variant-delete-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.variant-delete-image:hover {
+    background: rgba(220, 38, 38, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+}
+
+.variant-delete-image i {
+    font-size: 13px;
+}
+
+.variant-album-sortable-placeholder {
+    background: #f8f9ff;
+    border: 2px dashed #667eea;
+    border-radius: 6px;
+    height: 100%;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.variant-album-sortable-placeholder::before {
+    content: 'Thả vào đây';
+    color: #667eea;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.album-footer {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #f8f9ff;
+    border-radius: 4px;
+    text-align: center;
+    color: #718096;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #e3e6f0;
+}
+
+.album-footer i {
+    color: #667eea;
+    margin-right: 6px;
+}
+
+.variant-album-item.uploading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.variant-album-item .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #667eea;
+    z-index: 5;
+}
+
+.variant-album-item .upload-status {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 11px;
+    color: #718096;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 12px;
+    border-radius: 12px;
+    z-index: 5;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .variant-album-item {
+        width: 50% !important;
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .variant-update-header {
+        padding: 12px 15px;
+    }
+
+    .variant-update-header h5 {
+        font-size: 14px;
+    }
+
+    .upload-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .help-text {
+        margin-left: 0 !important;
+    }
+
+    .variant-album-empty-box {
+        padding: 30px 15px;
+        min-height: 150px;
+    }
+
+    .empty-icon {
+        font-size: 40px;
+    }
+
+    .empty-title {
+        font-size: 14px;
+    }
+
+    .empty-description {
+        font-size: 12px;
+    }
+
+    .variant-content-group {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .variant-album-item {
+        width: 100% !important;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .btn-modern {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+
+    .variant-content-group {
+        padding: 12px;
+    }
+
+    .upload-section {
+        padding: 10px 12px;
+    }
+
+    .btn-choose-variant-album {
+        padding: 8px 14px;
+        font-size: 12px;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.variant-album-item {
+    animation: fadeInUp 0.3s ease backwards;
+}
+
+.variant-album-item:nth-child(1) {
+    animation-delay: 0.03s;
+}
+
+.variant-album-item:nth-child(2) {
+    animation-delay: 0.06s;
+}
+
+.variant-album-item:nth-child(3) {
+    animation-delay: 0.09s;
+}
+
+.variant-album-item:nth-child(4) {
+    animation-delay: 0.12s;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.text-danger {
+    color: #e74a3b;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.updateVariant.ibox {
+    border: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.updateVariantTr {
+    background: transparent;
+}
+
+.updateVariantTr td {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.variant-album-list-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.variant-album-list-wrapper::-webkit-scrollbar-track {
+    background: #f1f3f9;
+    border-radius: 6px;
+}
+
+.variant-album-list-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 6px;
+}
+
+.variant-album-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+

@@ -19,7 +19,7 @@
     tabindex="-1"
 >
 
-<div
+    <div
         class="absolute w-full flex-col space-y-1.5 flex mt-2 md:mt-0 justify-center px-4 py-2.5 md:pt-6 md:pb-4 md:px-4"
     >
         <h2
@@ -50,9 +50,7 @@
                 <div class="mb-2 line-clamp-3 text-xl font-bold" data-product-name-text>
                     Tên sản phẩm
                 </div>
-
                 <div class="bg-divider h-[1px] my-4"></div>
-
                 <div class="grid gap-3">
                     <p class="text-sm font-bold">Số lượng</p>
                     <div class="space-y-2">
@@ -97,11 +95,29 @@
                             </button>
                         </div>
 
-                        <div class="h-5"></div>
+                        <div></div>
                     </div>
                 </div>
-            </div>
+                <div class="space-y-3">
+                    <p class="text-sm font-bold">Kích thước</p>
 
+                    <div class="size-group">
+                        <button class="size-btn">2cm</button>
+                        <button class="size-btn">3cm</button>
+                        <button class="size-btn">10cm</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                        <button class="size-btn">Kích thước đặc biệt</button>
+                    </div>
+                    <div class="h-5"></div>
+                </div>
+            </div>
             <div>
                 <button
                     type="button"
@@ -223,7 +239,25 @@
                         </span>
                     </button>
                 </div>
-                <div class="h-5"></div>
+                <div class="h-2"></div>
+            </div>
+        </div>
+        <div class="space-y-3">
+            <p class="text-sm font-bold">Kích thước</p>
+
+            <div class="size-group">
+                <button class="size-btn">2cm</button>
+                <button class="size-btn">3cm</button>
+                <button class="size-btn">10cm</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
+                <button class="size-btn">Kích thước đặc biệt</button>
             </div>
         </div>
 
@@ -263,5 +297,15 @@
 </div>
 
 @push('scripts')
+    <script>
+        const buttons = document.querySelectorAll('.size-btn');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
     <script src="{{ asset('frontend/assets/js/product-modal.js') }}"></script>
 @endpush

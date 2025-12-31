@@ -6,15 +6,9 @@
         if ($('.turnOnVariant').length) {
             $(document).on('click', '.turnOnVariant', function () {
                 let _this = $(this)
-                let import_price = $('input[name=import_price]').val()
-                let sale_price = $('input[name=sale_price]').val()
                 let code = $('input[name=code]').val()
-
-                if (import_price == '' || code == '' || sale_price == '') {
-                    alert(
-                        window.trans.You_must_enter_the_Import_Price + '\n' +
-                        window.trans.Selling_Price_and_Product_Code_to_use_this_function
-                    );
+                if (code == '') {
+                    alert('Bạn phải mã sản phẩm để sử dụng chức năng này');
                     return false
                 }
 
@@ -46,7 +40,7 @@
         html = html + '<div class="col-lg-3">';
         html = html + '<div class="attribute-catalogue">';
         html = html + '<select name="attributeCatalogue[]" id="" class="choose-attribute select2 form-control">';
-        html = html + '<option value="">' + window.trans.Select_the_attribute_group + '</option>';
+        html = html + '<option value="">' + 'Nhóm thuộc tính' + '</option>';
         for (let i = 0; i < attributeCatalogue.length; i++) {
             html = html + '<option class="form-control" value="' + attributeCatalogue[i].id + '">' + attributeCatalogue[i].name + '</option>';
         }
@@ -81,7 +75,6 @@
         })
     }
 
-
     HT.createProductVariant = () => {
         $(document).on('change', '.selectVariant', function () {
             let _this = $(this)
@@ -90,7 +83,6 @@
     }
 
     HT.createVariant = (remove) => {
-
         let attributes = []
         let variants = []
         let attributeTitle = []
@@ -113,10 +105,7 @@
                 attributeTitle.push(optionText)
                 attributes.push(attr)
                 variants.push(attrVariant)
-
             })
-
-            // console.log(attributes);
 
             attributes = attributes.reduce(
                 (a, b) => a.flatMap(d => b.map(e => ({...d, ...e})))
@@ -139,7 +128,6 @@
                 }
             });
 
-
             $('table.variantTable tbody tr').each(function () {
                 const $row = $(this)
                 const rowClasses = $row.attr('class')
@@ -156,17 +144,11 @@
                     if (shouldRemove) {
                         $row.remove()
                     }
-
                 }
             })
         } else {
-
             $('.Product-variant .ibox-content').html('')
         }
-
-
-        // let html = HT.renderTableHtml(attributes, attributeTitle, variants);
-        // $('table.variantTable').html(html)
     }
 
     HT.createVariantRow = (attributeItem, variantItem) => {
@@ -176,12 +158,6 @@
 
         let $row = $('<tr>').addClass('variant-row tr-variant-' + classModified)
         let $td
-
-        $td = $('<td>').append(
-            $('<span>').addClass('image img-cover').append(
-                $('<img>').attr('src', 'https://daks2k3a4ib2z.cloudfront.net/6343da4ea0e69336d8375527/6343da5f04a965c89988b149_1665391198377-image16-p-500.jpg').addClass('imageSrc')
-            )
-        )
         $row.append($td)
 
         Object.values(attributeItem).forEach(value => {
@@ -191,17 +167,13 @@
 
         $td = $('<td>').addClass('hidden td-variant')
 
-
-        let mainImportPrice = $('input[name=import_price]').val()
-        let mainSalePrice = $('input[name=sale_price]').val()
         let mainSku = $('input[name=code]').val()
         let inputHiddenFields = [
             {name: 'variant[quantity][]', class: 'variant_quantity'},
             {name: 'variant[sku][]', class: 'variant_sku', value: mainSku + '-' + classModified},
-            {name: 'variant[import_price][]', class: 'variant_import_price', value: mainImportPrice},
-            {name: 'variant[sale_price][]', class: 'variant_sale_price', value: mainSalePrice},
             {name: 'productVariant[name][]', value: attributeString},
             {name: 'productVariant[id][]', value: attributeId},
+            {name: 'variant[album][]', class: 'variant_album', value: '[]'}
         ]
 
         $.each(inputHiddenFields, function (_, field) {
@@ -212,8 +184,6 @@
             $td.append($input)
         })
         $row.append($('<td>').addClass('td-quantity').text('-'))
-            .append($('<td>').addClass('td-import-price').text(mainImportPrice))
-            .append($('<td>').addClass('td-sale-price').text(mainSalePrice))
             .append($('<td>').addClass('td-sku').text(mainSku + '-' + classModified))
             .append($td)
         return $row
@@ -222,21 +192,16 @@
     HT.createTableHeader = (attributeTitle) => {
         let $thead = $('table.variantTable thead')
         let $row = $('<tr>')
-        $row.append($('<td>').text(window.trans.Image))
         for (let i = 0; i < attributeTitle.length; i++) {
             $row.append($('<td>').text(attributeTitle[i]))
         }
 
-        $row.append($('<td>').text(window.trans.Quantity))
-        $row.append($('<td>').text(window.trans.Import_Price))
-        $row.append($('<td>').text(window.trans.Selling_price))
-        $row.append($('<td>').text(window.trans.SKU))
+        $row.append($('<td>').text('Số lượng'))
+        $row.append($('<td>').text('SKU'))
 
         $thead.html($row)
         return $thead
-
     }
-
 
     HT.getSelect2 = (object) => {
         let option = {
@@ -244,7 +209,7 @@
         }
         $(object).select2({
             minimumInputLength: 0,
-            placeholder: window.trans.Enter_at_least_2_characters_to_search,
+            placeholder: 'Nhập ít nhất 2 ký tự để tìm kiếm',
             ajax: {
                 url: getAttribute,
                 type: 'GET',
@@ -262,7 +227,6 @@
                     }
                 },
                 cache: true
-
             }
         });
     }
@@ -274,10 +238,8 @@
     HT.destroyselect2 = () => {
         $('.select2').each(function () {
             $(this).select2('destroy');
-
         });
     }
-
 
     HT.disabledAttributeCatalogueChoose = () => {
         let id = [];
@@ -304,13 +266,12 @@
         });
     };
 
-
     HT.checkMaxAttributeGroup = (attributeCatalogue) => {
         let variantItem = $('.variant-item').length
         if (variantItem >= attributeCatalogue.length) {
             $('.add-variant').remove()
         } else {
-            $('.variant-foot').html('<button type="button" class="add-variant">' + window.trans.Add_new_version + '</button>')
+            $('.variant-foot').html('<button type="button" class="add-variant">' + 'Thêm mới phiên bản' + '</button>')
         }
     }
 
@@ -335,32 +296,6 @@
         })
     }
 
-    HT.browseVariantServerAlbum = () => {
-        var type = 'Images';
-        var finder = new CKFinder();
-
-        finder.resourceType = type;
-        finder.selectActionFunction = function (data, allFiles) {
-            let html = '';
-            for (var i = 0; i < allFiles.length; i++) {
-                var image = allFiles[i].url
-                html += '<li class="ui-state-default">'
-                html += ' <div class="thumb">'
-                html += ' <span class="span image img-scaledown">'
-                html += '<img src="' + image + '" alt="' + image + '">'
-                html += '<input type="hidden" name="variantAlbum[]" value="' + image + '">'
-                html += '</span>'
-                html += '<button class="variant-delete-image"><i class="fa fa-trash"></i></button>'
-                html += '</div>'
-                html += '</li>'
-            }
-
-            $('.click-to-upload-variant').addClass('hidden')
-            $('#sortable2').append(html)
-            $('.upload-variant-list').removeClass('hidden')
-        }
-        finder.popup();
-    }
     HT.switchChange = () => {
         $(document).on('change', '.js-switch', function () {
             let _this = $(this)
@@ -381,63 +316,254 @@
                 let className = $(this).attr('class')
                 variantData[className] = $(this).val()
             })
+            let albumJson = _this.find('.variant_album').val() || '[]';
+            try {
+                variantData.album = JSON.parse(albumJson);
+            } catch (e) {
+                variantData.album = [];
+            }
 
             let updateVariantBox = HT.updateVariantHtml(variantData)
             if ($('.updateVariantTr').length == 0) {
                 _this.after(updateVariantBox)
                 HT.switchery()
+                HT.initVariantAlbumSortable()
+                HT.loadSavedAlbum(variantData.album)
             }
         })
     }
 
+    HT.loadSavedAlbum = (albumImages) => {
+        if (!albumImages || albumImages.length === 0) {
+            return;
+        }
+
+        let variantId = $('.updateVariantTr').find('.variant-album-list').data('variant-id');
+
+        $('.variant-album-empty-box[data-variant-id="' + variantId + '"]').addClass('hidden');
+        $('.variant-album-list-wrapper[data-variant-id="' + variantId + '"]').removeClass('hidden');
+
+        let albumList = $('.variant-album-list[data-variant-id="' + variantId + '"]');
+        albumList.empty();
+
+        albumImages.forEach(function (imageSrc) {
+            let col = $('<div class="col-md-3 col-sm-4 col-xs-6 variant-album-item"></div>');
+            let html = '<div class="variant-album-thumb">' +
+                '<img src="' + imageSrc + '" class="variant-album-image">' +
+                '<button type="button" class="variant-delete-image js-remove-variant-album-image">' +
+                '<i class="icon-bin2"></i>' +
+                '</button>' +
+                '<input type="hidden" class="variant-album-path" value="' + imageSrc + '">' +
+                '</div>';
+            col.html(html);
+            albumList.append(col);
+        });
+
+        HT.initVariantAlbumSortable();
+    }
+
+    HT.uploadVariantImage = (file, variantId, callback) => {
+        let formData = new FormData();
+        formData.append('file', file);
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        $.ajax({
+            url: uploadVariantImage,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success && response.path) {
+                    callback(response.path);
+                } else {
+                    alert('Upload thất bại: ' + (response.message || 'Unknown error'));
+                }
+            },
+            error: function (xhr) {
+                alert('Lỗi upload: ' + xhr.responseText);
+            }
+        });
+    }
+
+    HT.initVariantAlbumHandler = () => {
+        $(document).on('click', '.btn-choose-variant-album', function (e) {
+            e.preventDefault();
+            let variantId = $(this).data('variant-id');
+            $('.variant-album-files-input[data-variant-id="' + variantId + '"]').click();
+        });
+
+        $(document).on('click', '.variant-album-empty-box', function () {
+            let variantId = $(this).data('variant-id');
+            $('.variant-album-files-input[data-variant-id="' + variantId + '"]').click();
+        });
+
+        $(document).on('change', '.variant-album-files-input', function (e) {
+            let files = e.target.files;
+            let variantId = $(this).data('variant-id');
+            if (!files || !files.length) return;
+            $('.variant-album-empty-box[data-variant-id="' + variantId + '"]').addClass('hidden');
+            $('.variant-album-list-wrapper[data-variant-id="' + variantId + '"]').removeClass('hidden');
+            let albumList = $('.variant-album-list[data-variant-id="' + variantId + '"]');
+            Array.prototype.forEach.call(files, function (file) {
+                if (!file.type || !file.type.match(/^image\//)) return;
+                let col = $('<div class="col-md-3 col-sm-4 col-xs-6 variant-album-item uploading"></div>');
+                let loadingHtml = '<div class="variant-album-thumb">' +
+                    '<div class="loading-spinner"><i class="fa fa-spinner fa-spin"></i></div>' +
+                    '<p class="upload-status">Đang upload...</p>' +
+                    '</div>';
+                col.html(loadingHtml);
+                albumList.append(col);
+
+                HT.uploadVariantImage(file, variantId, function (imagePath) {
+                    let html = '<div class="variant-album-thumb">' +
+                        '<img src="' + imagePath + '" class="variant-album-image">' +
+                        '<button type="button" class="variant-delete-image js-remove-variant-album-image">' +
+                        '<i class="icon-bin2"></i>' +
+                        '</button>' +
+                        '<input type="hidden" class="variant-album-path" value="' + imagePath + '">' +
+                        '</div>';
+                    col.removeClass('uploading').html(html);
+                });
+            });
+
+            $(this).val('');
+            HT.initVariantAlbumSortable();
+        });
+
+        $(document).on('click', '.js-remove-variant-album-image', function (e) {
+            e.stopPropagation();
+            if (!confirm('Bạn có chắc muốn xóa ảnh này?')) {
+                return;
+            }
+            let item = $(this).closest('.variant-album-item');
+            let variantId = $(this).closest('.variant-album-list').data('variant-id');
+            let imagePath = item.find('.variant-album-path').val();
+            if (imagePath && imagePath.indexOf('/uploads/') !== -1) {
+                $.ajax({
+                    url: deleteVariantImage,
+                    type: 'POST',
+                    data: {
+                        path: imagePath,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            item.remove();
+
+                            let albumList = $('.variant-album-list[data-variant-id="' + variantId + '"]');
+                            if (albumList.find('.variant-album-item').length === 0) {
+                                $('.variant-album-list-wrapper[data-variant-id="' + variantId + '"]').addClass('hidden');
+                                $('.variant-album-empty-box[data-variant-id="' + variantId + '"]').removeClass('hidden');
+                            }
+
+                            if (typeof toastr !== 'undefined') {
+                                toastr.success('Đã xóa ảnh thành công!');
+                            }
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('Lỗi xóa ảnh: ' + xhr.responseText);
+                    }
+                });
+            } else {
+                item.remove();
+
+                let albumList = $('.variant-album-list[data-variant-id="' + variantId + '"]');
+                if (albumList.find('.variant-album-item').length === 0) {
+                    $('.variant-album-list-wrapper[data-variant-id="' + variantId + '"]').addClass('hidden');
+                    $('.variant-album-empty-box[data-variant-id="' + variantId + '"]').removeClass('hidden');
+                }
+            }
+        });
+    }
+
+    HT.initVariantAlbumSortable = () => {
+        if (typeof $.fn.sortable !== 'undefined') {
+            $('.variant-album-list').sortable({
+                items: '.variant-album-item:not(.uploading)',
+                placeholder: 'variant-album-sortable-placeholder',
+                cursor: 'move',
+                opacity: 0.6,
+                tolerance: 'pointer',
+                update: function (event, ui) {
+                }
+            });
+        }
+    }
+
     HT.switchery = () => {
         $('.js-switch').each(function () {
-            // let _this = $(this)
-            var switchery = new Switchery(this, {color: '#1AB394', size: 'small'});
+            if (!$(this).data('switchery')) {
+                var switchery = new Switchery(this, {color: '#1AB394', size: 'small'});
+                $(this).data('switchery', switchery);
+            }
         })
     }
+
     HT.updateVariantHtml = (variantData) => {
         let html = ''
         let colspan = $('.variantTable thead tr td').length
+        let variantId = 'variant_' + Date.now();
+
         html = html + '<tr class="updateVariantTr">'
         html = html + '<td colspan="' + colspan + '">'
         html = html + '<div class="updateVariant ibox">'
-        html = html + '<div class="ibox-title">'
+        html = html + '<div class="ibox-title variant-update-header">'
         html = html + '<div class="uk-flex uk-flex-middle uk-flex-space-between">'
-        html = html + '<h5>' + window.trans.Update_version_information + '</h5>'
+        html = html + '<h5><i class="fa fa-edit"></i> Cập nhật thông tin phiên bản</h5>'
         html = html + '<div class="button-group">'
         html = html + '<div class="uk-flex uk-flex-middle">'
-        html = html + '<button type="button" class="cancleUpdate btn btn-danger mr10">' + window.trans.Cancel + '</button>'
-        html = html + '<button type="button" class="saveUpdateVariant btn btn-success">' + window.trans.Stay + '</button>'
+        html = html + '<button type="button" class="cancleUpdate btn btn-danger btn-sm mr10"><i class="fa fa-times"></i> Hủy</button>'
+        html = html + '<button type="button" class="saveUpdateVariant btn btn-success btn-sm"><i class="fa fa-save"></i> Lưu</button>'
         html = html + '</div>'
         html = html + '</div>'
         html = html + '</div>'
         html = html + '</div>'
-        html = html + '<div class="ibox-content">'
+        html = html + '<div class="ibox-content variant-update-content">'
         html = html + '<div class="row mt20 uk-flex uk-flex-middle mb-20">'
         html = html + '<div class="col-lg-2 uk-flex uk-flex-middle mt-30">'
-        html = html + '<label for="" class="mr10">' + window.trans.Inventory + '</label>'
+        html = html + '<label for="" class="mr-15 ml10 control-label-bold">Tồn kho</label>'
         html = html + '<input type="checkbox" class="js-switch" ' + ((variantData.variant_quantity !== '') ? 'checked' : '') + ' data-target="variantQuantity">'
         html = html + '</div>'
         html = html + '<div class="col-lg-10">'
         html = html + '<div class="row">'
-        html = html + '<div class="col-lg-3">'
-        html = html + '<label for="" class="control-label">Số lượng</label>'
-        html = html + '<input type="text" ' + ((variantData.variant_quantity == '') ? 'disabled' : '') + '  name="variant_quantity" value="' + variantData.variant_quantity + '" class="form-control ' + ((variantData.variant_quantity == '') ? 'disabled' : '') + ' int">'
+        html = html + '<div class="col-lg-6">'
+        html = html + '<label for="" class="control-label">Số lượng <span class="text-danger">*</span></label>'
+        html = html + '<input type="text" ' + ((variantData.variant_quantity == '') ? 'disabled' : '') + ' name="variant_quantity" value="' + variantData.variant_quantity + '" class="form-control input-modern ' + ((variantData.variant_quantity == '') ? 'disabled' : '') + ' int" placeholder="Nhập số lượng">'
         html = html + '</div>'
-        html = html + '<div class="col-lg-3">'
-        html = html + '<label for="" class="control-label">'+ window.trans.SKU +'</label>'
-        html = html + '<input type="text" name="variant_sku" value="' + variantData.variant_sku + '" class="form-control text-right">'
-        html = html + '</div>'
-        html = html + '<div class="col-lg-3">'
-        html = html + '<label for="" class="control-label">Giá</label>'
-        html = html + '<input type="text" name="variant_import_price" value="' + HT.addCommas(variantData.variant_import_price) + '" class="form-control int">'
-        html = html + '</div>'
-        html = html + '<div class="col-lg-3">'
-        html = html + '<label for="" class="control-label">Biá bán</label>'
-        html = html + '<input type="text" name="variant_sale_price" value="' + variantData.variant_sale_price + '" class="form-control text-right">'
+        html = html + '<div class="col-lg-6">'
+        html = html + '<label for="" class="control-label">SKU <span class="text-danger">*</span></label>'
+        html = html + '<input type="text" name="variant_sku" value="' + variantData.variant_sku + '" class="form-control input-modern text-right" placeholder="Nhập mã SKU">'
         html = html + '</div>'
         html = html + '</div>'
+        html = html + '</div>'
+        html = html + '</div>'
+        html = html + '<div class="row mt30">'
+        html = html + '<div class="col-lg-12">'
+        html = html + '<fieldset class="variant-content-group">'
+        html = html + '<legend class="text-bold legend-modern"><i class="fa fa-images"></i> Album ảnh phiên bản</legend>'
+        html = html + '<div class="mb15 upload-section">'
+        html = html + '<button type="button" class="btn btn-primary btn-modern btn-choose-variant-album" data-variant-id="' + variantId + '">'
+        html = html + '<i class="fa fa-cloud-upload"></i> Chọn hình ảnh'
+        html = html + '</button>'
+        html = html + '<span class="help-text ml10"><i class="fa fa-info-circle"></i> Hỗ trợ: JPG, PNG, GIF (Tối đa 5MB/ảnh)</span>'
+        html = html + '<input type="file" class="variant-album-files-input" data-variant-id="' + variantId + '" accept="image/*" multiple style="display:none;">'
+        html = html + '</div>'
+        html = html + '<div class="variant-album-empty-box" data-variant-id="' + variantId + '">'
+        html = html + '<div class="album-empty-inner">'
+        html = html + '<div class="empty-icon"><i class="fa fa-image"></i></div>'
+        html = html + '<p class="empty-title">Chưa có hình ảnh</p>'
+        html = html + '<p class="empty-description">Click vào nút "Chọn hình ảnh" hoặc kéo thả ảnh vào đây</p>'
+        html = html + '</div>'
+        html = html + '</div>'
+        html = html + '<div class="variant-album-list-wrapper hidden" data-variant-id="' + variantId + '">'
+        html = html + '<div class="row variant-album-list" data-variant-id="' + variantId + '">'
+        html = html + '</div>'
+        html = html + '<div class="album-footer">'
+        html = html + '<i class="fa fa-hand-rock-o"></i> Kéo thả để sắp xếp thứ tự hiển thị'
+        html = html + '</div>'
+        html = html + '</div>'
+        html = html + '</fieldset>'
         html = html + '</div>'
         html = html + '</div>'
         html = html + '</div>'
@@ -473,66 +599,51 @@
     HT.saveVariantUpdate = () => {
         $(document).on('click', '.saveUpdateVariant', function () {
 
+            if ($('.variant-album-item.uploading').length > 0) {
+                alert('Vui lòng đợi upload ảnh hoàn tất!');
+                return false;
+            }
+
             let variant = {
                 'quantity': $('input[name=variant_quantity]').val(),
                 'sku': $('input[name=variant_sku]').val(),
-                'import_price': $('input[name=variant_import_price]').val(),
-                'sale_price': $('input[name=variant_sale_price]').val(),
             }
 
-            $.each(variant, function (index, value) {
-                $('.updateVariantTr').prev().find('.variant_' + index).val(value)
-            })
+            let albumImages = [];
+            $('.updateVariantTr').find('.variant-album-path').each(function () {
+                let path = $(this).val();
+                if (path && path.trim() !== '') {
+                    albumImages.push(path);
+                }
+            });
+            variant.album = albumImages;
 
+            $.each(variant, function (index, value) {
+                if (index !== 'album') {
+                    $('.updateVariantTr').prev().find('.variant_' + index).val(value)
+                }
+            })
+            let albumJson = JSON.stringify(albumImages);
+            let hiddenAlbumInput = $('.updateVariantTr').prev().find('.variant_album');
+            hiddenAlbumInput.val(albumJson);
             HT.previewVariantTr(variant)
             HT.closeUpdateVariantBox()
+
+            if (typeof toastr !== 'undefined') {
+                toastr.success('Đã lưu thông tin phiên bản thành công!');
+            }
         })
     }
 
     HT.previewVariantTr = (variant) => {
         let option = {
-            'quantity': variant.quantity,
-            'import-price': variant.import_price,
-            'sale-price': variant.sale_price,
-            'sku': variant.sku,
+            'quantity': variant.quantity || '-',
+            'sku': variant.sku || '-',
         }
         $.each(option, function (index, value) {
             $('.updateVariantTr').prev().find('.td-' + index).html(value)
         })
     }
-
-    HT.setupSelectMultiple = () => {
-        return new Promise((resolve) => {
-            if ($('.selectVariant').length) {
-                let count = $('.selectVariant').length;
-
-                $('.selectVariant').each(function () {
-                    let _this = $(this);
-                    let attributeCatalogueId = _this.attr('data-catid');
-
-                    if (attributeCatalogueId !== '') {
-                        $.get('ajax/attribute/loadAttribute', {
-                            attribute: attribute,
-                            attributeCatalogueId: attributeCatalogueId
-                        }, function (json) {
-                            if (json.items !== 'undefined' && json.items.length) {
-                                for (let i = 0; i < json.items.length; i++) {
-                                    var option = new Option(json.items[i].text, json.items[i].id, true, true);
-                                    _this.append(option).trigger('change');
-                                }
-                            }
-                            if (--count === 0) {
-                                resolve();
-                            }
-                        });
-                    }
-                    HT.getSelect2(_this);
-                });
-            } else {
-                resolve();
-            }
-        });
-    };
 
     HT.setupSelectMultiple = () => {
         return new Promise((resolve) => {
@@ -559,6 +670,10 @@
                                 resolve();
                             }
                         });
+                    } else {
+                        if (--count === 0) {
+                            resolve();
+                        }
                     }
 
                     HT.getSelect2(_this);
@@ -576,26 +691,27 @@
             idx++;
             if (!variant.sku[idx]) return;
             let _this = $(this);
+
             const inputHiddenFields = [
                 {name: 'variant[quantity][]', class: 'variant_quantity', value: variant.quantity[idx]},
-                {name: 'variant[sku][]',      class: 'variant_sku',      value: variant.sku[idx]},
-                {name: 'variant[import_price][]', class: 'variant_import_price', value: variant.import_price[idx]},
-                {name: 'variant[sale_price][]',   class: 'variant_sale_price',   value: variant.sale_price[idx]},
+                {name: 'variant[sku][]', class: 'variant_sku', value: variant.sku[idx]},
             ];
+
             for (const f of inputHiddenFields) {
                 _this.find('.' + f.class).val(f.value || 0);
             }
+
+            if (variant.album && variant.album[idx]) {
+                let albumJson = JSON.stringify(variant.album[idx]);
+                _this.find('.variant_album').val(albumJson);
+            }
+
             _this.find('.td-quantity').html(HT.addCommas(variant.quantity[idx]));
-            _this.find('.td-import-price').html(HT.addCommas(variant.import_price[idx]));
-            _this.find('.td-sale-price').html(HT.addCommas(variant.sale_price[idx]));
             _this.find('.td-sku').html(variant.sku[idx]);
         });
     };
 
-
-
     $(document).ready(function () {
-
         HT.setupProductVariant()
         HT.addVariant()
         HT.select2()
@@ -607,25 +723,16 @@
         HT.updateVariant()
         HT.cancleVariantUpdate()
         HT.saveVariantUpdate()
-        // HT.setupSelectMultiple(
-        //     () => {
-        //         HT.productVariant()
-        //     }
-        // )
-
+        HT.initVariantAlbumHandler()
         HT.setupSelectMultiple().then(() => {
             HT.productVariant();
         });
-
-        // HT.productVariant()
-
     });
+
     document.addEventListener('input', function (e) {
         if (e.target.name === 'variant_quantity') {
             let val = e.target.value.replace(/\D/g, '');
             e.target.value = val.slice(0, 6);
         }
     });
-
 })(jQuery);
-

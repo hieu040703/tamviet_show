@@ -52,7 +52,7 @@
         breakpoint: 768
     };
     window.APP_STATE = window.APP_STATE || {};
-    window.APP_STATE.isAuthenticated = {{ auth('web')->check() ? 'true' : 'false' }};
+    window.APP_STATE.isAuthenticated = {{ auth('web')->check() ? 'true' : 'false' }};a
 </script>
 <script src="{{ asset('frontend/assets/js/cart.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/auth-popup.js') }}"></script>

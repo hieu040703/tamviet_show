@@ -30,7 +30,10 @@ class Product extends Model
         'canonical',
         'image',
         'note',
-        'icon'
+        'icon',
+        'variant',
+        'attribute',
+        'attributeCatalogue',
     ];
 
     protected $casts = [
@@ -52,6 +55,16 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_product');
+    }
+
+    public function product_variants()
+    {
+        return $this->hasMany(ProductVariant::class, 'product_id', 'id');
+    }
+
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
     }
 
 

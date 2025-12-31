@@ -54,7 +54,20 @@
                                 <span>Quản lý thương hiệu</span></a>
                         </li>
                     @endif
-
+                    <li class="{{ isset($sidebar) && $sidebar === 'Attribute' ? 'active' : '' }}">
+                        <a href="javascript:void(0)">
+                            <i class="icon-stack2"></i>
+                            <span>Quản lý thuộc tính</span>
+                        </a>
+                        <ul style="{{ isset($sidebar) && $sidebar === 'Attribute' ? 'display:block;' : 'display:none;' }}">
+                            <li class="{{ isset($sidebar_child) && $sidebar_child === 'attribute_catalogues' ? 'active' : '' }}">
+                                <a href="{{ route('admin.attribute.catalogues.index') }}">Nhóm Thuộc tính</a>
+                            </li>
+                            <li class="{{ isset($sidebar_child) && $sidebar_child === 'attributes' ? 'active' : '' }}">
+                                <a href="{{ route('admin.attributes.index') }}">Thuộc tính</a>
+                            </li>
+                        </ul>
+                    </li>
                     @if($admin && $admin->hasPermission('view_product'))
                         <li class="{{ isset($sidebar) && $sidebar == 'Product' ? 'active' : '' }}">
                             <a href="{{route('admin.products.index')}}"><i class="icon-printer4"></i>
@@ -79,6 +92,14 @@
                             <a href="{{ route('admin.banners.index') }}">
                                 <i class="icon-image2"></i>
                                 <span>Quản lý Banner</span>
+                            </a>
+                        </li>
+                    @endif
+                    @if($admin && $admin->hasPermission('view_video'))
+                        <li class="{{ isset($sidebar) && $sidebar == 'Video' ? 'active' : '' }}">
+                            <a href="{{ route('admin.videos.index') }}">
+                                <i class="icon-video-camera"></i>
+                                <span>Quản lý Video</span>
                             </a>
                         </li>
                     @endif
