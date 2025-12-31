@@ -13,8 +13,12 @@ class HomePageController extends Controller
     {
         $data['homeCategories'] = widget_items('home_category');
         $data['homeProductCategories'] = widget_items('home_product_category');
+        $data['homeProductCategories1'] = widget_items('home_product_category_1');
         $data['homeProductBrands'] = widget_items('home_product_brand');
         $data['healthCategories'] = widget_items('health_corner');
+        $data['featured_videos'] = widget_items('featured_videos', 1);
+        $data['featured_videos_1'] = widget_items('featured_videos_1', 3);
+        $data['featured_short_videos'] = widget_items('featured_short_videos', 7);
         $data['featuredArticle'] = widget_items('featured_article', 7);
         $data += $this->getHomeBanners();
         return view('frontend.home.index', $data);

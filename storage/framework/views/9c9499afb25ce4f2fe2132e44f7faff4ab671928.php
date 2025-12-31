@@ -5,11 +5,13 @@
                 <?php echo $__env->make('frontend.layouts.partials.banner', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
             <div></div>
-            <div class="bg-neutral-100 h-3"></div>
-            <?php echo $__env->make('frontend.components.deal',compact('homeProductCategories'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php echo $__env->make('frontend.components.featured-brands',compact('homeProductBrands'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php echo $__env->make('frontend.components.featured-categories',compact('homeCategories'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('frontend.components.deal',compact('homeProductCategories','homeProductCategories1'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('frontend.components.featured-brands',compact('homeProductBrands'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php echo $__env->make('frontend.components.disease-lookup', compact('healthCategories','featuredArticle'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('frontend.components.featured-video',compact('featured_videos','featured_videos_1'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('frontend.components.featured-short-video',compact('featured_short_videos'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('frontend.components.service-icons', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

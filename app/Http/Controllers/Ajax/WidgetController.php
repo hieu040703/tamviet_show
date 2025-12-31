@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostCatalogue;
 use App\Models\Product;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +25,10 @@ class WidgetController extends Controller
         $query = null;
         $label = '';
         switch ($module) {
+            case 'videos':
+                $query = Video::query();
+                $label = 'Videos';
+                break;
             case 'products':
                 $query = Product::query();
                 $label = 'Sản phẩm';

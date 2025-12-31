@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SystemController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\VideoController;
 
 Route::get('control', function () {
     $control = session('control');
@@ -163,6 +164,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customers.edit')->middleware(['auth:admin', 'permission:edit_customer']);
         Route::put('/update/{id}', [CustomerController::class, 'update'])->name('customers.update')->middleware(['auth:admin', 'permission:edit_customer']);
         Route::delete('/{id}', [CustomerController::class, 'delete'])->name('customers.delete')->middleware(['auth:admin', 'permission:delete_customer']);
+    });
+    Route::group(['prefix' => 'videos'], function () {
+        Route::get('/', [VideoController::class, 'index'])->name('videos.index')->middleware('auth:admin', 'permission:view_video');
+        Route::get('/create', [VideoController::class, 'create'])->name('videos.create')->middleware('auth:admin', 'permission:create_video');
+        Route::post('/store', [VideoController::class, 'store'])->name('videos.store')->middleware('auth:admin', 'permission:create_video');
+        Route::get('/edit/{id}', [VideoController::class, 'edit'])->name('videos.edit')->middleware('auth:admin', 'permission:edit_video');
+        Route::put('/update/{id}', [VideoController::class, 'update'])->name('videos.update')->middleware('auth:admin', 'permission:edit_video');
+        Route::delete('/delete/{id}', [VideoController::class, 'delete'])->name('videos.delete')->middleware('auth:admin', 'permission:delete_video');
     });
     Route::group(['prefix' => '/system'], function () {
         Route::get('/', [SystemController::class, 'index'])->name('system.index');

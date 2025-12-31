@@ -82,6 +82,14 @@
                             </a>
                         </li>
                     @endif
+                    @if($admin && $admin->hasPermission('view_video'))
+                        <li class="{{ isset($sidebar) && $sidebar == 'Video' ? 'active' : '' }}">
+                            <a href="{{ route('admin.videos.index') }}">
+                                <i class="icon-video-camera"></i>
+                                <span>Quản lý Video</span>
+                            </a>
+                        </li>
+                    @endif
                     @if($admin && $admin->hasPermission('view_widget'))
                         <li class="{{ (isset($sidebar) && $sidebar == 'Widget') ? 'active' : '' }}">
                             <a href="{{ route('admin.widgets.index') }}">

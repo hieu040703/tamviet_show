@@ -19,7 +19,7 @@
 
                         <form action="" method="GET" class="w-full" id="boxSearchForm">
                             <input id="search-input-desktop" type="search" name="keyword" enterkeyhint="search"
-                                   class="w-full placeholder:text-neutral-600 outline-none p-3.5 search-input flex h-10 rounded-sm bg-white py-1 pl-10 text-sm font-medium text-neutral-700"
+                                   class="w-full placeholder:text-neutral-600 outline-none p-3.5 search-input flex h-10 rounded-sm bg-white py-1 pl-10 text-sm font-medium text-neutral-700 border border-blue-100"
                                    placeholder="Bạn đang tìm gì hôm nay...">
                         </form>
 
